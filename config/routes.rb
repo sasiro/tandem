@@ -5,6 +5,8 @@ devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
 
   root :to => 'home#index'
 
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+     resources :users
   #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # The priority is based upon order of creation:
