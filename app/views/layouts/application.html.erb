@@ -1,28 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tandem</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path %> |
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in" %>
-<% end %>
-<% if notice %>
-    <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert"><%= alert %></p>
-<% end %>
-  <%= yield %>
+  <head>
+    <title>Tandem Spot</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
 
-</body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Tandem Spot</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Browse Users", users_path %></li>
+              <li><%= link_to "Tandem NOW" %></li>
+            <li><%= link_to "Contact Us" %></li>
+            <li><%= link_to "" %></li>
+            <li>  <% if user_signed_in? %>
+              <li> <%= link_to 'Edit profile', edit_user_registration_path %></li>
+
+              <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %></li>
+
+            <% else %>
+              <li> <%= link_to "Sign up", new_user_registration_path %></li>
+
+              <li>  <%= link_to "Login", new_user_session_path %></li>
+
+              <li>  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in" %></li>
+
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <% if notice %>
+          <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+
+        <%= yield %></div>
+      <div class="span3">
+        <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>.
+        <% end %>
+        <h2>About Us</h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>

@@ -15,7 +15,9 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -27,6 +29,8 @@ group :production do
   gem 'pg'
   gem 'thin'
 end
+# For heroku
+gem 'rb-readline'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
