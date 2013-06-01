@@ -23,10 +23,10 @@
         <a class="brand" href="#">Tandem Spot</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Browse Users", users_path %></li>
-              <li><%= link_to "Tandem NOW" %></li>
-            <li><%= link_to "Contact Us" %></li>
+            <li><%= link_to "Find a Tandem", users_path %></li>
+            <li><%= link_to "Tandem NOW", home_index_path %></li>
             <li><%= link_to "" %></li>
+            <li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li><li><%= link_to "" %></li>
             <li>  <% if user_signed_in? %>
               <li> <%= link_to 'Edit profile', edit_user_registration_path %></li>
 
@@ -62,7 +62,7 @@
         <% if user_signed_in? %>
           Logged in as <strong><%= current_user.email %></strong>.
         <% end %>
-        <h2>About Us</h2>
+        <h2>Info</h2>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
       </div>
