@@ -15,7 +15,8 @@
 
 <%= f.input :email ,:label => 'Calerdary'%>
 
+<%#<%= f.collection_select :language_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>%>
+
   <div class="field"><%= f.submit "Sign up" %></div>
 <% end %>
-
 <%= render "devise/shared/links" %>

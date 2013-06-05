@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :speak
+  has_many :languages_speak, :throught => :speak, :class_name => "Language"
+
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_id
   # attr_accessible :title, :body
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
