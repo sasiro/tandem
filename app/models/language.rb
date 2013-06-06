@@ -1,5 +1,5 @@
 class Language < ActiveRecord::Base
   attr_accessible :name
-  has_many :users
-  has_many :users, :throught => :speak
+  has_many :speak
+  has_many :users, :through => :speak
 end

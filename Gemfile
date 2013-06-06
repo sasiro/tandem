@@ -30,8 +30,8 @@ group :production do
   gem 'pg'
   gem 'thin'
 end
-# For heroku
-gem 'rb-readline'
+# For heroku version 0.4.2 for rails console command
+gem 'rb-readline', '~> 0.4.2'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
