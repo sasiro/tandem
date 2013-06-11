@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606231647) do
+ActiveRecord::Schema.define(:version => 20130607012549) do
 
   create_table "improves", :force => true do |t|
     t.integer  "language_improve_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130606231647) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "country"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
