@@ -29,7 +29,20 @@
     <%= f.label :language_improve_ids, "Languages you want to improve" %><br />
     <%= f.collection_select :language_improve_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
   </div>
-<br />
+  <br />
+
+  <div id="interests" class="field">
+    <%= hidden_field_tag "user[interest_ids][]", nil %>
+    <% Interest.all.each_with_index do |interest,index| %>
+      <%= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest) %>
+      <%# interest.name  %>
+      <%=label_tag dom_id(interest), interest.name  %>
+
+    <% end %>
+  </div>
+  <br >
+  <br >
+
 
   <div class="field"><%= f.submit "Sign up" %></div>
 <% end %>

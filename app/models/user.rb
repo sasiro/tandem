@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
 
   has_many :improve
   has_many :language_improve, :through => :improve, :class_name => "Language"
+  has_many :hobby
+  has_many :interest, :through => :hobby, :class_name => "Interest"
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids
   # attr_accessible :title, :body
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
