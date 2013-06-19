@@ -1,49 +1,60 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-vertical'} do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="span1">
+    </div>
+<div class="span9">
 
-  <%= f.input :email , :label => 'Name' %>
-  <%= f.input :email , :label => 'Surname' %>
-  <%= f.input :email %>
-  <%= f.input :country, :label => "Country", :collection => ["Germany","France","United States","Spain","United Kingdom","Portugal"] %>
+      <h2>Sign up</h2>
 
+      <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-vertical'} do |f| %>
 
-  <% if f.object.password_required? %>
-
-
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
-
-  <% end %>
-
-  <%= f.input :email ,:label => 'Calerdary'%>
+        <%= f.input :email , :label => 'Name' %>
+        <%= f.input :email , :label => 'Surname' %>
+        <%= f.input :email %>
+        <%= f.input :country, :label => "Country", :collection => ["Germany","France","United States","Spain","United Kingdom","Portugal"] %>
 
 
-  <div class="field">
-    <%= f.label :language_speak_ids, "Languages you speak" %><br />
-    <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+        <% if f.object.password_required? %>
+
+
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+
+        <% end %>
+
+        <%= f.input :email ,:label => 'Calerdary'%>
+
+
+        <div class="field">
+          <%= f.label :language_speak_ids, "Languages you speak" %><br />
+          <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+        </div>
+        <br />
+
+        <div class="field">
+          <%= f.label :language_improve_ids, "Languages you want to improve" %><br />
+          <%= f.collection_select :language_improve_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+        </div>
+        <br />
+
+        <div id="interests" class="field">
+          <%= hidden_field_tag "user[interest_ids][]", nil %>
+          <% Interest.all.each_with_index do |interest,index| %>
+            <%= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest) %>
+            <%= label_tag dom_id(interest), interest.name  %>
+
+          <% end %>
+        </div>
+        <br >
+        <br >
+
+        <div class="field"><%= f.submit "Sign up" %></div>
+      <% end %>
+
+    </div>
+    <div class="span2">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-<br />
-
-  <div class="field">
-    <%= f.label :language_improve_ids, "Languages you want to improve" %><br />
-    <%= f.collection_select :language_improve_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
-  </div>
-  <br />
-
-  <div id="interests" class="field">
-    <%= hidden_field_tag "user[interest_ids][]", nil %>
-    <% Interest.all.each_with_index do |interest,index| %>
-      <%= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest) %>
-      <%# interest.name  %>
-      <%=label_tag dom_id(interest), interest.name  %>
-
-    <% end %>
-  </div>
-  <br >
-  <br >
-
-
-  <div class="field"><%= f.submit "Sign up" %></div>
-<% end %>
-<%= render "devise/shared/links" %>
+</div>
