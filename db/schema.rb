@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611211037) do
+ActiveRecord::Schema.define(:version => 20130620145331) do
 
   create_table "hobbies", :force => true do |t|
     t.integer  "user_id"
@@ -62,6 +62,11 @@ ActiveRecord::Schema.define(:version => 20130611211037) do
     t.string   "provider"
     t.string   "uid"
     t.string   "country"
+    t.string   "name"
+    t.string   "surname"
+    t.boolean  "subscribed"
+    t.string   "foto"
+    t.string   "video"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
