@@ -9,8 +9,8 @@
 
       <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-vertical'} do |f| %>
 
-        <%= f.input :email , :label => 'Name' %>
-        <%= f.input :email , :label => 'Surname' %>
+        <%= f.input :name , :label => 'Name' %>
+        <%= f.input :surname , :label => 'Surname' %>
         <%= f.input :email %>
         <%= f.input :country, :label => "Country", :collection => ["Germany","France","United States","Spain","United Kingdom","Portugal"] %>
 
@@ -22,8 +22,6 @@
           <%= f.input :password_confirmation %>
 
         <% end %>
-
-        <%= f.input :email ,:label => 'Calerdary'%>
 
 
         <div class="field">
