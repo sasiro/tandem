@@ -33,3 +33,19 @@ Scenario: Register a valid User
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
     Then I should see "Tandem Now"
+
+
+
+Scenario: Register a invalid User
+    When I follow "Sign up"
+    And I fill in "Name" with "Ridley"
+    When I fill in "Surname" with "Donet"
+    When I fill in "Email" with "victordp86@gmail.com"
+    When I select "Spain" from "Country"
+    When I fill in "Password" with "12alalala98"
+    When I fill in "Password confirmation" with ""
+    And I check "Technology"
+    When I select "Spanish" from "Languages you speak"
+    And I select "English" from "Languages you want to improve"
+    And I press "Sign up"
+    Then I should not see "Tandem Now"
