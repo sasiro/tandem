@@ -3,9 +3,14 @@ Tandem::Application.routes.draw do
 
   resources :interests
 
-devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
-                   controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+    controllers: {omniauth_callbacks: "omniauth_callbacks"}
   get "home/index"
+
+  resource :user do
+    # Route GET /user/tandem
+    get 'tandem', :on => :collection
+  end
 
   root :to => 'home#index'
 
@@ -19,8 +24,7 @@ devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
+ # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
