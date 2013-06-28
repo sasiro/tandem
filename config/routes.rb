@@ -7,9 +7,11 @@ Tandem::Application.routes.draw do
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   get "home/index"
 
-  resource :users do
+  resource :user do
     # Route GET /user/tandem
     get 'tandem', :on => :collection
+    get 'practice', :on => :collection
+
   end
 
   root :to => 'home#index'
