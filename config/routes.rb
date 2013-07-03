@@ -16,6 +16,9 @@ Tandem::Application.routes.draw do
 
   root :to => 'home#index'
 
+   resources :rooms
+   match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
+
   # Sample resource route (maps HTTP verbs to controller actions automatically):
      resources :users
   #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

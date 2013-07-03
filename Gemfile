@@ -10,6 +10,7 @@ gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'holder_rails'
 gem 'opentok'
+gem 'debugger'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
