@@ -7,11 +7,7 @@ class RoomsController < ApplicationController
   def new
     #We simulate the form
 
-    debugger
     session = @opentok.create_session request.remote_addr
-    debugger
-    sessionId = session.session_id.to_i
-    debugger
     @new_room = Room.new(:name => "nova",:public => false,:sessionId => session.session_id)
 
     respond_to do |format|
