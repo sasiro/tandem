@@ -17,8 +17,13 @@ module NavigationHelpers
       '/'
     when /^the Tandem Spot home page$/
       '/'
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
+    when /^the tandem page$/
+      tandem_user_path
+
+    when /the login page/
+      new_user_session_path
+      # Add more mappings here.
+      # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
