@@ -4,31 +4,31 @@
     </div>
     <div class="span6">
       <h1>Tandem Now<h1/>
-      <div id="videobox"></div>
+          <div id="videobox"></div>
 
-<script src="http://static.opentok.com/v0.91/js/TB.min.js"; type="text/javascript"></script>
-<script type="text/javascript">
-  var apiKey = "7638152";
-  var sessionId = "<%= @room.sessionId %>";
-  var token ="<%= @tok_token %>";
+          <script src="http://static.opentok.com/v0.91/js/TB.min.js"; type="text/javascript"></script>
+          <script type="text/javascript">
+            var apiKey = "7638152";
+            var sessionId = "<%= @room.sessionId %>";
+            var token ="<%= @tok_token %>";
 
-  var session;
+            var session;
 
-  TB.setLogLevel(TB.DEBUG);
-  //session.connect(apiKey, token);
-  var session = TB.initSession(sessionId);
-  session.addEventListener('sessionConnected', sessionConnectedHandler);
-  session.addEventListener('streamCreated', streamCreatedHandler);
-  session.connect(apiKey, token);
+            TB.setLogLevel(TB.DEBUG);
+            //session.connect(apiKey, token);
+            var session = TB.initSession(sessionId);
+            session.addEventListener('sessionConnected', sessionConnectedHandler);
+            session.addEventListener('streamCreated', streamCreatedHandler);
+            session.connect(apiKey, token);
 
-  var publisher;
-  function sessionConnectedHandler(event) {
-    publisher = TB.initPublisher(apiKey, 'videobox');
-    session.publish(publisher);
+            var publisher;
+            function sessionConnectedHandler(event) {
+              publisher = TB.initPublisher(apiKey, 'videobox');
+              session.publish(publisher);
 
-    // Subscribe to streams that were in the session when we connected
-    subscribeToStreams(event.streams);
-  }
+              // Subscribe to streams that were in the session when we connected
+              subscribeToStreams(event.streams);
+            }
 
 function streamCreatedHandler(event) {
   // Subscribe to any new streams that are created
@@ -52,11 +52,11 @@ function subscribeToStreams(streams) {
   }
 }
 </script>
-      <br>
-      <br>
-      <% if session[:partner] %>
+<br>
+<br>
+<% if session[:partner] %>
 
-        <br>Tandem with<%= User.find(session[:partner]).name %>
+  <br>Tandem with <%= User.find(session[:partner]).name %>
     <% else %>
       <br>Waiting for Tandem to join ...
     <% end %>
@@ -65,15 +65,15 @@ function subscribeToStreams(streams) {
       <%= image_tag "premios-01.png" %> x1
       <%= image_tag "premios-02.png" %> x3
       <%= image_tag "premios-06.png" %> x8
-        <%= image_tag "premios-05.png" %> x2
-      </div>
-    </div>
-    <div class="span3">
-      <br>
-      <br>
-      <br>
-        <%= image_tag "recomendaciones.png" %>
+      <%= image_tag "premios-05.png" %> x2
     </div>
   </div>
+  <div class="span3">
+    <br>
+    <br>
+    <br>
+    <%= image_tag "recomendaciones.png" %>
+  </div>
+</div>
 </div>
 
