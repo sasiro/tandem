@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
 debugger
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           debugger
-         # room.public = true #It can't be accesed again
+          room.public = true #It can't be accesed again
           session[:partner] = user.id
           debugger
           redirect_to("/party/"+room.id.to_s)
