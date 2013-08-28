@@ -5,20 +5,16 @@ class RoomsController < ApplicationController
   end
 
   def new
-    debugger
     room_found = false
     @rooms = Room.where(:public =>true)
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
-    debugger
       @rooms.each do |room|
         user = User.find(room.name)#has to be adapted
-debugger
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
-          debugger
-          room.public = true #It can't be accesed again
+          room.update_attributes(:public => false ) #It can't be accesed again
+          room.save!
           session[:partner] = user.id
-          debugger
           redirect_to("/party/"+room.id.to_s)
 
           room_found = true
@@ -27,7 +23,6 @@ debugger
       end
     end
     if @rooms.empty? or not room_found # when there is not rooms or if there is not appropiate rooms
-    debugger
       session = @opentok.create_session request.remote_addr
       @new_room = Room.new(:name => current_user.id.to_s,:public => true,:sessionId => session.session_id)
 

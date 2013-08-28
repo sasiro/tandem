@@ -74,4 +74,22 @@ Scenario: Practice with tandem now creating a new room
   Then I follow "Tandem Now"
   Then I should see "Waiting for Tandem to join"
 
+  Scenario: Room filled with a user is not avaliable again
+    Given a valid user
+    When I go to the login page
+    And I fill in the following:
+      |Email|jamon@hotmail.com|
+      |Password|12345678|
+    And I press "Login"
+    And I follow "Tandem Now"
+    And I should see "Tandem with Victor"
+    And I follow "Logout"
+    When I go to the login page
+    And I fill in the following:
+      |Email|jamon@hotmail.com|
+      |Password|12345678|
+    And I press "Login"
+    Then I follow "Tandem Now"
+    Then I should not see "Tandem with Victor"
+
 
