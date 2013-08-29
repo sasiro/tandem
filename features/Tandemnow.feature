@@ -3,7 +3,7 @@ Feature: Tandem now with random people
   that wants to improve his language fast
   I want to use the option tandem now
 
-  Background: Some rooms have been added to the database
+  Background: Some languages,users, etc have been added to the database
 
     Given the following languages exist:
       | name     |
@@ -41,6 +41,7 @@ Feature: Tandem now with random people
 
 
     And I am on the tandem page
+
 Scenario: Practice with tandem now
      Given a valid user
   When I go to the login page

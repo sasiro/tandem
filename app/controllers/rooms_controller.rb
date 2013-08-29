@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
-        user = User.find(room.name)#has to be adapted
+        user = User.find(room.name)#has to be adapted to de ID
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:public => false ) #It can't be accesed again
           room.save!

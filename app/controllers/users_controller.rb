@@ -85,5 +85,10 @@ class UsersController < ApplicationController
 
   end
 
+  def find
+
+  end
+
+
 
 end

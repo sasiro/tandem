@@ -18,6 +18,7 @@ Tandem::Application.routes.draw do
 
    resources :rooms
    match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
+   match '/users/find', :to => "users#find", :as => :find_users, :via => :get
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
      resources :users
