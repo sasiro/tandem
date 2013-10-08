@@ -23,8 +23,8 @@
         <a class="brand" href="#">Tandem Spot</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Find a Tandem", users_path %></li>
-            <li><%= link_to "Tandem NOW", home_index_path %></li>
+            <li><%= link_to "Find a Tandem", find_users_path %></li>
+            <li><%= link_to "Tandem NOW",new_room_path %></li>
             <li><%= link_to "" %></li>
             <li> <% if user_signed_in? %>
          <%= link_to current_user.email, edit_user_registration_path %>
