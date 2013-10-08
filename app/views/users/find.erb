@@ -1,7 +1,65 @@
-
-      <%= link_to raw("<i class=\"icon-white icon-user\">Buscar</i>"),
-        new_room_path,
-        class: "btn btn-success btn-large",
-        method: :get %>
+<div class="container">
 
 
+  <div class="row">
+    <div class="span4">
+      <div class="page-header">
+  <h1>Users</h1>
+   </div>
+ <%= link_to raw("<i class=\"icon-white icon-user\">Search</i>"),
+    new_room_path,
+    class: "btn btn-success btn-large",
+    method: :get %>
+  Search form with parameters to be implemented
+             <br>
+        <br>
+        <table class="table table-striped">
+          <% @users.each_with_index do |user,i| %>
+            <tr>
+              <td>
+                <img class="img-circle" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;" >
+              </td>
+              <td>
+                <img class="img-circle" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;" >
+              </td>
+            </tr>
+            <tr>
+              <td>Name <%= user.name %></td>
+              <td>Name <%= @users[1].name %></td>
+              <tr>
+              </tr>
+              <td>Language/s Improves <%= user.language_improve.name %></td>
+              <td>Language/s Improves <%= @users[1].language_improve.name %></td>
+            </tr>
+            <tr>
+              <td>Country <%= user.country %></td>
+              <td>Contry <%= @users[1].country %></td>
+            </tr>
+            <tr>
+              <td>Interests <%= user.interest %></td>
+              <td>Interests <%= @users[1].interest %></td>
+            </tr>
+            <tr>
+              <td>Puntuation: 3000 pts</td>
+              <td>Puntuation: 3000 pts</td>
+            </tr>
+            <tr>
+              <th><%= link_to "View detalis »", {:controller => 'users', :action => 'show', :id => user.id}, :user_id => user.id, :class => "btn" %></th>
+              <th><%= link_to "View detalis »", {:controller => 'users', :action => 'show', :id => @users[1].id}, :user_id => user.id, :class => "btn" %></th>
+            </tr>
+
+            <% break %>
+          <% end %>
+        </table>
+        <%= link_to raw("<i class=\"icon-white icon-user\">+</i>"),
+    new_room_path,
+    class: "btn btn-alert btn-large",
+    method: :get %>
+ <%= link_to raw("<i class=\"icon-white icon-user\">-</i>"),
+    new_room_path,
+    class: "btn btn-alert btn-large",
+    method: :get %>
+
+    </div>
+   </div>
+</div>

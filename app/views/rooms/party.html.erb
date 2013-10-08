@@ -1,74 +1,145 @@
 <div class="container">
   <div class="row">
-    <div class="span2">
+    <div class="span1">
     </div>
-    <div class="span6">
+    <div class="span7">
       <h1>Tandem Now<h1/>
           <div id="videobox"></div>
+          <div id='wrapper'>
+            <div id='subscriber'></div>
+            <div id='publisher'></div>
+          </div>
+            <style type="text/css">
+              body {
+              text-align: center;
+              }
 
-          <script src="http://static.opentok.com/v0.91/js/TB.min.js"; type="text/javascript"></script>
-          <script type="text/javascript">
-            var apiKey = "7638152";
-            var sessionId = "<%= @room.sessionId %>";
-            var token ="<%= @tok_token %>";
+              #wrapper {
+              margin: 0 auto;
+              position: relative;
+              width: 640px;
+              height: 480px;
+              }
 
-            var session;
+              #subscriber {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              z-index: 1;
 
-            TB.setLogLevel(TB.DEBUG);
-            //session.connect(apiKey, token);
-            var session = TB.initSession(sessionId);
-            session.addEventListener('sessionConnected', sessionConnectedHandler);
-            session.addEventListener('streamCreated', streamCreatedHandler);
-            session.connect(apiKey, token);
+              }
 
-            var publisher;
-            function sessionConnectedHandler(event) {
-              publisher = TB.initPublisher(apiKey, 'videobox');
-              session.publish(publisher);
+              #publisher {
+              position: absolute;
+              width: 160px;
+              height: 120px;
+              z-index: 10;
+              bottom: 10px;
+              left: 10px;
+              }
 
-              // Subscribe to streams that were in the session when we connected
-              subscribeToStreams(event.streams);
-            }
+              #publisher_div {
+              border: 1px solid white;
+              }
+
+              #subscriber_div, #publisher_div {
+              width: 100%;
+              height: 100%;
+              }
+
+            </style>
+            <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+            <script type="text/javascript">
+              var apiKey = "7638152";
+              var sessionId = "<%= @room.sessionId %>";
+              var token ="<%= @tok_token %>";
+              var session;
+              var publisher;
+              $(document).ready(function() {
+                  TB.setLogLevel(5);
+                  session = TB.initSession(sessionId);
+                  session.addEventListener("sessionConnected", sessionConnectedHandler);
+                  session.addEventListener("streamCreated", streamCreatedHandler);
+                  session.connect(apiKey, token);
+                  });
+
+function sessionConnectedHandler(event) {
+  $("#publisher").append("<div id='publisher_div'></div>");
+  publisher = TB.initPublisher(apiKey, "publisher_div");
+  publisher.addEventListener('accessAllowed', accessAllowedHandler);
+}
+
+function accessAllowedHandler(event) {
+  $("#publisher_div").css("width", "100%").css("height", "100%");
+  session.publish(publisher);
+}
 
 function streamCreatedHandler(event) {
-  // Subscribe to any new streams that are created
-  subscribeToStreams(event.streams);
+  for (var i = 0; i < event.streams.length; i++) {
+    var stream = event.streams[i];
+    if (stream.connection.connectionId == session.connection.connectionId) {
+      $("#subscriber").append("<div id='subscriber_div'></div>");
+      session.subscribe(event.streams[0], "subscriber_div");
+      $("#subscriber_div").css("width", "100%").css("height", "100%");
+    }
+  }
+}
+/*
+   TB.setLogLevel(TB.DEBUG);
+//session.connect(apiKey, token);
+var session = TB.initSession(sessionId);
+session.addEventListener('sessionConnected', sessionConnectedHandler);
+session.addEventListener('streamCreated', streamCreatedHandler);
+session.connect(apiKey, token);
+
+var publisher;
+function sessionConnectedHandler(event) {
+publisher = TB.initPublisher(apiKey, 'videobox');
+session.publish(publisher);
+
+// Subscribe to streams that were in the session when we connected
+subscribeToStreams(event.streams);
+}
+
+function streamCreatedHandler(event) {
+// Subscribe to any new streams that are created
+subscribeToStreams(event.streams);
 }
 
 function subscribeToStreams(streams) {
-  for (var i = 0; i < streams.length; i++) {
-    // Make sure we don’t subscribe to ourself
-    if (streams[i].connection.connectionId == session.connection.connectionId) {
-      return;
-    }
-
-    // Create the div to put the subscriber element in to
-    var div = document.createElement('div');
-    div.setAttribute('id', 'stream' + streams[i].streamId);
-    document.body.appendChild(div);
-
-    // Subscribe to the stream
-    session.subscribe(streams[i], div.id);
-  }
+for (var i = 0; i < streams.length; i++) {
+// Make sure we don’t subscribe to ourself
+if (streams[i].connection.connectionId == session.connection.connectionId) {
+return;
 }
+
+// Create the div to put the subscriber element in to
+var div = document.createElement('div');
+div.setAttribute('id', 'stream' + streams[i].streamId);
+document.body.appendChild(div);
+
+// Subscribe to the stream
+session.subscribe(streams[i], div.id);
+}
+}
+ */
 </script>
-<br>
-<br>
 <% if session[:partner] %>
 
   <br>Tandem with <%= User.find(session[:partner]).name %>
     <% else %>
       <br>Waiting for Tandem to join ...
     <% end %>
-    <div class="clear">
+ <div class="clear">
       <h2>Medallas y trofeos</h2>
       <%= image_tag "premios-01.png" %> x1
       <%= image_tag "premios-02.png" %> x3
       <%= image_tag "premios-06.png" %> x8
       <%= image_tag "premios-05.png" %> x2
     </div>
+
   </div>
-  <div class="span3">
+  <div class="span4">
     <br>
     <br>
     <br>

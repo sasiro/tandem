@@ -87,6 +87,11 @@ class UsersController < ApplicationController
 
   def find
 
+  @all_ids = User.pluck(:id)
+  @selected_page = params[:page] || session[:page] || 0
+  ids = @all_ids.slice( @selected_page * 2 , 2 )
+  @users = User.where(id: ids)
+  @user = User.first
   end
 
 

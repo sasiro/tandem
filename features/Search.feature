@@ -36,14 +36,24 @@ Feature: Search users for planing a tandem
 
     And I am on the tandem page
 
-Scenario: Practice with tandem now
-     Given a valid user
+Scenario: The user can see the button Search
   When I go to the login page
   And I fill in the following:
     |Email|jamon@hotmail.com|
     |Password|12345678|
   And I press "Login"
   Then I follow "Program a Tandem"
-  Then I should see "Buscar"
+  Then I should see "Search"
 
+Scenario: The user can see other compatible users
+  When I go to the login page
+  And I fill in the following:
+    |Email|jamon@hotmail.com|
+    |Password|12345678|
+  And I press "Login"
+  Then I follow "Program a Tandem"
+  Then I should see "Victor"
+  Then I should see "Jamon"
+  Then I should not see "Jake"
+  Then I should not see "Carlos"
 
