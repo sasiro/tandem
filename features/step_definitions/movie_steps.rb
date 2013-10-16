@@ -60,3 +60,7 @@ Given /^a logged in user$/ do
   fill_in "Password", :with => "12345678"
   click_button "Login"
 end
+
+Given /^I wait for (\d+) seconds?$/ do |n|
+  sleep(n.to_i)
+end
