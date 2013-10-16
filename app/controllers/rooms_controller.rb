@@ -23,10 +23,10 @@ class RoomsController < ApplicationController
       end
     end
     if @rooms.empty? or not room_found # when there is not rooms or if there is not appropiate rooms
-      session_properties = {OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled"}
-      #session_id = session.session_id
-      session = @opentok.create_session request.remote_addr, session_properties
+      #p2p conexion#session_properties = {OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled"}
+      #session = @opentok.create_session request.remote_addr, session_properties
 
+      session = @opentok.create_session request.remote_addr
       @new_room = Room.new(:name => current_user.id.to_s,:public => true,:sessionId => session.session_id)
 
       respond_to do |format|
