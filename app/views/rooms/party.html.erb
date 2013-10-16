@@ -75,14 +75,16 @@ function accessAllowedHandler(event) {
 }
 
 function streamCreatedHandler(event) {
-  for (var i = 0; i < event.streams.length; i++) {
-    var stream = event.streams[i];
+  //for (var i = 0; i < event.streams.length; i++) {
+    //var stream = event.streams[i];
+    var stream = event.streams;
     if (stream.connection.connectionId != session.connection.connectionId) {
       $("#subscriber").append("<div id='subscriber_div'></div>");
-      session.subscribe(event.streams[0], "subscriber_div");
+      //session.subscribe(event.streams[0], "subscriber_div");
+      session.subscribe(event.stream, "subscriber_div");
       $("#subscriber_div").css("width", "100%").css("height", "100%");
     }
-  }
+  //}
 }
 /*
    TB.setLogLevel(TB.DEBUG);
