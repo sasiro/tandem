@@ -35,7 +35,7 @@ Feature: Tandem now with random people
       | 4  | 2 |
       | 1  | 3 |
  And the following room exist:
-      | name     | public |
+      | publisher_id     | available |
       |      | false  |
       |  1   | true   |
 
@@ -94,15 +94,15 @@ Scenario: Practice with tandem now creating a new room
     Then I should not see "Tandem with Victor"
 
 
-Scenario: Practice with tandem now with a room that exist
-  Given a valid user
-  When I go to the login page
-  And I fill in the following:
-    |Email|jamon@hotmail.com|
-    |Password|12345678|
-  And I press "Login"
-  Then I follow "Tandem Now"
-  And I wait for 5 seconds
-  Then I should see "Minutes 1"
+  Scenario: The room has a counter that works
+    Given a valid user
+    When I go to the login page
+    And I fill in the following:
+      |Email|jamon@hotmail.com|
+      |Password|12345678|
+    And I press "Login"
+    Then I follow "Tandem Now"
+    And I wait for 1 seconds
+    Then I should see "Minutes 1"
 
 
