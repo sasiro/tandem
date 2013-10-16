@@ -77,7 +77,7 @@ function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
   publisher = TB.initPublisher(apiKey, "publisher_div");
   publisher.addEventListener('accessAllowed', accessAllowedHandler);
-  subscribeToStreams(event.streams);
+  streamCreatedHandler(event);
 
 }
 
