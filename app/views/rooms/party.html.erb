@@ -62,12 +62,23 @@
                   session.addEventListener("streamCreated", streamCreatedHandler);
                   session.connect(apiKey, token);
                   });
+//if you join a session, and there are people already subscribing before you joined, they will be in event.streams in your sessionConnected handler. They will not appear in your streamCreated handler.
+function subscribeToStreams(streams) {
+  for (i = 0; i < streams.length; i++) {
+    var stream = streams[i];
+    if (stream.connection.connectionId != session.connection.connectionId) {
+      session.subscribe(stream, "subscriber_div");
+      $("#subscriber_div").css("width", "100%").css("height", "100%");
 
+    }
+  }
+}
 function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
   publisher = TB.initPublisher(apiKey, "publisher_div");
   publisher.addEventListener('accessAllowed', accessAllowedHandler);
   subscribeToStreams(event.streams);
+
 }
 
 function accessAllowedHandler(event) {
