@@ -46,6 +46,9 @@ class RoomsController < ApplicationController
   def config_opentok
     if @opentok.nil?
       @opentok = OpenTok::OpenTokSDK.new "7638152", "d1de3d0a7229cc4e46e9a83a1b35f4d14ad6f56b"
+      session_properties = {OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled"}
+      session = opentok.create_session nil, session_properties
+      session_id = session.session_id
     end
   end
 end
