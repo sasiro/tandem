@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016215856) do
+ActiveRecord::Schema.define(:version => 20131017150915) do
 
   create_table "hobbies", :force => true do |t|
     t.integer  "user_id"
@@ -41,10 +41,18 @@ ActiveRecord::Schema.define(:version => 20131016215856) do
 
   create_table "rooms", :force => true do |t|
     t.string   "publisher_id"
-    t.string   "sessionId"
+    t.string   "session_id"
     t.boolean  "available"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "subscriber_id"
+    t.time     "joined_at"
+    t.time     "duration"
+    t.boolean  "finished"
+    t.string   "comments"
+    t.string   "error"
+    t.integer  "subscriber_speak_id"
+    t.integer  "publisher_speak_id"
   end
 
   create_table "speaks", :force => true do |t|

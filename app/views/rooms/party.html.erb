@@ -51,13 +51,13 @@
             <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
             <script type="text/javascript">
               var apiKey = "7638152";
-              var sessionId = "<%= @room.sessionId %>";
+              var sessionId = "<%= @room.session_id %>";
               var token ="<%= @tok_token %>";
               var session;
               var publisher;
               $(document).ready(function() {
                   TB.setLogLevel(5);
-                  session = TB.initSession(sessionId);
+                  session = TB.initSession(session_id);
                   session.addEventListener("sessionConnected", sessionConnectedHandler);
                   session.addEventListener("streamCreated", streamCreatedHandler);
                   session.connect(apiKey, token);
