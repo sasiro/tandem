@@ -45,11 +45,24 @@ class RoomsController < ApplicationController
     @tok_token = @opentok.generate_token :session_id =>@room.session_id
   end
 
+
+
+  def close
+    @room = Room.find(params[:id])
+    if @room.update_attribute(:available, false)
+      redirect_to("/user/tandem")
+    else
+        render :controller => 'rooms', :action => "tandem"
+    end
+  end
+
   private
   def config_opentok
     if @opentok.nil?
       @opentok = OpenTok::OpenTokSDK.new "7638152", "d1de3d0a7229cc4e46e9a83a1b35f4d14ad6f56b"
     end
   end
-end
+
+
+  end
 

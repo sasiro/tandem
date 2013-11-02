@@ -48,7 +48,19 @@
               }
 
             </style>
+
             <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+            <script language="JavaScript" type="text/javascript">
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+  }
+
+
+
+</script>
+
             <script type="text/javascript">
               var apiKey = "7638152";
               var session_id = "<%= @room.session_id %>";
@@ -137,6 +149,10 @@ session.subscribe(streams[i], div.id);
 }
  */
 </script>
+<body onbeforeunload="ConfirmClose()" onunload="HandleOnClose()">
+<%  @room = Room.find(params[:id]) %>
+<%= link_to 'Close', close_room_path(@room) %>
+
 <% if session[:partner] %>
 
   <br>Tandem with <%= User.find(session[:partner]).name %>

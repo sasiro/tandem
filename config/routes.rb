@@ -2,6 +2,7 @@ Tandem::Application.routes.draw do
   resources :languages
 
   resources :interests
+  match "rooms/:id/close" => "rooms#close", :as => "close_room"
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
