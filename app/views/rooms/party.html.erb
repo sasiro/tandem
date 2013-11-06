@@ -9,71 +9,68 @@
             <div id='subscriber'></div>
             <div id='publisher'></div>
           </div>
-            <style type="text/css">
-              body {
-              text-align: center;
-              }
+          <style type="text/css">
+            body {
+            text-align: center;
+            }
 
-              #wrapper {
-              margin: 0 auto;
-              position: relative;
-              width: 640px;
-              height: 480px;
-              }
+            #wrapper {
+            margin: 0 auto;
+            position: relative;
+            width: 640px;
+            height: 480px;
+            }
 
-              #subscriber {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              z-index: 1;
+            #subscriber {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
 
-              }
+            }
 
-              #publisher {
-              position: absolute;
-              width: 160px;
-              height: 120px;
-              z-index: 10;
-              bottom: 10px;
-              left: 10px;
-              }
+            #publisher {
+            position: absolute;
+            width: 160px;
+            height: 120px;
+            z-index: 10;
+            bottom: 10px;
+            left: 10px;
+            }
 
-              #publisher_div {
-              border: 1px solid white;
-              }
+            #publisher_div {
+            border: 1px solid white;
+            }
 
-              #subscriber_div, #publisher_div {
-              width: 100%;
-              height: 100%;
-              }
+            #subscriber_div, #publisher_div {
+            width: 100%; height: 100%;
+            }
 
-            </style>
+          </style>
 
-            <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
-            <script language="JavaScript" type="text/javascript">
-  window.onbeforeunload = confirmExit;
-  function confirmExit()
-  {
-    return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-  }
+          <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+          <script language="JavaScript" type="text/javascript">
 
+      /*
+   var x=window.confirm("Are you sure you are ok?");
+   if (x)
+   window.alert("Good!");
+   else
+   window.alert("Too bad");
+ */
 
-
-</script>
-
-            <script type="text/javascript">
-              var apiKey = "7638152";
-              var session_id = "<%= @room.session_id %>";
-              var token ="<%= @tok_token %>";
-              var session;
-              var publisher;
-              $(document).ready(function() {
-                  TB.setLogLevel(5);
-                  session = TB.initSession(session_id);
-                  session.addEventListener("sessionConnected", sessionConnectedHandler);
-                  session.addEventListener("streamCreated", streamCreatedHandler);
-                  session.connect(apiKey, token);
-                  });
+  var apiKey = "7638152";
+  var session_id = "<%= @room.session_id %>";
+  var token ="<%= @tok_token %>";
+    var session;
+    var publisher;
+    $(document).ready(function() {
+        TB.setLogLevel(5);
+        session = TB.initSession(session_id);
+        session.addEventListener("sessionConnected", sessionConnectedHandler);
+        session.addEventListener("streamCreated", streamCreatedHandler);
+        session.connect(apiKey, token);
+        });
 
 function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
@@ -89,25 +86,25 @@ function accessAllowedHandler(event) {
 }
 
 function streamCreatedHandler(event) {
-    var stream = event.streams[0];
-    if (stream.connection.connectionId != session.connection.connectionId) {
-      $("#subscriber").append("<div id='subscriber_div'></div>");
-      session.subscribe(event.streams[0], "subscriber_div");
-      $("#subscriber_div").css("width", "100%").css("height", "100%");
-    }
-
-
-
-/*
-  for (var i = 0; i < event.streams.length; i++) {
-    var stream = event.streams[i];
-    if (stream.connection.connectionId != session.connection.connectionId) {
-      $("#subscriber").append("<div id='subscriber_div'></div>");
-      session.subscribe(event.streams[i], "subscriber_div");
-      $("#subscriber_div").css("width", "100%").css("height", "100%");
-    }
+  var stream = event.streams[0];
+  if (stream.connection.connectionId != session.connection.connectionId) {
+    $("#subscriber").append("<div id='subscriber_div'></div>");
+    session.subscribe(event.streams[0], "subscriber_div");
+    $("#subscriber_div").css("width", "100%").css("height", "100%");
   }
-  */
+
+
+
+  /*
+     for (var i = 0; i < event.streams.length; i++) {
+     var stream = event.streams[i];
+     if (stream.connection.connectionId != session.connection.connectionId) {
+     $("#subscriber").append("<div id='subscriber_div'></div>");
+     session.subscribe(event.streams[i], "subscriber_div");
+     $("#subscriber_div").css("width", "100%").css("height", "100%");
+     }
+     }
+   */
 }
 /*
    TB.setLogLevel(TB.DEBUG);
@@ -148,24 +145,31 @@ session.subscribe(streams[i], div.id);
 }
 }
  */
+
+window.onbeforeunload = function(e) {
+              //We close the room when the user exits the window
+ $.ajax({
+            url: '../rooms/<%= Room.find(params[:id]).id %>/close',
+            async: false,
+            type: "PUT"
+        });
+           }
+
 </script>
-<body onbeforeunload="ConfirmClose()" onunload="HandleOnClose()">
-<%  @room = Room.find(params[:id]) %>
-<%= link_to 'Close', close_room_path(@room) %>
 
-<% if session[:partner] %>
+  <% if session[:partner] %>
 
-  <br>Tandem with <%= User.find(session[:partner]).name %>
-    <% else %>
-      <br>Waiting for Tandem to join ...
-    <% end %>
- <div class="clear">
-      <h2>Medallas y trofeos</h2>
-      <%= image_tag "premios-01.png" %> x1
-      <%= image_tag "premios-02.png" %> x3
-      <%= image_tag "premios-06.png" %> x8
-      <%= image_tag "premios-05.png" %> x2
-    </div>
+    <br>Tandem with <%= User.find(session[:partner]).name %>
+<% else %>
+  <br>Waiting for Tandem to join ...
+<% end %>
+<div class="clear">
+  <h2>Medallas y trofeos</h2>
+  <%= image_tag "premios-01.png" %> x1
+  <%= image_tag "premios-02.png" %> x3
+  <%= image_tag "premios-06.png" %> x8
+  <%= image_tag "premios-05.png" %> x2
+</div>
 
   </div>
   <div class="span4">
@@ -173,6 +177,12 @@ session.subscribe(streams[i], div.id);
     <br>
     <br>
     <%= image_tag "recomendaciones.png" %>
+<div class="clear">
+</div>
+    <%  @room = Room.find(params[:id]) %>
+    <h5><%= link_to 'Close Tandem', close_room_path(@room), :method => :put %> </h5>
+
+
   </div>
 </div>
 </div>
