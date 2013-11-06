@@ -86,7 +86,7 @@ function accessAllowedHandler(event) {
 }
 
 function streamCreatedHandler(event) {
-  var stream = event.streams[0];
+   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");

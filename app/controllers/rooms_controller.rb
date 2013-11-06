@@ -42,7 +42,8 @@ class RoomsController < ApplicationController
   def party
     @room = Room.find(params[:id])
 
-    @tok_token = @opentok.generate_token :session_id =>@room.session_id
+    @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60
+
   end
 
 
