@@ -1,17 +1,29 @@
-<h2>Login</h2>
+<div class="container">
+  <div class="row">
+    <div class="span4">
+    </div>
+<div class="span4">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<legend>Login</legend>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class= "field"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+<%= simple_form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical'} do |f| %>
+  <fieldset>
+  <%= f.input :email %>
+  <%= f.input :password %>
+    <% if devise_mapping.rememberable? -%>
+     <%= f.check_box :remember_me, {:checked => "checked"} %>
+     <%= f.label :remember_me %>
   <% end -%>
 
-  <div class= "field"><%= f.submit "Login" %></div>
+
+  <div class= "form-actions">
+      <%= f.submit "Login" , :class => 'btn btn-large btn-primary'%>
+    </div>
 <% end %>
 
+  </fieldset>
 <%= render "devise/shared/links" %>
+</div>
+<div class="span4">
+</div>
