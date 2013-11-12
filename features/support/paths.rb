@@ -18,7 +18,7 @@ module NavigationHelpers
     when /^the Tandem Spot home page$/
       '/'
     when /^the tandem page$/
-      tandem_user_path
+      tandem_users_path
 
     when /the login page/
       new_user_session_path

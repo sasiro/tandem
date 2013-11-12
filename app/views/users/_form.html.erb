@@ -1,74 +1,31 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :encrypted_password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :encrypted_password, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :reset_password_token, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reset_password_token, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :reset_password_sent_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :reset_password_sent_at, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :remember_created_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :remember_created_at, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :current_sign_in_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :current_sign_in_at, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_sign_in_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :last_sign_in_at, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :current_sign_in_ip, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :current_sign_in_ip, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_sign_in_ip, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_sign_in_ip, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :provider, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :provider, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :uid, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :uid, :class => 'text_field' %>
-    </div>
-  </div>
+
+
+
+
+<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :surname  %>
+  <%= f.input :email, :disabled => true %>
+  <%= f.input :country, :label => "Country", :collection => ["Germany","France","United States","Spain","United Kingdom","Portugal"] %>
+
+  <%= f.input :current_sign_in_at, :disabled => true %>
+  <%= f.input :last_sign_in_at , :disabled => true %>
+  <%= f.input :current_sign_in_ip , :disabled => true %>
+  <%= f.input :last_sign_in_ip , :disabled => true %>
+  <%= f.input :provider %>
+  <%= f.input :uid , :disabled => true %>
+
+  <%= f.association :language_speak, collection: Language.order(:name) %>
+  <%= f.association :language_improve, collection: Language.order(:name) %>
+
+  <%= f.association :interest, collection: Interest.all, as: :check_boxes  %>
+
+
+
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
+      users_path, :class => 'btn' %>
   </div>
 <% end %>

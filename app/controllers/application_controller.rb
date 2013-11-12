@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    tandem_user_path
+    tandem_users_path
   end
 end

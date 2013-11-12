@@ -4,16 +4,20 @@ Tandem::Application.routes.draw do
   resources :interests
   put "rooms/:id/close" => "rooms#close", :as => "close_room"
 
+   match 'users/tandem' => 'users#tandem', :as => :tandem_users
+   match 'users/find' => 'users#find', :as => :find_users
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   get "home/index"
 
-  resource :user do
-    # Route GET /user/tandem
-    get 'tandem', :on => :collection
-    get 'practice', :on => :collection
+  #resource :users do
+    ## Route GET /user/tandem
+    #get 'tandem', :on => :collection
+    #get 'practice', :on => :collection
 
-  end
+  #end
+
+  resources :users
 
   root :to => 'home#index'
 
@@ -22,9 +26,9 @@ Tandem::Application.routes.draw do
    match '/users/find', :to => "users#find", :as => :find_users, :via => :get
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-     resources :users
-  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
+   #match '/users/edit/:id', :to => "users#edit", :as => :edit_user, :via => :get
+    #resources :users, only: [:index ,:show, :edit, :update, :delete]
+    #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

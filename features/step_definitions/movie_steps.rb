@@ -1,3 +1,7 @@
+def delete_user
+  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user.destroy unless @user.nil?
+end
 
 Given /the following interests exist/ do |interests_table|
   interests_table.hashes.each do |interest|
@@ -64,3 +68,5 @@ end
 Given /^I wait for (\d+) seconds?$/ do |n|
   sleep(n.to_i)
 end
+
+
