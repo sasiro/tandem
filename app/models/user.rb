@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-
+      user.name = auth.info.first_name
+      user.surname = auth.info.last_name
+      user.foto = auth.info.image
+      user.country = auth.extra.raw_info.locale
     end
   end
 
