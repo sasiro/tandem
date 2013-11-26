@@ -32,7 +32,7 @@ Scenario: Register a valid User
     When I select "Spanish" from "Languages you speak"
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
-    Then I should see "Tandem Now"
+    Then I should see "Speak Now"
 
 
 
