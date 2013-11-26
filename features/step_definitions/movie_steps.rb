@@ -53,7 +53,9 @@ Given /^a valid user$/ do
   @user = User.create!({
              :email => "example@gmail.com",
              :password => "12345678",
-             :password_confirmation => "12345678"
+             :password_confirmation => "12345678",
+             :language_speak_ids =>1,
+             :language_improve_ids =>2
            })
 end
 

@@ -42,8 +42,12 @@ Feature: Program a tandem
     And I am on the tandem page
 
 Scenario: Program a tandem option
-  Given a logged in user
-  When I go to the login page
-  And I press "Login"
-  Then I should see "Plan"
-
+    When I follow "Login"
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I follow "Program a Tandem"
+    And I select "7:00-8:00" from "Hour"
+    And I select "Wednesday" from "Day"
+    And I press "Add"
+    Then I should see "Delete"
