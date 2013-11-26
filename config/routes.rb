@@ -4,6 +4,8 @@ Tandem::Application.routes.draw do
   resources :interests
   put "rooms/:id/close" => "rooms#close", :as => "close_room"
 
+  put "users/update_language" => "users#update_language", :as => :update_language
+  match "users/language" => "users#language", :as => :language_users
    match 'users/tandem' => 'users#tandem', :as => :tandem_users
    match 'users/find' => 'users#find', :as => :find_users
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},

@@ -69,6 +69,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def language
+
+    @user = User.find(current_user.id)
+    flash[:notice] = "The cockatiel wants to know about your languages."
+
+  end
+  def update_language
+ @user = User.find(current_user.id)
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to tandem_users_path, notice: 'You can practice.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

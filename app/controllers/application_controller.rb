@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    tandem_users_path
+    user = User.find(current_user.id)
+    if user.language?
+      tandem_users_path
+    else
+      language_users_path
+    end
   end
 end

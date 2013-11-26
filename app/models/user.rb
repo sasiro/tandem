@@ -36,6 +36,13 @@ def self.new_with_session(params, session)
     super
   end
 end
+def language?
+  if language_improve.empty? or language_speak.empty?
+    false
+  else
+    true
+  end
+end
 def password_required?
   super && provider.blank?
 end
