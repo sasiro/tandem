@@ -33,6 +33,7 @@ group :development, :test do
   gem 'database_cleaner' # to clear Cucumber's test database between runs
   gem 'capybara'         # lets Cucumber pretend to be a web browser
   gem 'launchy'          # a useful debugging aid for user stories
+  gem 'debugger'
 end
 group :test do
   gem 'factory_girl_rails'
@@ -44,7 +45,7 @@ end
 # For heroku version 0.4.2 for rails console command
 gem 'rb-readline', '~> 0.4.2'
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+#gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -55,5 +56,3 @@ gem 'rb-readline', '~> 0.4.2'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
