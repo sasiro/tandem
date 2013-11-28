@@ -13,9 +13,7 @@ Interest.create(name:'Music') unless Interest.find_by_name('Music')
 Interest.create(name:'History') unless Interest.find_by_name('History')
 
 Language.create(name:'Spanish') unless Language.find_by_name('Spanish')
-Language.create(name:'Portuguese') unless Language.find_by_name('Portuguese')
 Language.create(name:'English') unless Language.find_by_name('English')
-Language.create(name:'Italian') unless Language.find_by_name('Italian')
 Language.create(name:'French') unless Language.find_by_name('French')
-Language.create(name:'German') unless Language.find_by_name('German')
+
 
