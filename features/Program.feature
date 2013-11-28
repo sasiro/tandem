@@ -38,6 +38,14 @@ Feature: Program a tandem
       |      | false  |
       |  1   | true   |
 
+ And the following available exist:
+      | day     | starts | duration |
+      |  Monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+
+
 
     And I am on the tandem page
 
@@ -47,7 +55,7 @@ Scenario: Program a tandem option
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Program a Tandem"
-    And I select "7:00-8:00" from "Hour"
-    And I select "Wednesday" from "Day"
-    And I press "Add"
-    Then I should see "Delete"
+    And I follow "Add"
+    And I select "Tuesday 07:00PM-08:00PM" from "Time"
+    And I press "Add free time"
+   Then I should see "Appointment was successfully created"

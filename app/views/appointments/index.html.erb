@@ -1,0 +1,43 @@
+
+<div class="page-header">
+<h1>Available time for conversations</h1>
+</div>
+<table class="table table-striped table-hover ">
+  <thead>
+  <tr>
+    <th>Day</th>
+    <th>Hour</th>
+  </tr>
+</thead>
+<% @appointments.each do |appointment| %>
+
+<% if(appointment.user_id==current_user.id) %>
+
+<% ava = Available.find(appointment.available_id) %>
+  <tr>
+    <td><%= ava.day %></td>
+    <td><%= ava.start_end_time %></td>
+    <td>
+<%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
+          {controller: 'appointments', action: 'edit', id: appointment.id },
+          class: "btn btn-mini",
+          :method => :get
+           %>
+
+ <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
+          {controller: 'appointments', action: 'destroy', id: appointment.id },
+          class: "btn btn-mini btn-danger",
+          :method => :delete,
+          data: { confirm: "Are you sure?" }
+           %>
+       </td>
+
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br />
+<%= link_to t('.new', :default => t("add")),
+            new_appointment_path,
+            :class => 'btn btn-primary' %>

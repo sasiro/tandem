@@ -49,6 +49,14 @@ Given /the following room exist/ do |room_table|
     Room.create(room)
   end
 end
+Given /the following available/ do |available_table|
+  available_table.hashes.each do |available|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    Available.create(available)
+  end
+end
+
 Given /^a valid user$/ do
   @user = User.create!({
              :email => "example@gmail.com",

@@ -1,4 +1,10 @@
 Tandem::Application.routes.draw do
+  resources :appointments
+
+
+  resources :availables
+
+
   resources :languages
 
   resources :interests

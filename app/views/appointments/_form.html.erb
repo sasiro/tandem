@@ -1,0 +1,16 @@
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+<%= f.label :available_id, "Time" %>
+<%= f.select :available_id, Available.all.collect{|ava| [ ava.day + " " + ava.start_end_time, ava.id]}, {} %>
+
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit,"Add free time" %>
+  </div>
+<% end %>
+

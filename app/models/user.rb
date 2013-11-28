@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :language_improve, :through => :improve, :class_name => "Language"
   has_many :hobby
   has_many :interest, :through => :hobby, :class_name => "Interest"
+
+  has_many :appointment
+  has_many :avaiable, :through => :appointment
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider
   # attr_accessible :title, :body

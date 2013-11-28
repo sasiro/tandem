@@ -1,0 +1,26 @@
+
+<% ava = Available.find(@appointment.available_id) %>
+<p>
+  <b>Day:</b>
+  <%= ava.day %>
+</p>
+
+<p>
+  <b>Hour:</b>
+  <%= ava.start_end_time %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= "free" if not @appointment.status %>
+</p>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              appointments_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_appointment_path(@appointment), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              appointment_path(@appointment),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+

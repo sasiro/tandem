@@ -1,0 +1,27 @@
+<h1>Listing availables</h1>
+
+<table>
+  <tr>
+    <th>Day</th>
+    <th>Starts</th>
+    <th>Duration</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @availables.each do |available| %>
+  <tr>
+    <td><%= available.day %></td>
+    <td><%= available.starts %></td>
+    <td><%= available.duration %></td>
+    <td><%= link_to 'Show', available %></td>
+    <td><%= link_to 'Edit', edit_available_path(available) %></td>
+    <td><%= link_to 'Destroy', available, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Available', new_available_path %>
