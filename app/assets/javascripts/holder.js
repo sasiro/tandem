@@ -399,3 +399,5 @@ if ( typeof define === "function" && define.amd ) {
 }
 
 })(Holder, window);
+
+$("#popover").popover({ trigger: "hover" });

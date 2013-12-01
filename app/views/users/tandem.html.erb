@@ -15,8 +15,14 @@
       <%= link_to raw("<i class=\"icon-white icon-user\">Speak Now</i>"),
         new_room_path,
         class: "btn btn-success btn-large",
-        method: :get %>
+        method: :get,
+        rel:'popover',
+        data: {placement: 'top',  title:'Start to speak', toggle: 'popover', trigger: 'hover', content: 'Start a conversation with someone selected for you' }
 
+      %>
+
+      </br>
+      </br>
       <h2>I Want to Speak Now</h2>
       <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
         <p><a class="btn" href="#">View details &raquo;</a></p>
@@ -26,11 +32,17 @@
         <%= link_to raw("<i class=\"icon-white icon-calendar\">Program a Tandem</i>"),
           appointments_path,
           class: "btn btn-info btn-large",
-          method: :get %>
-
-
+          id: "speaks",
+          method: :get,
+          rel:'popover',
+         data: {placement: 'top', title:'Plan a conversation', toggle: 'popover', trigger: 'hover', content: 'Add your free time in a weeakly calendar. Find someone to speak every week' }
+        %>
+      </br>
+      </br>
         <h2>Plan a Conversation</h2>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      </br>
+      </br>
         <p><a class="btn" href="#">View details &raquo;</a></p>
       </div>
       <div class="span2">

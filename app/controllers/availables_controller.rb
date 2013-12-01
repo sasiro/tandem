@@ -40,9 +40,7 @@ class AvailablesController < ApplicationController
   # POST /availables
   # POST /availables.json
   def create
-
     @available = Available.new(params[:available])
-debugger
     respond_to do |format|
       if @available.save
         format.html { redirect_to @available, notice: 'Available was successfully created.' }

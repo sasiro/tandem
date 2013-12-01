@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.all
     @available = Available.all
 
+    @appointment = Appointment.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @appointments }
@@ -44,10 +45,11 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(params[:appointment])
 
     @appointment.user_id = current_user.id
+    @ava = Available.find(@appointment.available_id)
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
+        format.html { redirect_to @appointment, notice: 'Good. So you can speak languages on '+ @ava.day + '.'}
         format.json { render json: @appointment, status: :created, location: @appointment }
       else
         format.html { render action: "new" }
@@ -63,7 +65,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
+        format.html { redirect_to @appointment, notice: 'Okay so you have changed your timetable.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
