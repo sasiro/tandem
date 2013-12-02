@@ -45,6 +45,16 @@ Feature: Program a tandem
       |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
       |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
 
+   And the following appointment exist:
+      | available_id     | user_id |
+      | 1  | 1 |
+      | 2  | 1 |
+      | 3  | 1 |
+      | 4  | 1 |
+      | 1  | 3 |
+      | 2  | 3 |
+      | 3  | 3 |
+      | 4  | 3 |
 
 
     And I am on the tandem page
@@ -59,7 +69,7 @@ Scenario: I add an hour that I'm available
     And I press "Add hour"
    Then I should see "Good. So you can speak languages"
 
-Scenario: I can see users with same timetable and languages
+Scenario: I can see users
     When I follow "Login"
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
@@ -70,4 +80,14 @@ Scenario: I can see users with same timetable and languages
     And I follow "Back"
     And I follow "Continue"
    Then I should see "Name"
-   Then I should see "Victor"
+   Then I should see "Carlos"
+
+Scenario: I can see users with same timetable and languages
+    When I follow "Login"
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I follow "Program a Tandem"
+    And I follow "Continue"
+   Then I should see "Name"
+   Then I should see "Jake"

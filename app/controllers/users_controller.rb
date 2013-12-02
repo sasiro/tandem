@@ -106,6 +106,10 @@ class UsersController < ApplicationController
   end
 
   def find
+  appointments = Appointment.find_by_user_id(current_user.id)
+  debugger
+
+
 
   @all_ids = User.pluck(:id)
   @selected_page = params[:page] || session[:page] || 0

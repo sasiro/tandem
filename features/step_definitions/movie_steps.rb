@@ -56,6 +56,14 @@ Given /the following available/ do |available_table|
     Available.create(available)
   end
 end
+Given /the following appointment/ do |appointment_table|
+  appointment_table.hashes.each do |appointment|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    Appointment.create(appointment)
+  end
+end
+
 
 Given /^a valid user$/ do
   @user = User.create!({
