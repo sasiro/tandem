@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
 
   def new
     room_found = false
-    @rooms = Room.where(:available =>true)
+    @rooms = Room.where(:available =>true).order('id DESC')
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
