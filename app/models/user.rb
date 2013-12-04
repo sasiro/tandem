@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_create :setup_default_role_for_new_users
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,10 +15,18 @@ class User < ActiveRecord::Base
 
   has_many :appointment
   has_many :avaiable, :through => :appointment
-
+  ROLES = %w[admin default ambassador banned]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider, :role, :sign_in_count
   # attr_accessible :title, :body
+  #
+
+ def setup_default_role_for_new_users
+    if self.role.blank?
+      self.role = "default"
+    end
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -45,6 +54,21 @@ def language?
     false
   else
     true
+  end
+end
+
+def admin?
+  if role== "admin"
+    true
+  else
+    false
+  end
+end
+def default?
+  if role== "default"
+    true
+  else
+    false
   end
 end
 def password_required?

@@ -20,7 +20,7 @@
 
   <%= f.association :interest, collection: Interest.all, as: :check_boxes  %>
 
-
+  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 
 
   <div class="form-actions">

@@ -1,4 +1,5 @@
 class InterestsController < ApplicationController
+  load_and_authorize_resource
   # GET /interests
   # GET /interests.json
   def index

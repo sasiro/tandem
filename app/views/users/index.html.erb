@@ -13,8 +13,10 @@
       <th><%= model_class.human_attribute_name(:country) %></th>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>
+   <% if can? :update, model_class.model_name %>
       <th><%= model_class.human_attribute_name(:subscribed) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    <% end %>
     </tr>
   </thead>
   <tbody>
@@ -36,12 +38,15 @@
         </td>
         <td><%=   "yes" if user.subscribed  %></td>
  <td>
+   <% if can? :update, model_class.model_name %>
 <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
           {controller: 'users', action: 'edit', id: user.id },
           class: "btn btn-mini",
           :method => :get
            %>
+ <% end %>
 
+   <% if can? :destroy, model_class.model_name %>
  <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
           {controller: 'users', action: 'destroy', id: user.id },
           class: "btn btn-mini btn-danger",
@@ -49,6 +54,7 @@
           data: { confirm: "Are you sure?" }
            %>
 
+ <% end %>
 
         </td>
 
@@ -57,6 +63,9 @@
   </tbody>
 </table>
 
+   <% if can? :create, model_class.model_name %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_user_path,
             :class => 'btn btn-primary' %>
+
+    <% end %>

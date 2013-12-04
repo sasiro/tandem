@@ -2,12 +2,14 @@ class RoomsController < ApplicationController
   before_filter :config_opentok,:except => [:index]
   def index
     @new_room = Room.new
+    authorize! :read, @new_room
   end
 
   def new
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-
+    debugger
+    authorize! :new, :room
 
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
@@ -44,6 +46,7 @@ class RoomsController < ApplicationController
   def party
     @room = Room.find(params[:id])
 
+    authorize! :party, :room
     @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60
 
   end
@@ -52,6 +55,7 @@ class RoomsController < ApplicationController
 
   def close
     @room = Room.find(params[:id])
+    authorize! :close, :room
     if @room.update_attribute(:available, false)
       redirect_to("/users/tandem")
     else
@@ -61,6 +65,7 @@ class RoomsController < ApplicationController
 
   private
   def config_opentok
+    authorize! :config_opentok, :room
     if @opentok.nil?
       @opentok = OpenTok::OpenTokSDK.new "7638152", "d1de3d0a7229cc4e46e9a83a1b35f4d14ad6f56b"
     end

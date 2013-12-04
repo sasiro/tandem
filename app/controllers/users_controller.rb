@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+   #authorize! if cannot?
+   authorize! :read, @users
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -15,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+   #authorize! :show, @user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+   authorize! :new, @user
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -35,6 +39,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+   authorize! :edit, @user
   end
 
   # POST /users
@@ -42,6 +47,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+   authorize! :create, @user
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -57,6 +63,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+   #authorize! :update, @user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -72,11 +79,13 @@ class UsersController < ApplicationController
   def language
 
     @user = User.find(current_user.id)
+    authorize! :language, :user
     flash[:notice] = "The cockatiel wants to know about your languages."
 
   end
   def update_language
  @user = User.find(current_user.id)
+    authorize! :update_language, :user
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to tandem_users_path, notice: 'You can practice.' }
@@ -103,19 +112,21 @@ class UsersController < ApplicationController
 
   def tandem
 
+    @user = User.find(current_user.id)
+    authorize! :tandem, :user
+   # authorize! :tandem, @user
+
   end
 
   def find
   appointments = Appointment.find_by_user_id(current_user.id)
-  debugger
-
-
 
   @all_ids = User.pluck(:id)
   @selected_page = params[:page] || session[:page] || 0
   ids = @all_ids.slice( @selected_page * 2 , 2 )
   @users = User.where(id: ids)
   @user = User.first
+  authorize! :find, :user
   end
 
 

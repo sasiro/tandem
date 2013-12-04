@@ -11,12 +11,13 @@ gem 'simple_form'
 gem 'holder_rails'
 gem 'opentok'
 gem 'debugger'
+gem "cancan"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'chosen-rails'
+ gem 'chosen-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 gem "therubyracer"
