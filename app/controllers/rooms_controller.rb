@@ -8,7 +8,6 @@ class RoomsController < ApplicationController
   def new
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-    debugger
     authorize! :new, :room
 
 

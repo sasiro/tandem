@@ -3,6 +3,7 @@
     <div class="span1">
     </div>
     <div class="span7">
+<h3> Speak now don't be afraid </h3>
           <div id="videobox"></div>
           <div id='wrapper'>
             <div id='subscriber'></div>
@@ -155,7 +156,6 @@ window.onbeforeunload = function(e) {
            }
 
 </script>
-
   <% if session[:partner] %>
 
     <br>Tandem with <%= User.find(session[:partner]).name %>
@@ -163,6 +163,7 @@ window.onbeforeunload = function(e) {
   <br>Waiting for Tandem to join ...
 <% end %>
 <div class="clear">
+
   <h2>Medallas y trofeos</h2>
   <%= image_tag "premios-01.png" %> x1
   <%= image_tag "premios-02.png" %> x3
@@ -176,10 +177,22 @@ window.onbeforeunload = function(e) {
     <br>
     <br>
     <%= image_tag "recomendaciones.png" %>
-<div class="clear">
-</div>
-    <%  @room = Room.find(params[:id]) %>
-    <h5><%= link_to 'Close Tandem', close_room_path(@room), :method => :put %> </h5>
+
+    <div class="clear">
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br> <%  @room = Room.find(params[:id]) %>
+     <%= link_to raw("<i class=\"icon-white icon-off\"> Close</i>"),
+          close_room_path(@room),
+          class: "btn btn-info btn-large",
+          method: :get,
+          rel:'popover',
+         data: {placement: 'left',  toggle: 'popover', trigger: 'hover', content: 'Set your schedule and program a regular tandem with an awesome partner' }
+        %>
 
 
   </div>

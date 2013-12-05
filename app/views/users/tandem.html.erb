@@ -7,43 +7,42 @@
   <br>
   <br>
   <br>
+  <br>
   <div class="row">
     <div class="span2">
     </div>
     <div class="span4">
 
-      <%= link_to raw("<i class=\"icon-white icon-user\">Speak Now</i>"),
+     <h2>Start to speak</h2>
+      </br>
+      </br>
+
+      <%= link_to raw("<i class=\"icon-white icon-user\"> Are you ready?</i>"),
         new_room_path,
-        class: "btn btn-success btn-large",
+        class: "btn btn-success btn-xlarge",
         method: :get,
         rel:'popover',
-        data: {placement: 'top',  title:'Start to speak', toggle: 'popover', trigger: 'hover', content: 'Start a conversation with someone selected for you' }
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Instantly connect with someone to practice with' }
 
       %>
-
       </br>
       </br>
-      <h2>I Want to Speak Now</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
       </div>
       <div class="span4">
 
-        <%= link_to raw("<i class=\"icon-white icon-calendar\">Program a Tandem</i>"),
+
+        <h2>Weekly schedule</h2>
+      </br>
+      </br>
+      <%= link_to raw("<i class=\"icon-white icon-calendar\"> Be a language hero</i>"),
           appointments_path,
-          class: "btn btn-info btn-large",
-          id: "speaks",
+          class: "btn btn-info btn-xlarge",
           method: :get,
           rel:'popover',
-         data: {placement: 'top', title:'Plan a conversation', toggle: 'popover', trigger: 'hover', content: 'Add your free time in a weeakly calendar. Find someone to speak every week' }
+         data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Set your schedule and program a regular tandem with an awesome partner' }
         %>
       </br>
       </br>
-        <h2>Plan a Conversation</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      </br>
-      </br>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
       </div>
       <div class="span2">
       </div>
