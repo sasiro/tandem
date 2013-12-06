@@ -44,11 +44,15 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60
 
-    debugger
-    debu= @room
   end
 
 
+  def show
+    id = params[:id]
+    @room = Room.find(id)
+    render :partial => 'room', :locals => {:room => @room} and
+      return if request.xhr?
+  end
 
   def close
     @room = Room.find(params[:id])

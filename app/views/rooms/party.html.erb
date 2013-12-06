@@ -50,27 +50,18 @@
 
           <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
           <script language="JavaScript" type="text/javascript">
-
-      /*
-   var x=window.confirm("Are you sure you are ok?");
-   if (x)
-   window.alert("Good!");
-   else
-   window.alert("Too bad");
- */
-
-  var apiKey = "7638152";
-  var session_id = "<%= @room.session_id %>";
-  var token ="<%= @tok_token %>";
-    var session;
-    var publisher;
-    $(document).ready(function() {
-        TB.setLogLevel(5);
-        session = TB.initSession(session_id);
-        session.addEventListener("sessionConnected", sessionConnectedHandler);
-        session.addEventListener("streamCreated", streamCreatedHandler);
-        session.connect(apiKey, token);
-        });
+            var apiKey = "7638152";
+            var session_id = "<%= @room.session_id %>";
+            var token ="<%= @tok_token %>";
+            var session;
+            var publisher;
+            $(document).ready(function() {
+                TB.setLogLevel(5);
+                session = TB.initSession(session_id);
+                session.addEventListener("sessionConnected", sessionConnectedHandler);
+                session.addEventListener("streamCreated", streamCreatedHandler);
+                session.connect(apiKey, token);
+                });
 
 function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
@@ -86,75 +77,21 @@ function accessAllowedHandler(event) {
 }
 
 function streamCreatedHandler(event) {
-   var stream = event.streams[0];
+  var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
     $("#subscriber_div").css("width", "100%").css("height", "100%");
   }
-
-
-
-  /*
-     for (var i = 0; i < event.streams.length; i++) {
-     var stream = event.streams[i];
-     if (stream.connection.connectionId != session.connection.connectionId) {
-     $("#subscriber").append("<div id='subscriber_div'></div>");
-     session.subscribe(event.streams[i], "subscriber_div");
-     $("#subscriber_div").css("width", "100%").css("height", "100%");
-     }
-     }
-   */
 }
-/*
-   TB.setLogLevel(TB.DEBUG);
-//session.connect(apiKey, token);
-var session = TB.initSession(sessionId);
-session.addEventListener('sessionConnected', sessionConnectedHandler);
-session.addEventListener('streamCreated', streamCreatedHandler);
-session.connect(apiKey, token);
-
-var publisher;
-function sessionConnectedHandler(event) {
-publisher = TB.initPublisher(apiKey, 'videobox');
-session.publish(publisher);
-
-// Subscribe to streams that were in the session when we connected
-subscribeToStreams(event.streams);
+  window.onbeforeunload = function(e) {
+    //We close the room when the user exits the window
+    $.ajax({
+url: '../rooms/<%= Room.find(params[:id]).id %>/close',
+async: false,
+type: "PUT"
+});
 }
-
-function streamCreatedHandler(event) {
-// Subscribe to any new streams that are created
-subscribeToStreams(event.streams);
-}
-
-function subscribeToStreams(streams) {
-for (var i = 0; i < streams.length; i++) {
-// Make sure we don’t subscribe to ourself
-if (streams[i].connection.connectionId == session.connection.connectionId) {
-return;
-}
-
-// Create the div to put the subscriber element in to
-var div = document.createElement('div');
-div.setAttribute('id', 'stream' + streams[i].streamId);
-document.body.appendChild(div);
-
-// Subscribe to the stream
-session.subscribe(streams[i], div.id);
-}
-}
- */
-
-window.onbeforeunload = function(e) {
-              //We close the room when the user exits the window
- $.ajax({
-            url: '../rooms/<%= Room.find(params[:id]).id %>/close',
-            async: false,
-            type: "PUT"
-        });
-           }
-
 </script>
   <% if session[:partner] %>
 
@@ -169,6 +106,7 @@ window.onbeforeunload = function(e) {
   <%= image_tag "premios-02.png" %> x3
   <%= image_tag "premios-06.png" %> x8
   <%= image_tag "premios-05.png" %> x2
+  <%= link_to "Info" , room_path, :id => 'link' %>
 </div>
 
   </div>
@@ -176,8 +114,9 @@ window.onbeforeunload = function(e) {
     <br>
     <br>
     <br>
-    <%= image_tag "recomendaciones.png" %>
+    <%=  image_tag "recomendaciones.png" %>
 
+    <%  @room = Room.find(params[:id]) %>
     <div class="clear">
     </div>
 
