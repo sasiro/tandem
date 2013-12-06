@@ -1,14 +1,12 @@
 class RoomsController < ApplicationController
   before_filter :config_opentok,:except => [:index]
   def index
-    debugger
     @new_room = Room.new
   end
   def new
 
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-    debugger
 
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
@@ -44,9 +42,11 @@ class RoomsController < ApplicationController
   end
   def party
     @room = Room.find(params[:id])
-    debugger
-    @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60
+    #@tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60
+    @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60
 
+    debugger
+    debu= @room
   end
 
 
