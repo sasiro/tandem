@@ -61,35 +61,11 @@
                 session.addEventListener("sessionConnected", sessionConnectedHandler);
                 session.addEventListener("streamCreated", streamCreatedHandler);
                 session.connect(apiKey, token);
-function sessionConnectedHandler(event) {
-  $("#publisher").append("<div id='publisher_div'></div>");
-  publisher = TB.initPublisher(apiKey, "publisher_div");
-  publisher.addEventListener('accessAllowed', accessAllowedHandler);
-  streamCreatedHandler(event);
-
-}
-
-function accessAllowedHandler(event) {
-  $("#publisher_div").css("width", "100%").css("height", "100%");
-  session.publish(publisher);
-}
-
-function streamCreatedHandler(event) {
-  var stream = event.streams[0];
-  if (stream.connection.connectionId != session.connection.connectionId) {
-    $("#subscriber").append("<div id='subscriber_div'></div>");
-    session.subscribe(event.streams[0], "subscriber_div");
-    $("#subscriber_div").css("width", "100%").css("height", "100%");
-
-    //alert("Someone is ready to speak");
-     // Use p.countdown as container, pass redirect, duration, and optional message
-    //$(".countdown").countdown(redirect, 60 , "s aproximate time to finish");
-  }
-}
 
 
 
 
+ });
 
 
 
@@ -132,8 +108,32 @@ window.location = "<%= tandem_users_path %>";
 
 
 
- });
 
+function sessionConnectedHandler(event) {
+  $("#publisher").append("<div id='publisher_div'></div>");
+  publisher = TB.initPublisher(apiKey, "publisher_div");
+  publisher.addEventListener('accessAllowed', accessAllowedHandler);
+  streamCreatedHandler(event);
+
+}
+
+function accessAllowedHandler(event) {
+  $("#publisher_div").css("width", "100%").css("height", "100%");
+  session.publish(publisher);
+}
+
+function streamCreatedHandler(event) {
+  var stream = event.streams[0];
+  if (stream.connection.connectionId != session.connection.connectionId) {
+    $("#subscriber").append("<div id='subscriber_div'></div>");
+    session.subscribe(event.streams[0], "subscriber_div");
+    $("#subscriber_div").css("width", "100%").css("height", "100%");
+
+    alert("Someone is ready to speak");
+     // Use p.countdown as container, pass redirect, duration, and optional message
+    $(".countdown").countdown(redirect, 60 , "s aproximate time to finish");
+  }
+}
 
 
 
