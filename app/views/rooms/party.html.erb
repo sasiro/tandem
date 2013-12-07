@@ -124,7 +124,6 @@ function accessAllowedHandler(event) {
 function streamCreatedHandler(event) {
   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
-    alert("conection now?");
      // Use p.countdown as container, pass redirect, duration, and optional message
     $(".countdown").countdown(redirect,60 , "s to finish the tandem");
 
