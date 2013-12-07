@@ -77,14 +77,13 @@ function accessAllowedHandler(event) {
 function streamCreatedHandler(event) {
   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
-    alert("connected with someone");
-     // Use p.countdown as container, pass redirect, duration, and optional message
-    $(".countdown").countdown(redirect, 60 , "s to finish the tandem");
-
-    $("#clock").text($.now())
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
     $("#subscriber_div").css("width", "100%").css("height", "100%");
+
+    alert("Someone is ready to speak");
+     // Use p.countdown as container, pass redirect, duration, and optional message
+    $(".countdown").countdown(redirect, 60 , "s aproximate time to finish");
   }
 }
 
