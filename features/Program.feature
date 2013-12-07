@@ -59,35 +59,35 @@ Feature: Program a tandem
 
     And I am on the tandem page
 
-Scenario: I add an hour that I'm available
-    When I follow "Login"
+  Scenario: I add an hour that I'm available
+    When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    And I follow "Program a Tandem"
+    And I follow "Be a language hero"
     And I select "Tuesday 07:00PM-08:00PM" from "Time"
     And I press "Add hour"
-   Then I should see "Good. So you can speak languages"
+    Then I should see "Good. So you can speak languages"
 
-Scenario: I can see users
-    When I follow "Login"
+  Scenario: I can see users
+    When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    And I follow "Program a Tandem"
+    And I follow "Be a language hero"
     And I select "Tuesday 07:00PM-08:00PM" from "Time"
     And I press "Add hour"
     And I follow "Back"
     And I follow "Continue"
-   Then I should see "Name"
-   Then I should see "Carlos"
+    Then I should see "Name"
+    Then I should see "Carlos"
 
-Scenario: I can see users with same timetable and languages
-    When I follow "Login"
+  Scenario: I can see users with same timetable and languages
+    When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    And I follow "Program a Tandem"
+    And I follow "Be a language hero"
     And I follow "Continue"
-   Then I should see "Name"
-   Then I should see "Jake"
+    Then I should see "Name"
+    Then I should see "Jake"

@@ -42,7 +42,8 @@ Scenario: The user can see the button Search
     |Email|jamon@hotmail.com|
     |Password|12345678|
   And I press "Login"
-  Then I follow "Program a Tandem"
+  Then I follow "Be a language hero"
+  Then I follow "Continue"
   Then I should see "Search"
 
 Scenario: The user can see other compatible users
@@ -51,7 +52,8 @@ Scenario: The user can see other compatible users
     |Email|jamon@hotmail.com|
     |Password|12345678|
   And I press "Login"
-  Then I follow "Program a Tandem"
+  Then I follow "Be a language hero"
+  Then I follow "Continue"
   Then I should see "Victor"
   Then I should see "Jamon"
   Then I should not see "Jake"

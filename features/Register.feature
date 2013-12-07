@@ -55,7 +55,7 @@ Scenario: Register a valid User
     When I select "Spanish" from "Languages you speak"
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
-    Then I should see "Program a Tandem"
+    Then I should see "Are you ready?"
 
 
 Scenario: Register a invalid User

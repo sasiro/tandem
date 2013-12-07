@@ -58,9 +58,9 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     authorize! :close, :room
     if @room.update_attribute(:available, false)
-      redirect_to("/users/tandem")
+      render("/users/tandem")
     else
-      render :controller => 'rooms', :action => "tandem"
+      redirect :controller => 'rooms', :action => "tandem"
     end
   end
 

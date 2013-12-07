@@ -62,8 +62,54 @@
                 session.addEventListener("streamCreated", streamCreatedHandler);
                 session.connect(apiKey, token);
 
-                session.addEventListener("sessionConnected", sessionConnectedHandler);
-                });
+
+
+
+
+
+// Our countdown plugin takes a callback, a duration, and an optional message
+$.fn.countdown = function (callback, duration, message) {
+    // If no message is provided, we use an empty string
+    message = message || "";
+    // Get reference to container, and set initial content
+    var container = $(this[0]).html(duration + message);
+    // Get reference to the interval doing the countdown
+    var countdown = setInterval(function () {
+        // If seconds remain
+        if (--duration) {
+            // Update our container's message
+            container.html(duration + message);
+        // Otherwise
+        } else {
+            // Clear the countdown interval
+            clearInterval(countdown);
+            // And fire the callback passing our container as `this`
+            callback.call(container);
+        }
+    // Run interval every 1000ms (1 second)
+    }, 1000);
+
+};
+
+// Use p.countdown as container, pass redirect, duration, and optional message
+$(".countdown").countdown(redirect,60 , "s to finish the tandem");
+
+// Function to be called after 5 seconds
+function redirect () {
+  this.html("<h1>The tandem has finished. </h1>");
+     $.ajax({
+url: '../rooms/<%= Room.find(params[:id]).id %>/close',
+async: false,
+type: "PUT"
+});
+  //window.location = "http://localhost:3000/users/tandem";
+window.location = "<%= tandem_users_path %>";
+  //alert("The tandem has ended. Please send us some feedback")
+ }
+
+
+
+ });
 
 function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
@@ -88,8 +134,6 @@ function streamCreatedHandler(event) {
     $("#subscriber_div").css("width", "100%").css("height", "100%");
   }
 }
-
-
 
 
 
@@ -120,7 +164,6 @@ type: "PUT"
   <%= image_tag "premios-06.png" %> x8
   <%= image_tag "premios-05.png" %> x2
   <%= link_to "Info" , room_path, :id => 'link' %>
-  <input type="text" id="connectionCountField" value="0"></input>
 </div>
 
   </div>
@@ -129,9 +172,7 @@ type: "PUT"
     <br>
     <br>
     <%=  image_tag "recomendaciones.png" %>
-
-    <div id="clock"></div>
-    <span id="defaultCountdown" class="countdown"></span>
+<p class="countdown"></p>
     <%  @room = Room.find(params[:id]) %>
     <div class="clear">
     </div>
@@ -144,12 +185,10 @@ type: "PUT"
      <%= link_to raw("<i class=\"icon-white icon-off\"> Close</i>"),
           close_room_path(@room),
           class: "btn btn-info btn-large",
-          method: :get,
+          method: :put,
           rel:'popover',
          data: {placement: 'left',  toggle: 'popover', trigger: 'hover', content: 'Set your schedule and program a regular tandem with an awesome partner' }
         %>
-
-
   </div>
 </div>
 </div>

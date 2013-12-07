@@ -50,7 +50,7 @@ Scenario: Practice with tandem now
     |Password|12345678|
   And I press "Login"
   Then I should see "Logged in successfully"
-  Then I follow "Tandem Now"
+  Then I follow "Are you ready?"
   Then I should see "Medallas y trofeos"
 
 Scenario: Practice with tandem now with a room that exist
@@ -61,7 +61,7 @@ Scenario: Practice with tandem now with a room that exist
     |Password|12345678|
   And I press "Login"
   Then I should see "Logged in successfully"
-  Then I follow "Tandem Now"
+  Then I follow "Are you ready?"
   Then I should see "Tandem with Victor"
 
 Scenario: Practice with tandem now creating a new room
@@ -72,7 +72,7 @@ Scenario: Practice with tandem now creating a new room
     |Password|12345678|
   And I press "Login"
   Then I should see "Logged in successfully"
-  Then I follow "Tandem Now"
+  Then I follow "Are you ready?"
   Then I should see "Waiting for Tandem to join"
 
   Scenario: Room filled with a user is not avaliable again
@@ -82,7 +82,7 @@ Scenario: Practice with tandem now creating a new room
       |Email|jamon@hotmail.com|
       |Password|12345678|
     And I press "Login"
-    And I follow "Tandem Now"
+    And I follow "Are you ready?"
     And I should see "Tandem with Victor"
     And I follow "Logout"
     When I go to the login page
@@ -90,7 +90,7 @@ Scenario: Practice with tandem now creating a new room
       |Email|jamon@hotmail.com|
       |Password|12345678|
     And I press "Login"
-    Then I follow "Tandem Now"
+    Then I follow "Are you ready?"
     Then I should not see "Tandem with Victor"
 
 
@@ -101,7 +101,7 @@ Scenario: Practice with tandem now creating a new room
       |Email|jamon@hotmail.com|
       |Password|12345678|
     And I press "Login"
-    Then I follow "Tandem Now"
+    Then I follow "Are you ready?"
     And I wait for 1 seconds
     Then I should see "Minutes 1"
 
