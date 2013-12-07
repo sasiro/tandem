@@ -62,8 +62,7 @@
                 session.addEventListener("streamCreated", streamCreatedHandler);
                 session.connect(apiKey, token);
 
-var connectionCount = 0;
-session.addEventListener("connectionCreated", connectionCreatedHandler);
+                session.addEventListener("sessionConnected", sessionConnectedHandler);
                 });
 
 function sessionConnectedHandler(event) {
@@ -75,7 +74,6 @@ function sessionConnectedHandler(event) {
 }
 
 function accessAllowedHandler(event) {
-  alert("someone conected");
   $("#publisher_div").css("width", "100%").css("height", "100%");
   session.publish(publisher);
 }
@@ -83,6 +81,7 @@ function accessAllowedHandler(event) {
 function streamCreatedHandler(event) {
   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
+    alert("conection now?");
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
     $("#subscriber_div").css("width", "100%").css("height", "100%");
@@ -92,14 +91,6 @@ function streamCreatedHandler(event) {
 
 
 
-
-function connectionCreatedHandler(event) {
-   connectionCount += event.connections.length;
-   displayConnectionCount();
-}
-function displayConnectionCount() {
-    document.getElementById("connectionCountField").value = connectionCount.toString();
-}
 
 
 
