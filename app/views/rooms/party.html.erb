@@ -50,7 +50,87 @@
 
           <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
           <script language="JavaScript" type="text/javascript">
-            var apiKey = "7638152";
+
+var apiKey = "7638152";
+  var session_id = "<%= @room.session_id %>";
+  var token ="<%= @tok_token %>";
+    var session;
+    var publisher;
+    $(document).ready(function() {
+        TB.setLogLevel(5);
+        session = TB.initSession(session_id);
+        session.addEventListener("sessionConnected", sessionConnectedHandler);
+        session.addEventListener("streamCreated", streamCreatedHandler);
+        session.connect(apiKey, token);
+        });
+
+function sessionConnectedHandler(event) {
+  $("#publisher").append("<div id='publisher_div'></div>");
+  publisher = TB.initPublisher(apiKey, "publisher_div");
+  publisher.addEventListener('accessAllowed', accessAllowedHandler);
+  streamCreatedHandler(event);
+
+}
+
+function accessAllowedHandler(event) {
+  $("#publisher_div").css("width", "100%").css("height", "100%");
+  session.publish(publisher);
+}
+
+function streamCreatedHandler(event) {
+   var stream = event.streams[0];
+  if (stream.connection.connectionId != session.connection.connectionId) {
+    $("#subscriber").append("<div id='subscriber_div'></div>");
+    session.subscribe(event.streams[0], "subscriber_div");
+    $("#subscriber_div").css("width", "100%").css("height", "100%");
+  }
+
+
+
+  /*
+     for (var i = 0; i < event.streams.length; i++) {
+     var stream = event.streams[i];
+     if (stream.connection.connectionId != session.connection.connectionId) {
+     $("#subscriber").append("<div id='subscriber_div'></div>");
+     session.subscribe(event.streams[i], "subscriber_div");
+     $("#subscriber_div").css("width", "100%").css("height", "100%");
+     }
+     }
+   */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*           var apiKey = "7638152";
             var session_id = "<%= @room.session_id %>";
             var token ="<%= @tok_token %>";
             var session;
@@ -134,7 +214,7 @@ function streamCreatedHandler(event) {
     //$(".countdown").countdown(redirect, 60 , "s aproximate time to finish");
   }
 }
-
+*/
 
 
 
