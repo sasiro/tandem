@@ -82,6 +82,7 @@ function streamCreatedHandler(event) {
   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
     alert("conection now?");
+    $("#clock").text($.now())
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
     $("#subscriber_div").css("width", "100%").css("height", "100%");
@@ -129,8 +130,8 @@ type: "PUT"
     <br>
     <%=  image_tag "recomendaciones.png" %>
 
+    <div id="clock"></div>
     <span id="defaultCountdown" class="countdown"></span>
-    <div id="removeCountdown"></div>
     <%  @room = Room.find(params[:id]) %>
     <div class="clear">
     </div>
