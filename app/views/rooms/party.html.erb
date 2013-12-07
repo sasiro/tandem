@@ -91,9 +91,6 @@ $.fn.countdown = function (callback, duration, message) {
 
 };
 
-// Use p.countdown as container, pass redirect, duration, and optional message
-$(".countdown").countdown(redirect,60 , "s to finish the tandem");
-
 // Function to be called after 5 seconds
 function redirect () {
   this.html("<h1>The tandem has finished. </h1>");
@@ -128,6 +125,10 @@ function streamCreatedHandler(event) {
   var stream = event.streams[0];
   if (stream.connection.connectionId != session.connection.connectionId) {
     alert("conection now?");
+     // Use p.countdown as container, pass redirect, duration, and optional message
+    $(".countdown").countdown(redirect,60 , "s to finish the tandem");
+
+
     $("#clock").text($.now())
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
