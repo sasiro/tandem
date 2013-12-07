@@ -64,6 +64,47 @@ var apiKey = "7638152";
         session.connect(apiKey, token);
         });
 
+
+// Our countdown plugin takes a callback, a duration, and an optional message
+$.fn.countdown = function (callback, duration, message) {
+    // If no message is provided, we use an empty string
+    message = message || "";
+    // Get reference to container, and set initial content
+    var container = $(this[0]).html(duration + message);
+    // Get reference to the interval doing the countdown
+    var countdown = setInterval(function () {
+        // If seconds remain
+        if (--duration) {
+            // Update our container's message
+            container.html(duration + message);
+        // Otherwise
+        } else {
+            // Clear the countdown interval
+            clearInterval(countdown);
+            // And fire the callback passing our container as `this`
+            callback.call(container);
+        }
+    // Run interval every 1000ms (1 second)
+    }, 1000);
+
+};
+
+// Function to be called after 5 seconds
+function redirect () {
+  this.html("<h1>The tandem has finished. </h1>");
+     $.ajax({
+url: '../rooms/<%= Room.find(params[:id]).id %>/close',
+async: false,
+type: "PUT"
+});
+  //window.location = "http://localhost:3000/users/tandem";
+window.location = "<%= tandem_users_path %>";
+  //alert("The tandem has ended. Please send us some feedback")
+ }
+
+
+
+
 function sessionConnectedHandler(event) {
   $("#publisher").append("<div id='publisher_div'></div>");
   publisher = TB.initPublisher(apiKey, "publisher_div");
@@ -83,6 +124,12 @@ function streamCreatedHandler(event) {
     $("#subscriber").append("<div id='subscriber_div'></div>");
     session.subscribe(event.streams[0], "subscriber_div");
     $("#subscriber_div").css("width", "100%").css("height", "100%");
+
+
+    //alert("Someone is ready to speak");
+     // Use p.countdown as container, pass redirect, duration, and optional message
+    $(".countdown").countdown(redirect, 60 , "s aproximate time to finish");
+
   }
 
 
