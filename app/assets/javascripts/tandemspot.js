@@ -5,7 +5,7 @@ TS = {
         // add invisible 'div' to end of page:
         $('<div id="roomInfo"></div>').
             hide().
-            appendTo($('body'));
+            appendTo($('#information'));
         $('a#link').click(TS.getRoomInfo);
     },
     getRoomInfo: function() {
