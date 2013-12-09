@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
       #session = @opentok.create_session request.remote_addr, session_properties
 
       session = @opentok.create_session request.remote_addr
-      @new_room = Room.new(:publisher_id => current_user.id.to_s,:available => true,:session_id => session.session_id)
+      @new_room = Room.new(:publisher_id => current_user.id.to_s, :available => true,:session_id => session.session_id)
 
       respond_to do |format|
         if @new_room.save
