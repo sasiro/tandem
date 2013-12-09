@@ -28,7 +28,7 @@
               <td>
                 <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
                   {controller: 'appointments', action: 'edit', id: appointment.id },
-                  class: "btn btn-mini",
+                  class: "btn btn-large",
                   :method => :get
                 %>
 
@@ -38,7 +38,7 @@
 
               <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
                 {controller: 'appointments', action: 'destroy', id: appointment.id },
-                class: "btn btn-mini btn-danger",
+                class: "btn btn-large btn-danger",
                 :method => :delete,
                 data: { confirm: "Are you sure?" }
               %>
@@ -62,15 +62,15 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit,"Add hour",:class =>"btn" %>
+      <%= f.button :submit,"Add hour",:class =>"btn btn-primary btn-xlarge" %>
     </div>
   <% end %>
 
     </div>
     <div class="span4"></div>
 <div class="span3">   <%= link_to raw("<i class=\"icon-white \">Continue</i>"),
-    {controller: 'users', action: 'index'},
-    class: "btn btn-primary",
+    {controller: 'users', action: 'tandem'},
+    class: "btn",
   rel:'popover',
          data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Awesome native speakers are wating for you. Go catch your exchange partner' }
     %>
