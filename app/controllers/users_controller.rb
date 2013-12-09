@@ -119,14 +119,18 @@ class UsersController < ApplicationController
   end
 
   def find
-  appointments = Appointment.find_by_user_id(current_user.id)
+    respond_to do |format|
+      format.html { redirect_to tandem_users_url, alert: 'We are under construcion. At the moment you can see the other uses avaiable time at' + tandem_users_path  }
+      format.json { head :no_content }
+    end
+  #appointments = Appointment.find_by_user_id(current_user.id)
 
-  @all_ids = User.pluck(:id)
-  @selected_page = params[:page] || session[:page] || 0
-  ids = @all_ids.slice( @selected_page * 2 , 2 )
-  @users = User.where(id: ids)
-  @user = User.first
-  authorize! :find, :user
+  #@all_ids = User.pluck(:id)
+  #@selected_page = params[:page] || session[:page] || 0
+  #ids = @all_ids.slice( @selected_page * 2 , 2 )
+  #@users = User.where(id: ids)
+  #@user = User.first
+  #authorize! :find, :user
   end
 
 

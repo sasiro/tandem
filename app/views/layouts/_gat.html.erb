@@ -11,10 +11,9 @@ ga('create', '', '');
 <% if current_user.present?  %>
   <% if current_user.sign_in_count == 1  %>
 
-    <%if "/" == session["previous_url"] %>
-    <%  debugger %>
+    <% if "/" == session["previous_url"] %>
       ga('set',{metric1:1,dimension1:'registrado'});
-      <%#metrica usuarios registrados en por facebook elsif request.fullpath == language_users_path %>
+    <%#metrica usuarios registrados en por facebook elsif request.fullpath == language_users_path %>
     <% end  %>
   <% end  %>
 <% end  %>
