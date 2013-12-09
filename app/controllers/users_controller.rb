@@ -8,6 +8,7 @@ class UsersController < ApplicationController
    authorize! :read, @users
 
     respond_to do |format|
+      flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
       format.html # index.html.erb
       format.json { render json: @users }
     end
@@ -84,7 +85,7 @@ class UsersController < ApplicationController
 
   end
   def update_language
- @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     authorize! :update_language, :user
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -120,7 +121,7 @@ class UsersController < ApplicationController
 
   def find
     respond_to do |format|
-      format.html { redirect_to tandem_users_url, alert: 'We are under construcion. At the moment you can see the other uses avaiable time at' + tandem_users_path  }
+      format.html { redirect_to users_url, alert: 'We are under construcion. At the moment you can see the other uses avaiable time at'  }
       format.json { head :no_content }
     end
   #appointments = Appointment.find_by_user_id(current_user.id)
