@@ -5,16 +5,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <% if can? :manage, model_class.model_name %>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:email) %></th>
+        <th><%= model_class.human_attribute_name(:subscribed) %></th>
+      <% end %>
       <th><%= model_class.human_attribute_name(:foto) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
       <th><%= model_class.human_attribute_name(:country) %></th>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>
    <% if can? :update, model_class.model_name %>
-      <th><%= model_class.human_attribute_name(:subscribed) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     <% end %>
     </tr>
@@ -22,9 +24,12 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.id, user_path(user) %></td>
+        <% if can? :update, model_class.model_name %>
+          <td><%= link_to user.id, user_path(user) %></td>
+          <td><%= user.email %></td>
+          <td><%=   "yes" if user.subscribed  %></td>
+        <% end %>
         <td><%= link_to image_tag(user.foto), user_path(user)%></td>
-        <td><%= user.email %></td>
         <td><%= user.name %></td>
         <td><%= user.surname %></td>
         <td><%= user.country %></td>
@@ -36,7 +41,6 @@
           <%= language.name %>
             <% end %>
         </td>
-        <td><%=   "yes" if user.subscribed  %></td>
  <td>
    <% if can? :update, model_class.model_name %>
 <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
