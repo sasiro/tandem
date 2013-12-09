@@ -8,7 +8,10 @@
 ga('create', 'UA-39679447-1', 'tandemspot.com');
 <% if current_user.present?  %>
   <% if current_user.sign_in_count == 1  %>
-    ga('set',{metric1:1,dimension1:'registrado'});
+    <% if "/" == session["previous_url"] %>
+      ga('set',{metric1:1,dimension1:'registrado'});
+    <% end  %>
+
   <% end  %>
 <% end  %>
 ga('send', 'pageview');
