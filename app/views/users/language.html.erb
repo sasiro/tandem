@@ -5,8 +5,8 @@
 
 
 <%= simple_form_for @user, :html => { :class => 'form-horizontal' }, :url => update_language_path, :method =>:put  do |f| %>
-  <%= f.association :language_speak, collection: Language.order(:name), :label =>"I speak :" %>
-  <%= f.association :language_improve, collection: Language.order(:name), :label =>"I am perfectioning my :"  %>
+  <%= f.association :language_speak, collection: Language.order(:name), :label =>"I speak/ I can teach :" %>
+  <%= f.association :language_improve, collection: Language.order(:name), :label =>"I am perfectioning/ I learn :"  %>
 
  <div class="form-actions">
    <%= f.submit "Continue", :class => 'btn btn-primary btn-xlarge'%>
