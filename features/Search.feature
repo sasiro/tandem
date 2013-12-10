@@ -34,6 +34,24 @@ Feature: Search users for planing a tandem
       | 4  | 2 |
       | 1  | 3 |
 
+       And the following available exist:
+      | day     | starts | duration |
+      |  Monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+
+   And the following appointment exist:
+      | available_id     | user_id |
+      | 1  | 1 |
+      | 2  | 1 |
+      | 3  | 1 |
+      | 4  | 1 |
+      | 1  | 3 |
+      | 2  | 3 |
+      | 3  | 3 |
+      | 4  | 3 |
+
     And I am on the tandem page
 
 Scenario: The user can see the button Search
@@ -46,7 +64,19 @@ Scenario: The user can see the button Search
   Then I follow "Continue"
   Then I should see "Search"
 
-Scenario: The user can see other compatible users
+Scenario: The admin user can see  the availavility of other users
+  When I go to the login page
+  And I fill in the following:
+    |Email|victordp86@gmail.com|
+    |Password|12345678|
+  And I press "Login"
+  Then I follow "Be a language hero"
+  Then I follow "Continue"
+  Then I should see "Free at"
+  Then I should see "Victor"
+  Then I should see "Monday"
+
+Scenario: The default user can not see  the availavility of other users
   When I go to the login page
   And I fill in the following:
     |Email|jamon@hotmail.com|
@@ -54,8 +84,7 @@ Scenario: The user can see other compatible users
   And I press "Login"
   Then I follow "Be a language hero"
   Then I follow "Continue"
+  Then I should not see "Free at"
+  Then I should not see "Monday"
   Then I should see "Victor"
-  Then I should see "Jamon"
-  Then I should not see "Jake"
-  Then I should not see "Carlos"
 

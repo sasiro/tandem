@@ -27,6 +27,9 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
       <th><%= model_class.human_attribute_name(:country) %></th>
+      <% if can? :update, model_class.model_name %>
+        <th><%= "Free at"%></th>
+      <% end %>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>
    <% if can? :update, model_class.model_name %>
@@ -46,7 +49,24 @@
         <td><%= user.name %></td>
         <td><%= user.surname %></td>
         <td><%= user.country %></td>
-        <td><% user.language_speak.each do |language|  %>
+        <% if can? :update, model_class.model_name %>
+        <td>
+
+ <% user.appointment.each do |appointment| %>
+        <%=  Available.find(appointment.available_id).day  %>
+        <%=  Available.find(appointment.available_id).start_end_time  %>
+        <%= "Free" unless appointment.status  %>
+            <% end %>
+            </td>
+            <% end %>
+              <td>
+
+
+          <% user.language_speak.each do |language|  %>
+          <%= language.name %>
+            <% end %>
+            </td>
+<td><% user.language_speak.each do |language|  %>
           <%= language.name %>
             <% end %>
             </td>
