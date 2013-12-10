@@ -14,7 +14,7 @@
         <thead>
           <tr>
             <th>Day</th>
-            <th>Hour</th>
+            <th>Hour (GMT+1)</th>
           </tr>
         </thead>
         <% @appointments.each do |appointment| %>
@@ -55,7 +55,7 @@
 
     <div class="form-inputs">
 
-      <%= f.label :available_id, "Time" %>
+      <%= f.label :available_id, "Hour (GMT+1)", :class =>"b" %>
       <%= f.select :available_id, Available.all.collect{|ava| [ ava.day + " " + ava.start_end_time, ava.id]}, {} %>
 
 

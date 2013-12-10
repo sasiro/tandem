@@ -8,7 +8,6 @@
   <br />
   <br />
   <br />
-
 <% ava = Available.find(@appointment.available_id) %>
 <p>
   <b>Day:</b>
@@ -16,7 +15,7 @@
 </p>
 
 <p>
-  <b>Hour:</b>
+  <b>Hour (GMT+1)</b>
   <%= ava.start_end_time %>
 </p>
 
