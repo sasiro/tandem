@@ -51,7 +51,7 @@ Scenario: Practice with tandem now
   And I press "Login"
   Then I should see "Logged in successfully"
   Then I follow "Are you ready?"
-  Then I should see "Medallas y trofeos"
+  Then I should see "Trophies and Badges"
 
 Scenario: Practice with tandem now with a room that exist
   Given a valid user

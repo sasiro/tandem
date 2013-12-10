@@ -1,7 +1,20 @@
 <%- model_class = User -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
+
+
+ <%= link_to raw("<i class=\"icon-white icon-user \">Search User</i>"),
+    {controller: 'users', action: 'index'},
+    class: "btn btn-success btn-large",
+  rel:'popover',
+         data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Go catch your exchange partner. This funcion will be implemented soon :) ' }
+    %>
+
+
 </div>
+
+
 <table class="table table-striped">
   <thead>
     <tr>

@@ -40,7 +40,7 @@ Scenario: Register a invalid User
     When I select "Spanish" from "Languages you speak"
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
-    Then I should not see "Tandem Now"
+    Then I should not see "Edit profile"
 
 
 Scenario: Register a valid User
@@ -55,7 +55,7 @@ Scenario: Register a valid User
     When I select "Spanish" from "Languages you speak"
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
-    Then I should see "Are you ready?"
+    Then I should see "Edit profile"
 
 
 Scenario: Register a invalid User
@@ -70,7 +70,7 @@ Scenario: Register a invalid User
     When I select "Spanish" from "Languages you speak"
     And I select "English" from "Languages you want to improve"
     And I press "Sign up"
-    Then I should not see "Program a Tandem"
+    Then I should not see "Edit profile"
 
 
 Scenario: Login a valid User(admin)
@@ -78,29 +78,28 @@ Scenario: Login a valid User(admin)
     When I fill in "Email" with "victor@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    Then I should see "Native languages"
+    Then I should see "Edit profile"
 
 Scenario: Login a valid User(default)
     When I follow "Login"
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    Then I should see "Native languages"
+    Then I should see "Edit profile"
 
 Scenario: Login a invalid User(admin)
     When I follow "Login"
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with ""
     And I press "Login"
-    Then I should not see "Native languages"
+    Then I should not see "Edit profile"
 
 Scenario: Login a invalid User(default)
     When I follow "Login"
     When I fill in "Email" with "victor@hotmail.com"
     When I fill in "Password" with ""
     And I press "Login"
-    Then I should not see "Native languages"
-
+    Then I should not see "Edit profile"
 
 Scenario: Acces to users(admin)
     When I follow "Login"

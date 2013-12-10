@@ -55,7 +55,7 @@
 
     <div class="form-inputs">
 
-      <%= f.label :available_id, "Hour (GMT+1)", :class =>"b" %>
+      <%= f.label :available_id, "Hour (GMT+1)" %>
       <%= f.select :available_id, Available.all.collect{|ava| [ ava.day + " " + ava.start_end_time, ava.id]}, {} %>
 
 
@@ -69,7 +69,7 @@
     </div>
     <div class="span4"></div>
 <div class="span3">   <%= link_to raw("<i class=\"icon-white \">Continue</i>"),
-    {controller: 'users', action: 'tandem'},
+    {controller: 'users', action: 'index'},
     class: "btn",
   rel:'popover',
          data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Awesome native speakers are wating for you. Go catch your exchange partner' }

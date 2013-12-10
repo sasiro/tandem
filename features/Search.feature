@@ -12,11 +12,11 @@ Feature: Search users for planing a tandem
       | Portuguese  |
 
     And the following user exist:
-      | email | country | password | name |
-      | victordp86@gmail.com | Spain | 12345678 | Victor |
-      | jamon@hotmail.com | Spain| 12345678 | Jamon |
-      | carlos@gmail.com | Spain | 12345678 | Carlos |
-      | jake@gmail.com | EEUU | 12345678 | Jake |
+      | email | country | password | name | role |
+      | victordp86@gmail.com | Spain | 12345678 | Victor | admin |
+      | jamon@hotmail.com | Spain| 12345678 | Jamon | default |
+      | carlos@gmail.com | Spain | 12345678 | Carlos | default |
+      | jake@gmail.com | EEUU | 12345678 | Jake | default |
 
     And the following speaks exist:
       | language_speak_id  | user_id |
