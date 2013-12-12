@@ -50,33 +50,26 @@
         <td><%= user.surname %></td>
         <td><%= user.country %></td>
         <% if can? :update, model_class.model_name %>
-        <td>
+          <td>
 
- <% user.appointment.each do |appointment| %>
-        <%=  Available.find(appointment.available_id).day  %>
-        <%=  Available.find(appointment.available_id).start_end_time  %>
-        <%= "Free" unless appointment.status  %>
+            <% user.appointment.each do |appointment| %>
+              <%=  Available.find(appointment.available_id).day  %>
+              <%=  Available.find(appointment.available_id).start_end_time  %>
+              <%= "Free" unless appointment.status  %>
             <% end %>
-            </td>
-            <% end %>
-              <td>
-
-
-          <% user.language_speak.each do |language|  %>
+          </td>
+        <% end %>
+        <td><% user.language_speak.each do |language|  %>
           <%= language.name %>
-            <% end %>
-            </td>
-<td><% user.language_speak.each do |language|  %>
-          <%= language.name %>
-            <% end %>
-            </td>
-        <td><% user.language_improve.each do |language|  %>
-          <%= language.name %>
-            <% end %>
-        </td>
- <td>
-   <% if can? :update, model_class.model_name %>
-<%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
+        <% end %>
+      </td>
+      <td><% user.language_improve.each do |language|  %>
+        <%= language.name %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :update, model_class.model_name %>
+        <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
           {controller: 'users', action: 'edit', id: user.id },
           class: "btn btn-mini",
           :method => :get
