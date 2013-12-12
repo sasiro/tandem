@@ -40,6 +40,10 @@
 
               <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %></li>
 
+      <% if can? :update, :user %>
+              <li> <%= link_to "Admin users", users_path, method: :get %></li>
+            <% end %>
+
             <% else %>
               <li> <%= link_to "Sign up", new_user_registration_path %></li>
 
