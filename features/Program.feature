@@ -91,4 +91,11 @@ Feature: Program a tandem
     Then I should see "Name"
     Then I should see "Jake"
 
-
+Scenario: I can see users with same timetable and languages(happy path)
+    When I go to the login page
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I follow "Weekly schedule"
+    And I should see "Monday"
+    And I should see "Sunday"
