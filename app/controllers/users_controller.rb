@@ -8,7 +8,7 @@ class UsersController < ApplicationController
    authorize! :read, @users
 
     respond_to do |format|
-      flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
+      #flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
       format.html # index.html.erb
       format.json { render json: @users }
     end
