@@ -12,11 +12,13 @@
     <div class="span2"></div>
     <div class="span4">
 
-     <h2>Start to speak</h2>
+     <h2> Are you ready? </h2>
       </br>
       </br>
 
-      <%= link_to raw("<i class=\"icon-white icon-user\"> Are you ready?</i>"),
+      </br>
+      </br>
+      <%= link_to raw("<i class=\"icon-white icon-user\"> Start to speak</i>"),
         new_room_path,
         class: "btn btn-success btn-xlarge",
         method: :get,
@@ -28,10 +30,10 @@
       </br>
       </div>
       <div class="span4">
-        <h2>Weekly schedule</h2>
+        <h2>Available hours to speak each week</h2>
       </br>
       </br>
-      <%= link_to raw("<i class=\"icon-white icon-calendar\"> Be a language hero</i>"),
+      <%= link_to raw("<i class=\"icon-white icon-calendar\"> Weekly schedule </i>"),
           appointments_path,
           class: "btn btn-info btn-xlarge",
           method: :get,

@@ -32,10 +32,6 @@
                   :method => :get
                 %>
 
-
-
-
-
               <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
                 {controller: 'appointments', action: 'destroy', id: appointment.id },
                 class: "btn btn-large btn-danger",
@@ -57,10 +53,7 @@
 
       <%= f.label :available_id, "Hour (GMT+1)" %>
       <%= f.select :available_id, Available.all.collect{|ava| [ ava.day + " " + ava.start_end_time, ava.id]}, {} %>
-
-
     </div>
-
     <div class="form-actions">
       <%= f.button :submit,"Add hour",:class =>"btn btn-primary btn-xlarge" %>
     </div>

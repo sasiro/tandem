@@ -24,7 +24,7 @@ module NavigationHelpers
       new_user_session_path
     when /users page/
        users_path
-      # Add more mappings here.
+ # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i

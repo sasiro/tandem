@@ -49,7 +49,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: 'Good. So you can speak languages on '+ @ava.day + '.'}
+        format.html { redirect_to appointments_path, notice: 'Good. So you can speak languages on '+ @ava.day + '.'}
         format.json { render json: @appointment, status: :created, location: @appointment }
       else
         format.html { render action: "new" }

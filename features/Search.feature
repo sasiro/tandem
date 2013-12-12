@@ -1,8 +1,7 @@
 Feature: Search users for planing a tandem
   As a registred user
   that wants to improve his language in long term
-  I want to use the option Program a Tandem
-
+  I want to Seach users to tandem with
   Background: Some languages,users, etc have been added to the database
     Given the following languages exist:
       | name     |
@@ -60,30 +59,27 @@ Scenario: The user can see the button Search
     |Email|jamon@hotmail.com|
     |Password|12345678|
   And I press "Login"
-  Then I follow "Be a language hero"
-  Then I follow "Continue"
+  And I go to users page
   Then I should see "Search"
 
-Scenario: The admin user can see  the availavility of other users
+Scenario: The admin user can see the availavility of other users(happy path)
   When I go to the login page
   And I fill in the following:
     |Email|victordp86@gmail.com|
     |Password|12345678|
   And I press "Login"
-  Then I follow "Be a language hero"
-  Then I follow "Continue"
+  And I go to users page
   Then I should see "Free at"
   Then I should see "Victor"
   Then I should see "Monday"
 
-Scenario: The default user can not see  the availavility of other users
+Scenario: The default user can  see  the availavility of other users(sad path)
   When I go to the login page
   And I fill in the following:
     |Email|jamon@hotmail.com|
     |Password|12345678|
   And I press "Login"
-  Then I follow "Be a language hero"
-  Then I follow "Continue"
+  And I go to users page
   Then I should not see "Free at"
   Then I should not see "Monday"
   Then I should see "Victor"
