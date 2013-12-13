@@ -71,9 +71,16 @@ def default?
     false
   end
 end
+
 def password_required?
   super && provider.blank?
 end
+
+def compatible_users
+  #users = User.where("orders_count = ? AND locked = ?", language_id, false)#retornar user amb mateix availables i mateixes llengues
+
+end
+
 
 def update_with_password(params, *options)
   if encrypted_password.blank?

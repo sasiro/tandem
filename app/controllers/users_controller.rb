@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
+    @users = User.all#current_user.compatible_users
    #authorize! if cannot?
    authorize! :read, @users
 

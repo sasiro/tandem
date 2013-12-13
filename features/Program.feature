@@ -48,18 +48,13 @@ Feature: Program a tandem
    And the following appointment exist:
       | available_id     | user_id |
       | 1  | 1 |
-      | 2  | 1 |
-      | 3  | 1 |
-      | 4  | 1 |
+      | 1  | 2 |
       | 1  | 3 |
-      | 2  | 3 |
-      | 3  | 3 |
-      | 4  | 3 |
 
 
     And I am on the tandem page
 
-  Scenario: I add an hour that I'm available(happy path)
+   Scenario: I can add an hour that I'm available
     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
@@ -70,18 +65,17 @@ Feature: Program a tandem
     Then I should see "Good. So you can speak languages"
 
   Scenario: I can see users(happy path)
-    When I go to the login page
+     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
-    And I select "Tuesday 07:00PM-08:00PM" from "Hour (GMT+1)"
-    And I press "Add hour"
     And I go to users page
     Then I should see "Name"
-    Then I should see "Carlos"
+    Then I should see "Jake"
 
-  Scenario: I can see users with same timetable and languages(happy path)
+
+   Scenario: I can see users with same timetable and languages(happy path)
     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
@@ -91,7 +85,18 @@ Feature: Program a tandem
     Then I should see "Name"
     Then I should see "Jake"
 
-Scenario: I can see users with same timetable and languages(happy path)
+  Scenario: I can see users with same timetable and languages(sad path)
+    When I go to the login page
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I follow "Weekly schedule"
+    And I go to users page
+    Then I should see "Name"
+    Then I should not see "Carlos"
+
+
+  Scenario: I can sent to a user a request for an appointment(happy path)
     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
