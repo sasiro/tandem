@@ -4,8 +4,6 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
-  <dd><%= @user.id %></dd>
 <dt><strong><%= model_class.human_attribute_name(:foto) %>:</strong></dt>
 <dd><%= image_tag(@user.foto) %></dd>
  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
@@ -21,7 +19,6 @@
   <dd><%= @user.current_sign_in_at %></dd>
   <dt><strong><%= model_class.human_attribute_name(:last_sign_in_ip) %>:</strong></dt>
   <dd><%= @user.last_sign_in_ip %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:provider) %>:</strong></dt>
   <dd><%= @user.provider %></dd>
    <dt><strong><%= model_class.human_attribute_name(:language_speak) %>:</strong></dt>
  <dd><% @user.language_speak.each do |language|  %>
@@ -34,16 +31,8 @@
             <% end %>
 </dd>
   <dt><strong><%= model_class.human_attribute_name(:subscribed) %>:</strong></dt>
-  <dd><%=   "yes" if @user.subscribed  %></dd>
+  <dd><%=   "not" unless @user.subscribed  %></dd>
 
-    <dt><strong><%= model_class.human_attribute_name(:encrypted_password) %>:</strong></dt>
-  <dd><%= @user.encrypted_password %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reset_password_token) %>:</strong></dt>
-  <dd><%= @user.reset_password_token %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reset_password_sent_at) %>:</strong></dt>
-  <dd><%= @user.reset_password_sent_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:remember_created_at) %>:</strong></dt>
-  <dd><%= @user.remember_created_at %></dd>
   <dt><strong><%= model_class.human_attribute_name(:current_sign_in_at) %>:</strong></dt>
   <dd><%= @user.current_sign_in_at %></dd>
   <dt><strong><%= model_class.human_attribute_name(:last_sign_in_at) %>:</strong></dt>
