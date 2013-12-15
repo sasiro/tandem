@@ -10,9 +10,11 @@ class Ability
        elsif user.default?
          #can [:create, :update_languages, :tandem, :find, :language, :show, :find], :all
          can :read, :all
+
          can [:tandem, :language, :update_language, :find], :user
          can [:party,:new, :close ,:config_opentok], :room
-         #can [:new,:party], :room
+
+  #can [:new,:party], :room
        else
          #user can't do anything
        end

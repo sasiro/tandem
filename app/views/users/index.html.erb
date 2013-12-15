@@ -39,6 +39,8 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
+          <% debugger %>
+        <% if current_user.compatible?(user)  %>
       <tr>
         <% if can? :update, model_class.model_name %>
           <td><%= link_to user.id, user_path(user) %></td>
@@ -53,9 +55,11 @@
           <td>
            <small>
             <% user.availables.each do |ava| %>
-              <%= ava.day %>
-              <%= ava.starts.strftime("%I:%M %p") %>
-              <%= ava.duration.strftime("%I:%M")  %>
+              <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
+                {controller: 'availables', action: 'show', id: ava.id },
+                 class: "btn btn-mini",
+                 :method => :get
+                %>
             <% end %>
            </small>
           </td>
@@ -91,6 +95,8 @@
 
       </tr>
     <% end %>
+    <% end %>
+
   </tbody>
 </table>
 

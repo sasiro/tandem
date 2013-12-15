@@ -58,6 +58,15 @@ def language?
   end
 end
 
+def compatible?(user)
+  if not (user.language_improve & language_speak).empty? and not (user.language_speak & language_improve).empty?
+    true
+  else
+    false
+  end
+end
+
+
 def admin?
   if role== "admin"
     true
