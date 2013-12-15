@@ -51,12 +51,13 @@
         <td><%= user.country %></td>
         <% if can? :update, model_class.model_name %>
           <td>
-
-            <% user.appointment.each do |appointment| %>
-              <%=  Available.find(appointment.available_id).day  %>
-              <%=  Available.find(appointment.available_id).start_end_time  %>
-              <%= "Free" unless appointment.status  %>
+           <small>
+            <% user.availables.each do |ava| %>
+              <%= ava.day %>
+              <%= ava.starts.strftime("%I:%M %p") %>
+              <%= ava.duration.strftime("%I:%M")  %>
             <% end %>
+           </small>
           </td>
         <% end %>
         <td><% user.language_speak.each do |language|  %>
