@@ -3,7 +3,8 @@ class AvailablesController < ApplicationController
   # GET /availables
   # GET /availables.json
   def index
-    @availables = Available.all
+    @available = Available.new
+    @availables = current_user.availables
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +42,12 @@ class AvailablesController < ApplicationController
   # POST /availables
   # POST /availables.json
   def create
-    @available = Available.new(params[:available])
+      @available = Available.new(params[:available])
+
     respond_to do |format|
       if @available.save
-        format.html { redirect_to @available, notice: 'Available was successfully created.' }
+        current_user.availables << @available
+        format.html { redirect_to availables_path, notice: 'Good. So you can speak languages on '+ @available.day.capitalize + "." }
         format.json { render json: @available, status: :created, location: @available }
       else
         format.html { render action: "new" }

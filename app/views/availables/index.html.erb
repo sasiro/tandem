@@ -1,27 +1,107 @@
-<h1>Listing availables</h1>
+<div class="container">
+  <div class="row">
+<div class="page-header">
 
-<table>
-  <tr>
-    <th>Day</th>
-    <th>Starts</th>
-    <th>Duration</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h2 class="featurette-heading">What <span class="muted">time</span> are you available to tandem?</h2>
+      </div>
 
-<% @availables.each do |available| %>
-  <tr>
-    <td><%= available.day %></td>
-    <td><%= available.starts %></td>
-    <td><%= available.duration %></td>
-    <td><%= link_to 'Show', available %></td>
-    <td><%= link_to 'Edit', edit_available_path(available) %></td>
-    <td><%= link_to 'Destroy', available, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+      <div class="span5">
 
-<%= link_to 'New Available', new_available_path %>
+ <%= simple_form_for(@available) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <%= f.label  "Day of the week" %>
+      <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,:label => "This is the label of the day"  %>
+
+
+      <%= f.label  "Hour(GMT+1)" %>
+
+      <%= f.time_select :starts, :default =>Time.now.beginning_of_hour, :label =>"Starts"  %>
+
+      <%= f.input :duration, :label =>"Duration", :default => Time.zone.local(2013,4,12,1,0) %>
+
+
+    </div>
+      <%= f.button :submit,"Add free time",:class =>"btn btn-primary btn-large" %>
+  <% end %>
+
+
+
+
+
+       </div>
+
+
+    <div class="span7">
+
+<h3 class="featurette-heading">List of <span class="muted">hours</span> I am available</h3>
+
+
+            <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Hour (GMT+1)</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <% @availables.each do |ava| %>
+
+            <tr>
+              <td><%= ava.day %></td>
+              <td><%= ava.starts.strftime("%I:%M %p") %></td>
+              <td><%= ava.duration.strftime("%I:%M")  %></td>
+              <td>
+                <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
+                  {controller: 'availables', action: 'edit' , id: ava.id},
+                  class: "btn btn-mini",
+                  :method => :get
+                %>
+
+              <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
+                {controller: 'availables', action: 'destroy' , id: ava.id},
+                class: "btn btn-mini btn-danger",
+                :method => :delete,
+                data: { confirm: "Are you sure?" }
+              %>
+          </td>
+
+        </tr>
+      <% end %>
+  </table>
+       </div>
+
+</div>
+
+<div class="clear">
+</div>
+
+    <div class="form-actions">
+      <%= link_to raw("<i class=\"icon-white \">Continue</i>"),
+    {controller: 'users', action: 'tandem'},
+    class: "btn",
+  rel:'popover',
+         data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Awesome native speakers are wating for you. Go catch your exchange partner' }
+    %>
+
+
+    </div>
+  <br />
+  <br />
+  <br />
+
+    <div class="span5">
+    </div>
+    <div class="span1">
+       </div>
+    <div class="span5">
+    </div>
+
+
+
+</div>
+
+

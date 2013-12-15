@@ -51,8 +51,13 @@
 
     <div class="form-inputs">
 
-      <%= f.label :available_id, "Hour (GMT+1)" %>
-      <%= f.select :available_id, Available.all.collect{|ava| [ ava.day + " " + ava.start_end_time, ava.id]}, {} %>
+      <%= f.label :day, "Day of the week" %>
+      <%= f.input :day %>
+
+
+      <%= f.label :starts, "Hour (GMT+1)" %>
+      <%= f.input :starts %>
+
     </div>
     <div class="form-actions">
       <%= f.button :submit,"Add hour",:class =>"btn btn-primary btn-xlarge" %>

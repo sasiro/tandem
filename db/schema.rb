@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202192722) do
+ActiveRecord::Schema.define(:version => 20131214120544) do
 
   create_table "appointments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "available_id"
     t.string   "status"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+    t.integer  "available_id"
   end
 
   create_table "availables", :force => true do |t|

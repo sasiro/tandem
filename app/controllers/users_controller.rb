@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    debugger
+  #@users = User.where("orders_count = ? AND locked = ?", current_user.available_id, false)#retornar user amb mateix availables i mateixes llengues
     @users = User.all#current_user.compatible_users
    #authorize! if cannot?
    authorize! :read, @users
