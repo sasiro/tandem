@@ -28,9 +28,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
       <th><%= model_class.human_attribute_name(:country) %></th>
-      <% if can? :update, model_class.model_name %>
-        <th><%= "Free at"%></th>
-      <% end %>
+      <th><%= "Free at"%></th>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>
       <% if can? :update, model_class.model_name %>
@@ -46,13 +44,12 @@
           <% if can? :update, model_class.model_name %>
             <td><%= link_to user.id, user_path(user) %></td>
             <td><%= user.email %></td>
-          <td><%= user.subscribed %></td>
+            <td><%= user.subscribed %></td>
           <% end %>
           <td><%= link_to image_tag(user.foto), user_path(user)%></td>
           <td><%= user.name %></td>
           <td><%= user.surname %></td>
           <td><%= user.country %></td>
-          <% if can? :update, model_class.model_name %>
             <td>
               <small>
                 <% user.availables.each do |ava| %>
@@ -64,7 +61,6 @@
               <% end %>
             </small>
           </td>
-        <% end %>
         <td><% user.language_speak.each do |language|  %>
           <%= language.name %>
         <% end %>
@@ -105,7 +101,6 @@
         <td><%= user.name %></td>
         <td><%= user.surname %></td>
         <td><%= user.country %></td>
-        <% if can? :update, model_class.model_name %>
           <td>
             <small>
               <% user.availables.each do |ava| %>
@@ -117,7 +112,6 @@
             <% end %>
           </small>
         </td>
-      <% end %>
       <td><% user.language_speak.each do |language|  %>
         <%= language.name %>
       <% end %>
@@ -149,9 +143,9 @@
 
       </tr>
     <% end %>
-    <% end %>
+  <% end %>
 
-  </tbody>
+</tbody>
 </table>
 
 <% if can? :create, model_class.model_name %>

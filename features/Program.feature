@@ -84,6 +84,8 @@ Feature: Program a tandem
     And I follow "Weekly schedule"
     And I go to users page
     Then I should see "Name"
+    Then I should see "Free at"
+    Then I should see "monday 05:00 PM"
     Then I should see "Carlos"
 
    Scenario: I can see users with same languages(sad path)
@@ -105,5 +107,7 @@ Feature: Program a tandem
     And I go to users page
     And I should see "Name"
     And I should see "Carlos"
-    And I should see "monday"
-    Then I should not see "Jake"
+    Then I should see "monday 05:00 PM"
+    And I follow "monday 05:00 PM"
+    And I should see "Back"
+
