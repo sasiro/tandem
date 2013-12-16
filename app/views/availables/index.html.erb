@@ -13,13 +13,13 @@
 
     <div class="form-inputs">
 
-      <%= f.label  "Day of the week" %>
-      <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,:label => "This is the label of the day"  %>
+      <%= f.label "Day of the week" %>
+      <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,:label => "Day of week"  %>
 
 
-      <%= f.label  "Hour(GMT+1)" %>
+      <%= f.label :starts,"Hour(GMT+1)" %>
 
-      <%= f.time_select :starts, :default =>Time.now.beginning_of_hour, :label =>"Starts"  %>
+      <%= f.time_select :starts, :default =>Time.now.beginning_of_hour %>
 
       <%= f.input :duration, :label =>"Duration", :default => Time.zone.local(2013,4,12,1,0) %>
 

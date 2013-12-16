@@ -87,4 +87,6 @@ Given /^I wait for (\d+) seconds?$/ do |n|
   sleep(n.to_i)
 end
 
-
+When /^I set the "([^"]*)" to "([^"]*)"$/ do |field, date|
+  fill_in field, :with=>date
+end

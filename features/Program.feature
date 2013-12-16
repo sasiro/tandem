@@ -60,9 +60,14 @@ Feature: Program a tandem
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
-    And I select "Tuesday 07:00PM-08:00PM" from "Hour (GMT+1)"
-    And I press "Add hour"
-    Then I should see "Good. So you can speak languages"
+    And I select "Monday" from "available_day"
+    And I select "09" from "available_starts_4i"
+    And I select "00" from "available_starts_5i"
+    And I select "01" from "available_duration_4i"
+    And I select "00" from "available_duration_5i"
+    And I press "Add free time"
+    Then I should see "Good. So you can speak languages on Monday"
+
 
   Scenario: I can see users(happy path)
      When I go to the login page
@@ -70,7 +75,7 @@ Feature: Program a tandem
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
-    And I go to users page
+    And I press "Continue"
     Then I should see "Name"
     Then I should see "Jake"
 
