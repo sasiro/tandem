@@ -13,26 +13,23 @@ Feature: Program a tandem
       | Portuguese  |
 
     And the following user exist:
-      | email | country | password | name |
-      | jamon@hotmail.com | Spain| 12345678 | Jamon |
-      | carlos@gmail.com | Spain | 12345678 | Carlos |
-      | jake@gmail.com | EEUU | 12345678 | Jake |
+      | email | country | password | name | role |
+      | jamon@hotmail.com | Spain| 12345678 | Jamon | default |
+      | carlos@gmail.com | Spain | 12345678 | Carlos | default |
+      | jake@gmail.com | EEUU | 12345678 | Jake | default |
 
     And the following speaks exist:
-      | language_speak_id  | user_id |
-      | 1  | 2 |
-      | 2  | 1 |
-      | 3  | 1 |
-      | 4  | 1 |
-      | 4  | 3 |
-
-    And the following improve exist:
-      | language_improve_id     | user_id |
+      | user_id | language_speak_id |
       | 1  | 1 |
       | 2  | 2 |
-      | 3  | 2 |
-      | 4  | 2 |
-      | 1  | 3 |
+      | 3  | 3 |
+
+    And the following improve exist:
+      | user_id   | language_improve_id |
+      | 1  | 2 |
+      | 2  | 1 |
+      | 3  | 3 |
+
  And the following room exist:
       | publisher_id     | available |
       |      | false  |
@@ -40,16 +37,16 @@ Feature: Program a tandem
 
  And the following available exist:
       | day     | starts | duration |
-      |  Monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  Monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
 
    And the following appointment exist:
       | available_id     | user_id |
       | 1  | 1 |
-      | 1  | 2 |
-      | 1  | 3 |
+      | 2  | 2 |
+      | 3  | 3 |
 
 
     And I am on the tandem page
@@ -70,17 +67,16 @@ Feature: Program a tandem
 
 
   Scenario: I can see users(happy path)
-     When I go to the login page
+    When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
-    And I press "Continue"
+    And I follow "Continue"
     Then I should see "Name"
-    Then I should see "Jake"
 
 
-   Scenario: I can see users with same timetable and languages(happy path)
+   Scenario: I can see users with same languages(happy path)
     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
@@ -88,24 +84,26 @@ Feature: Program a tandem
     And I follow "Weekly schedule"
     And I go to users page
     Then I should see "Name"
-    Then I should see "Jake"
+    Then I should see "Carlos"
 
-  Scenario: I can see users with same timetable and languages(sad path)
+   Scenario: I can see users with same languages(sad path)
     When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
     And I go to users page
-    Then I should see "Name"
-    Then I should not see "Carlos"
+    Then I should not see "Jake"
 
 
   Scenario: I can sent to a user a request for an appointment(happy path)
-    When I go to the login page
+  When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
     And I follow "Weekly schedule"
-    And I should see "Monday"
-    And I should see "Sunday"
+    And I go to users page
+    And I should see "Name"
+    And I should see "Carlos"
+    And I should see "monday"
+    Then I should not see "Jake"
