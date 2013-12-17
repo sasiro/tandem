@@ -53,8 +53,6 @@
           <td>
             <small>
               <% user.appointments.each do |app| %>
-
-                <% debugger %>
                 <% ava = app.available %>
                 <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
                   appointment_path(app,
@@ -109,7 +107,6 @@
                  <td>
                    <small>
                      <% user.appointments.each do |app| %>
-                 <% debugger %>
                        <% ava = app.available %>
                        <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
                          appointment_path(app,
@@ -117,7 +114,6 @@
                                           class: "btn btn-mini",
                                           :method => :put,
                                           :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
-
                                         %>
                                     <% end %>
                                   </small>
