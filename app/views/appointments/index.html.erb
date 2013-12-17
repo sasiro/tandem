@@ -23,8 +23,8 @@
             <tr>
               <td><%= appointment.id %></td>
               <td><%= appointment.status %></td>
-              <td><%= appointment.available.day %></td>
-              <td><%= appointment.available.starts.strftime("%I:%M %p") %></td>
+              <td><%= appointment.available.try(:day) %></td>
+              <td><%= appointment.available.try(starts.strftime("%I:%M %p")) %></td>
               <td>
                 <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
                   {controller: 'appointments', action: 'edit', id: appointment.id },
