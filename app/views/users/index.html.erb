@@ -50,114 +50,114 @@
           <td><%= user.name %></td>
           <td><%= user.surname %></td>
           <td><%= user.country %></td>
-            <td>
-              <small>
-              <% user.appointments.each do |app| %>
-           <% ava = app.available %>
-                <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
-                  appointment_path(app,
-                                   :appointment =>{:status => "sent"}),
-                  class: "btn btn-mini",
-                  :method => :put,
-                  :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
-                %>
-             <% end %>
-            </small>
-          </td>
-        <td><% user.language_speak.each do |language|  %>
-          <%= language.name %>
-        <% end %>
-      </td>
-      <td><% user.language_improve.each do |language|  %>
-        <%= language.name %>
-      <% end %>
-    </td>
-    <td>
-      <% if can? :update, model_class.model_name %>
-        <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
-          {controller: 'users', action: 'edit', id: user.id },
-          class: "btn btn-mini",
-          :method => :get
-        %>
-    <% end %>
-
-    <% if can? :destroy, model_class.model_name %>
-      <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
-        {controller: 'users', action: 'destroy', id: user.id },
-        class: "btn btn-mini btn-danger",
-        :method => :delete,
-        data: { confirm: "Are you sure?" }
-      %>
-
-  <% end %>
-</td>
-
-      </tr>
-    <% elsif current_user.compatible?(user)  %>
-
-      <tr>
-        <% if can? :update, model_class.model_name %>
-          <td><%= link_to user.id, user_path(user) %></td>
-          <td><%= user.email %></td>
-        <% end %>
-        <td><%= link_to image_tag(user.foto), user_path(user)%></td>
-        <td><%= user.name %></td>
-        <td><%= user.surname %></td>
-        <td><%= user.country %></td>
           <td>
             <small>
               <% user.appointments.each do |app| %>
-              <% ava = app.available %>
+                <% ava = app.available %>
                 <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
                   appointment_path(app,
                                    :appointment =>{:status => "sent"}),
-                  class: "btn btn-mini",
-                  :method => :put,
-                  :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
+                                   class: "btn btn-mini",
+                                   :method => :put,
+                                   :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
+                                 %>
+                             <% end %>
+                           </small>
+                         </td>
+                         <td><% user.language_speak.each do |language|  %>
+                           <%= language.name %>
+                         <% end %>
+                       </td>
+                       <td><% user.language_improve.each do |language|  %>
+                         <%= language.name %>
+                       <% end %>
+                     </td>
+                     <td>
+                       <% if can? :update, model_class.model_name %>
+                         <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
+                           {controller: 'users', action: 'edit', id: user.id },
+                           class: "btn btn-mini",
+                           :method => :get
+                         %>
+                     <% end %>
 
-                %>
-            <% end %>
-          </small>
-        </td>
-      <td><% user.language_speak.each do |language|  %>
-        <%= language.name %>
-      <% end %>
-    </td>
-    <td><% user.language_improve.each do |language|  %>
-      <%= language.name %>
-    <% end %>
-  </td>
-  <td>
-    <% if can? :update, model_class.model_name %>
-      <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
-        {controller: 'users', action: 'edit', id: user.id },
-        class: "btn btn-mini",
-        :method => :get
-      %>
-  <% end %>
+                     <% if can? :destroy, model_class.model_name %>
+                       <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
+                         {controller: 'users', action: 'destroy', id: user.id },
+                         class: "btn btn-mini btn-danger",
+                         :method => :delete,
+                         data: { confirm: "Are you sure?" }
+                       %>
 
-  <% if can? :destroy, model_class.model_name %>
-    <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
-      {controller: 'users', action: 'destroy', id: user.id },
-      class: "btn btn-mini btn-danger",
-      :method => :delete,
-      data: { confirm: "Are you sure?" }
-    %>
+                   <% end %>
+                 </td>
 
-<% end %>
+               </tr>
+             <% elsif current_user.compatible?(user)  %>
 
-</td>
+               <tr>
+                 <% if can? :update, model_class.model_name %>
+                   <td><%= link_to user.id, user_path(user) %></td>
+                   <td><%= user.email %></td>
+                 <% end %>
+                 <td><%= link_to image_tag(user.foto), user_path(user)%></td>
+                 <td><%= user.name %></td>
+                 <td><%= user.surname %></td>
+                 <td><%= user.country %></td>
+                 <td>
+                   <small>
+                     <% user.appointments.each do |app| %>
+                       <% ava = app.available %>
+                       <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
+                         appointment_path(app,
+                                          :appointment =>{:status => "sent"}),
+                                          class: "btn btn-mini",
+                                          :method => :put,
+                                          :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
 
-      </tr>
-    <% end %>
-  <% end %>
+                                        %>
+                                    <% end %>
+                                  </small>
+                                </td>
+                                <td><% user.language_speak.each do |language|  %>
+                                  <%= language.name %>
+                                <% end %>
+                              </td>
+                              <td><% user.language_improve.each do |language|  %>
+                                <%= language.name %>
+                              <% end %>
+                            </td>
+                            <td>
+                              <% if can? :update, model_class.model_name %>
+                                <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
+                                  {controller: 'users', action: 'edit', id: user.id },
+                                  class: "btn btn-mini",
+                                  :method => :get
+                                %>
+                            <% end %>
 
-</tbody>
-</table>
+                            <% if can? :destroy, model_class.model_name %>
+                              <%= link_to raw("<i class=\"icon-white icon-user\">Delete</i>"),
+                                {controller: 'users', action: 'destroy', id: user.id },
+                                class: "btn btn-mini btn-danger",
+                                :method => :delete,
+                                data: { confirm: "Are you sure?" }
+                              %>
 
-<% if can? :create, model_class.model_name %>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-    new_user_path,
-    :class => 'btn btn-primary' %>
+                          <% end %>
 
-<% end %>
+                        </td>
+
+                      </tr>
+                    <% end %>
+                  <% end %>
+
+                </tbody>
+              </table>
+
+              <% if can? :create, model_class.model_name %>
+                <%= link_to t('.new', :default => t("helpers.links.new")),
+                  new_user_path,
+                  :class => 'btn btn-primary' %>
+
+              <% end %>
