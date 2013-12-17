@@ -19,22 +19,22 @@
         </thead>
         <% @appointments.each do |appointment| %>
 
-          <% if(appointment.user_id==current_user.id) %>
 
-            <% ava = Available.find(appointment.available_id) %>
             <tr>
-              <td><%= ava.day %></td>
-              <td><%= ava.start_end_time %></td>
+              <td><%= appointment.id %></td>
+              <td><%= appointment.status %></td>
+              <td><%= appointment.available.day %></td>
+              <td><%= appointment.available.starts.strftime("%I:%M %p") %></td>
               <td>
                 <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
                   {controller: 'appointments', action: 'edit', id: appointment.id },
-                  class: "btn btn-large",
+                  class: "btn",
                   :method => :get
                 %>
 
               <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
                 {controller: 'appointments', action: 'destroy', id: appointment.id },
-                class: "btn btn-large btn-danger",
+                class: "btn btn-danger",
                 :method => :delete,
                 data: { confirm: "Are you sure?" }
               %>
@@ -42,27 +42,7 @@
 
         </tr>
       <% end %>
-    <% end %>
   </table>
-
-
-  <%= simple_form_for(@appointment) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-
-      <%= f.label :day, "Day of the week" %>
-      <%= f.input :day %>
-
-
-      <%= f.label :starts, "Hour (GMT+1)" %>
-      <%= f.input :starts %>
-
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit,"Add hour",:class =>"btn btn-primary btn-xlarge" %>
-    </div>
-  <% end %>
 
     </div>
     <div class="span4"></div>
