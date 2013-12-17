@@ -60,7 +60,6 @@ class AppointmentsController < ApplicationController
     debugger
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        debugger
         format.html { redirect_to users_path, notice: 'Okay so you have a new appointment.' }
         format.json { head :no_content }
       else
