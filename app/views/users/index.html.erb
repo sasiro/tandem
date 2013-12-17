@@ -52,7 +52,7 @@
           <td><%= user.country %></td>
             <td>
               <small>
-                <% user.availables.each do |ava| %>
+              <% user.appointments.each do |app| %>
            <% ava = app.available %>
                 <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
                   appointment_path(app,
