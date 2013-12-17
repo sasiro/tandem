@@ -54,7 +54,7 @@
               <small>
                 <% user.availables.each do |ava| %>
                   <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
-                    {controller: 'availables', action: 'show', id: ava.id },
+                    {controller: 'availables', action: 'show', id: ava.id, status: "pending" },
                     class: "btn btn-mini",
                     :method => :get
                   %>
@@ -103,11 +103,16 @@
         <td><%= user.country %></td>
           <td>
             <small>
-              <% user.availables.each do |ava| %>
+              <% user.appointments.each do |app| %>
+              <% ava = app.available %>
+              <% app.status = "pending" %>
                 <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%I:%M %p")} </i>"),
-                  {controller: 'availables', action: 'show', id: ava.id },
+                  appointment_path(app,
+                                   :appointment =>{:status => "sent"}),
                   class: "btn btn-mini",
-                  :method => :get
+                  :method => :put,
+                  :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%I:%M %p")}?"
+
                 %>
             <% end %>
           </small>

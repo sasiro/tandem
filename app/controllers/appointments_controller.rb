@@ -57,10 +57,11 @@ class AppointmentsController < ApplicationController
   # PUT /appointments/1.json
   def update
     @appointment = Appointment.find(params[:id])
-
+    debugger
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        format.html { redirect_to @appointment, notice: 'Okay so you have changed your timetable.' }
+        debugger
+        format.html { redirect_to users_path, notice: 'Okay so you have a new appointment.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

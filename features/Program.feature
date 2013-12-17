@@ -109,5 +109,4 @@ Feature: Program a tandem
     And I should see "Carlos"
     Then I should see "monday 05:00 PM"
     And I follow "monday 05:00 PM"
-    And I should see "Back"
-
+    And I should see "monday 05:00 PM"
