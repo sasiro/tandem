@@ -17,11 +17,11 @@
       <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,:label => "Day of week"  %>
 
 
-      <%= f.label :starts,"Hour(GMT+1)" %>
+      <%= f.label :starts," At what hour(GMT+1) are you avaiable?" %>
 
-      <%= f.time_select :starts, :default =>Time.now.beginning_of_hour %>
+      <%= f.time_select :starts, :default =>Time.now.beginning_of_hour,:minute_step => 15 %>
 
-      <%= f.input :duration, :label =>"Duration", :default => Time.zone.local(2013,4,12,1,0) %>
+      <%= f.input :duration, :label =>"Duration of the tandem", :default => Time.zone.local(2013,4,12,1,0), :minute_step => 15,:prompt => {:hour => 'Choose hours duration', :minute => 'Choose minutes of duration'} %>
 
 
     </div>
