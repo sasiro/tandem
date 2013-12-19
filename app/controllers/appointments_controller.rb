@@ -57,7 +57,8 @@ class AppointmentsController < ApplicationController
   # PUT /appointments/1.json
   def update
     @appointment = Appointment.find(params[:id])
-    debugger
+    owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
+    AppointmentMailer.appointment_sent(current_user,owner,@appointment).deliver
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
         format.html { redirect_to users_path, notice: 'Okay so you have a new appointment.' }

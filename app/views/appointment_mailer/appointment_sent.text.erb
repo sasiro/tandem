@@ -1,0 +1,7 @@
+<%= @user.name %>
+
+A user wants to speak with you
+<%= appointment_path(@appointment) %>
+<%= user_path(@user) %>
+
+<%= url_for(only_path: false, controller: "users", action: "index") %>
