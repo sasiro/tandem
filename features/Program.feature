@@ -37,10 +37,10 @@ Feature: Program a tandem
 
  And the following available exist:
       | day     | starts | duration |
-      |  monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
 
    And the following appointment exist:
       | available_id     | user_id |
@@ -85,7 +85,7 @@ Feature: Program a tandem
     And I go to users page
     Then I should see "Name"
     Then I should see "Free at"
-    Then I should see "monday 05:00 PM"
+    Then I should see "Monday 05:00 PM"
     Then I should see "Carlos"
 
    Scenario: I can see users with same languages(sad path)
@@ -107,6 +107,6 @@ Feature: Program a tandem
     And I go to users page
     And I should see "Name"
     And I should see "Carlos"
-    Then I should see "monday 05:00 PM"
-    And I follow "monday 05:00 PM"
-    And I should see "monday 05:00 PM"
+    Then I should see "Monday 05:00 PM"
+    And I follow "Monday 05:00 PM"
+    And I should see "Okay so you have a new appointment."
