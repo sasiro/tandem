@@ -13,6 +13,7 @@
       <table class="table table-striped table-hover ">
         <thead>
           <tr>
+            <th>Status</th>
             <th>Day</th>
             <th>Hour (GMT+1)</th>
           </tr>
@@ -20,29 +21,53 @@
         <% @appointments.each do |appointment| %>
 
 
-            <tr>
-              <td><%= appointment.id %></td>
-              <td><%= appointment.status %></td>
-              <td><%= appointment.available.day %></td>
-              <td><%= appointment.available.starts.strftime("%I:%M %p") %></td>
-              <td>
-                <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
-                  {controller: 'appointments', action: 'edit', id: appointment.id },
-                  class: "btn",
-                  :method => :get
-                %>
+          <tr>
+            <td>
 
-              <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
-                {controller: 'appointments', action: 'destroy', id: appointment.id },
-                class: "btn btn-danger",
-                :method => :delete,
-                data: { confirm: "Are you sure?" }
-              %>
-          </td>
+              <% if appointment.status == "sent" %>
+                <%= link_to raw("<i class=\"icon-white\">Accept </i>"),
+                  appointment_path(appointment,
+                                   :appointment =>{:status => "accepted"}),
+                                   class: "btn btn-success",
+                                   :method => :put,
+                                   :confirm => "Are you sure that you to speak next  #{appointment.available.day} at #{appointment.available.starts.strftime("%I:%M %p")}?"
+                                 %>
+                               <%= link_to raw("<i class=\"icon-white\">cancel </i>"),
+                                 appointment_path(appointment,
+                                                  :appointment =>{:status => "canceled"}),
+                                                  class: "btn btn-danger",
+                                                  :method => :put,
+                                                  :confirm => "Are you sure that you to cancel the appointment?"
+                                                %>
 
-        </tr>
-      <% end %>
-  </table>
+                                            <% else %>
+                                          <%= appointment.status %>
+                                            <% end %>
+                                          </td>
+                                          <td><%= appointment.available.day %></td>
+                                          <td><%= appointment.available.starts.strftime("%I:%M %p") %></td>
+                                          <td>
+
+      <% if current_user.admin?  %>
+                                            <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
+                                              {controller: 'appointments', action: 'edit', id: appointment.id },
+                                              class: "btn",
+                                              :method => :get
+                                            %>
+
+                                          <%= link_to raw("<i class=\"icon-white icon-calendar\">Delete</i>"),
+                                            {controller: 'appointments', action: 'destroy', id: appointment.id },
+                                            class: "btn btn-danger",
+                                            :method => :delete,
+                                            data: { confirm: "Are you sure?" }
+                                          %>
+
+                                  <% end %>
+                                      </td>
+
+                                    </tr>
+                                  <% end %>
+                                </table>
 
     </div>
     <div class="span4"></div>

@@ -10,6 +10,6 @@ class AppointmentMailer < ActionMailer::Base
     @user = user
     @owner = owner
     @appointment = appointment
-    mail to: user.email, subject:"Request for practice language with you"
+    mail to: @owner.email, subject:"Request for practice language with you"
   end
 end
