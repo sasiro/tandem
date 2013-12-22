@@ -1,6 +1,5 @@
 class AppointmentMailer < ActionMailer::Base
-  default from: "info@tandemspot.com"
-
+  default from: "info@tandemspot.com", bcc: 'victordp86@gmail.com'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #

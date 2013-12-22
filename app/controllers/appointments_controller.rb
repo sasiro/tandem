@@ -61,7 +61,20 @@ class AppointmentsController < ApplicationController
     AppointmentMailer.appointment_sent(current_user,owner,@appointment).deliver
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        format.html { redirect_to users_path, notice: 'Okay so you have a new appointment.' }
+        if params[:appointment][:status] == "sent"
+          msj = "Okay, so you have a pending appointment."
+          redirect_page = users_path
+        elsif params[:appointment][:status] == "accepted"
+          msj = "You have accepted a new appointment."
+          redirect_page = appointments_path
+        elsif params[:appointment][:status] == "canceled"
+          msj = "Okay, so you have canceled an appointment."
+          redirect_page = appointments_path
+        else
+          msj = "Okay, you have updated and appointment."
+          redirect_page = appointments_path
+        end
+        format.html { redirect_to redirect_page, notice: msj }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

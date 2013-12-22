@@ -39,14 +39,15 @@ Feature: Program a tandem
       | day     | starts | duration |
       |  Monday    | 2000-01-01 16:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
       |  Monday    | 2000-01-01 17:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
-      |  Monday    | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
+      |  Wednesday | 2000-01-01 18:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
       |  Tuesday    | 2000-01-01 19:00:00 UTC  | 2000-01-01 01:00:00 UTC  |
 
    And the following appointment exist:
-      | available_id     | user_id |
-      | 1  | 1 |
-      | 2  | 2 |
-      | 3  | 3 |
+      | available_id     | user_id | status|
+      | 1  | 1 | |
+      | 2  | 2 | |
+      | 3  | 3 | |
+      | 4  | 1 | sent |
 
 
     And I am on the tandem page
@@ -85,7 +86,7 @@ Feature: Program a tandem
     And I go to users page
     Then I should see "Name"
     Then I should see "Free at"
-    Then I should see "Monday 05:00 PM"
+    Then I should see "Monday 17:00"
     Then I should see "Carlos"
 
    Scenario: I can see users with same languages(sad path)
@@ -107,19 +108,46 @@ Feature: Program a tandem
     And I go to users page
     And I should see "Name"
     And I should see "Carlos"
-    Then I should see "Monday 05:00 PM"
-    And I follow "Monday 05:00 PM"
-    And I should see "Okay so you have a new appointment."
+    Then I should see "Monday 17:00"
+    And I follow "Monday 17:00"
+    And I should see "Foto"
+    And I should see "Okay, so you have a pending appointment."
 
-  Scenario: I can sent to a user a request for an appointment(happy path)
+
+ Scenario: I can see all my appointments(happy path)
   When I go to the login page
     When I fill in "Email" with "jamon@hotmail.com"
     When I fill in "Password" with "12345678"
     And I press "Login"
-    And I follow "Weekly schedule"
-    And I go to users page
-    And I should see "Name"
-    And I should see "Carlos"
-    Then I should see "Monday 05:00 PM"
-    And I follow "Monday 05:00 PM"
-    And I should see "Okay so you have a new appointment."
+    And I should see "Weekly schedule"
+    And I go to appointments page
+    Then I should see "Plan your adventure"
+    Then I should see "Monday"
+    Then I should see "Tuesday"
+    Then I should see "19:00"
+    Then I should not see "Wednesday"
+
+ Scenario: I can accept one of the sent appointments(happy path)
+    When I go to the login page
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I go to appointments page
+    Then I should see "Tuesday"
+    Then I should see "19:00"
+    And I follow "Accept"
+    Then I should see "You have accepted a new appointment."
+    And I should be on appointments page
+
+ Scenario: I can cancel one of the sent appointments(happy path)
+    When I go to the login page
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I go to appointments page
+    Then I should see "Tuesday"
+    Then I should see "19:00"
+    And I follow "Cancel"
+    Then I should see "Okay, so you have canceled an appointment."
+    And I should be on appointments page
+

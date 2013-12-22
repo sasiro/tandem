@@ -24,6 +24,8 @@ module NavigationHelpers
       new_user_session_path
     when /users page/
        users_path
+     when /appointments page/
+       appointments_path
  # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
     #

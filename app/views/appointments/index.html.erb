@@ -20,6 +20,7 @@
         </thead>
         <% @appointments.each do |appointment| %>
 
+        <% if appointment.user_id == current_user.id %>
 
           <tr>
             <td>
@@ -30,9 +31,9 @@
                                    :appointment =>{:status => "accepted"}),
                                    class: "btn btn-success",
                                    :method => :put,
-                                   :confirm => "Are you sure that you to speak next  #{appointment.available.day} at #{appointment.available.starts.strftime("%I:%M %p")}?"
+                                   :confirm => "Are you sure that you to speak next  #{appointment.available.day} at #{appointment.available.starts.strftime("%H:%M")}?"
                                  %>
-                               <%= link_to raw("<i class=\"icon-white\">cancel </i>"),
+                               <%= link_to raw("<i class=\"icon-white\">Cancel </i>"),
                                  appointment_path(appointment,
                                                   :appointment =>{:status => "canceled"}),
                                                   class: "btn btn-danger",
@@ -41,11 +42,11 @@
                                                 %>
 
                                             <% else %>
-                                          <%= appointment.status %>
+                                              <p> <%= appointment.status %> </p>
                                             <% end %>
                                           </td>
                                           <td><%= appointment.available.day %></td>
-                                          <td><%= appointment.available.starts.strftime("%I:%M %p") %></td>
+                                          <td><%= appointment.available.starts.strftime("%H:%M") %></td>
                                           <td>
 
       <% if current_user.admin?  %>
@@ -66,6 +67,7 @@
                                       </td>
 
                                     </tr>
+                                  <% end %>
                                   <% end %>
                                 </table>
 

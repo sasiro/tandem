@@ -21,7 +21,7 @@
 
       <%= f.time_select :starts, :default =>Time.now.beginning_of_hour,:minute_step => 15 %>
 
-      <%= f.input :duration, :label =>"Duration of the tandem", :default => Time.zone.local(2013,4,12,1,0), :minute_step => 15,:prompt => {:hour => 'Choose hours duration', :minute => 'Choose minutes of duration'} %>
+      <%= f.input :duration, :label =>"Duration of the tandem", :default => Time.now.beginning_of_day, :minute_step => 15,:prompt => {:hour => 'Choose hours duration', :minute => 'Choose minutes of duration'} %>
 
 
     </div>
@@ -52,8 +52,8 @@
 
             <tr>
               <td><%= ava.day %></td>
-              <td><%= ava.starts.strftime("%I:%M %p") %></td>
-              <td><%= ava.duration.strftime("%I:%M")  %></td>
+              <td><%= ava.starts.strftime("%H:%M") %></td>
+              <td><%= ava.duration.strftime("%H:%M")  %></td>
               <td>
                 <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
                   {controller: 'availables', action: 'edit' , id: ava.id},
