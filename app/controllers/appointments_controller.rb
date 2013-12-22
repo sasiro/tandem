@@ -58,7 +58,7 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
     owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
-    AppointmentMailer.appointment_sent(current_user,owner,@appointment).deliver
+    AppointmentMailer.appointment_sent(current_user,owner,@appointment).deliver unless Rails.env.test?
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
         if params[:appointment][:status] == "sent"

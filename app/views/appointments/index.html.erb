@@ -40,6 +40,14 @@
                                                   :method => :put,
                                                   :confirm => "Are you sure that you to cancel the appointment?"
                                                 %>
+ <% elsif appointment.status == "accepted" %>
+   <p class="text-success bold"> <strong>Accepted </strong></p>
+ <% elsif appointment.status == "canceled" %>
+                                              <p class="text-error bold"> Canceled </p>
+
+
+                                            <% elsif appointment.status.blank? %>
+                                              <p class="text-success bold"> Free </p>
 
                                             <% else %>
                                               <p> <%= appointment.status %> </p>

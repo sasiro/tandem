@@ -125,6 +125,7 @@ Feature: Program a tandem
     Then I should see "Monday"
     Then I should see "Tuesday"
     Then I should see "19:00"
+    Then I should see "Free"
     Then I should not see "Wednesday"
 
  Scenario: I can accept one of the sent appointments(happy path)
