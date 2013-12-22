@@ -110,3 +110,16 @@ Feature: Program a tandem
     Then I should see "Monday 05:00 PM"
     And I follow "Monday 05:00 PM"
     And I should see "Okay so you have a new appointment."
+
+  Scenario: I can sent to a user a request for an appointment(happy path)
+  When I go to the login page
+    When I fill in "Email" with "jamon@hotmail.com"
+    When I fill in "Password" with "12345678"
+    And I press "Login"
+    And I follow "Weekly schedule"
+    And I go to users page
+    And I should see "Name"
+    And I should see "Carlos"
+    Then I should see "Monday 05:00 PM"
+    And I follow "Monday 05:00 PM"
+    And I should see "Okay so you have a new appointment."
