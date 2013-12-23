@@ -174,13 +174,7 @@ type: "PUT"
 
 
 </script>
-  <% if session[:partner] %>
-
-    <br><p>Tandem with <%= User.find(session[:partner]).name %> </p>
-<% else %>
-  <br>Waiting for Tandem to join ...
-<% end %>
-<div class="clear">
+ <div class="clear">
   <div id="information">
   <p><%= link_to "Update information" , room_path, :id => 'link' %></p>
 </div>
