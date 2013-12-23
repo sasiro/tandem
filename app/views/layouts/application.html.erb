@@ -36,7 +36,12 @@
               <li><%= link_to "Weekly schedule", availables_path %></li>
               <li><%= link_to "List of users", users_path %></li>
               <li><%= link_to "Speak Now",new_room_path %></li>
-              <li><span><%= link_to Appointment.pending(current_user).to_s , appointments_path, class: "badge badge-important"%></span></li>
+              <% pending = Appointment.pending(current_user) %>
+              <% if pending == 0 %>
+                <li><span><%= link_to pending.to_s , appointments_path, class: "badge badge"%></span></li>
+              <% else %>
+                <li><span><%= link_to pending.to_s , appointments_path, class: "badge badge-important"%></span></li>
+              <% end %>
               <li><%= link_to "" %></li>
               <li><%= link_to current_user.email, edit_user_registration_path %> </li>
               <li> <%= link_to 'Edit profile', edit_user_registration_path %></li>
