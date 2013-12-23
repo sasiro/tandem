@@ -136,7 +136,10 @@ Feature: Program a tandem
     And I go to appointments page
     Then I should see "Tuesday"
     Then I should see "19:00"
+    Then I should see "19:00"
+    Then I should see "1 appointments"
     And I follow "Accept"
+    Then I should see "0 appointments"
     Then I should see "You have accepted a new appointment."
     And I should be on appointments page
 
@@ -148,7 +151,9 @@ Feature: Program a tandem
     And I go to appointments page
     Then I should see "Tuesday"
     Then I should see "19:00"
+    Then I should see "1 appointments"
     And I follow "Cancel"
+    Then I should see "0 appointments"
     Then I should see "Okay, so you have canceled an appointment."
     And I should be on appointments page
 
