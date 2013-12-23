@@ -15,7 +15,6 @@ class RoomsController < ApplicationController
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:available => false ) #It can't be accesed again
           room.save!
-          session[:partner] = user.id
           redirect_to("/party/"+room.id.to_s)
 
           room_found = true
