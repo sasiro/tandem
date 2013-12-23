@@ -2,8 +2,6 @@ Hello, <%= @owner.name %>
 You have a tandem request!!!
 A  <%= @user.name %> wants to speak with you.
 
-The appoinment will be on <%= @appointment.available.day %>
-at <%= @appointment.available.starts.strftime("%I:%M %p")  %>
-
+The appoinment will be on <%= @appointment.available.day %> at <%= @appointment.available.starts.strftime("%I:%M %p")  %>
 Accept it at :
-<%= url_for(only_path: false, controller: "appointments", action: "index") %>
+<%= url_for(only_path: false, controller: "home", action: "index") %>

@@ -80,13 +80,21 @@
 </div>
 
     <div class="form-actions">
+
+<div class="span1"> </div>
+<div class="span7">
+
+ <%= link_to t('.back', :default => t("helpers.links.back")),
+              tandem_users_path, :class => 'btn pull-left '  %>
+
       <%= link_to raw("<i class=\"icon-white \">Continue</i>"),
     {controller: 'users', action: 'index'},
-    class: "btn",
+    class: "btn btn-primary pull-right",
   rel:'popover',
          data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Awesome native speakers are wating for you. Go catch your exchange partner' }
     %>
 
+      </div>
 
     </div>
   <br />

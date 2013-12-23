@@ -1,16 +1,17 @@
-<%- model_class = User -%>
+<div class="container">
+  <div class="row">
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
+<h2 class="featurette-heading">Select <span class="muted">free time</span> of user and make an appointment with him.</h2>
 
 
 
-  <%= link_to raw("<i class=\"icon-white icon-user \">Search User</i>"),
-    {controller: 'users', action: 'index'},
-    class: "btn btn-success btn-large",
-    id: "search",
-    rel:'popover',
-    data: {placement: 'right',  toggle: 'popover', trigger: 'hover', content: 'Go catch your exchange partner. This funcion will be implemented soon :) ' }
-  %>
+      </div>
+
+
+
+
+<%- model_class = User -%>
 
 
 </div>
@@ -23,12 +24,12 @@
         <th><%= model_class.human_attribute_name(:id) %></th>
         <th><%= model_class.human_attribute_name(:email) %></th>
         <th><%= model_class.human_attribute_name(:subscribed) %></th>
+        <th><%= model_class.human_attribute_name(:country) %></th>
       <% end %>
       <th><%= model_class.human_attribute_name(:foto) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
-      <th><%= model_class.human_attribute_name(:country) %></th>
-      <th><%= "Free at"%></th>
+      <th><%= "Free time"%></th>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>
       <% if can? :update, model_class.model_name %>
@@ -45,11 +46,11 @@
             <td><%= link_to user.id, user_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= user.subscribed %></td>
+            <td><%= user.country %></td>
           <% end %>
           <td><%= link_to image_tag(user.foto), user_path(user)%></td>
           <td><%= user.name %></td>
           <td><%= user.surname %></td>
-          <td><%= user.country %></td>
           <td>
             <small>
               <% user.appointments.each do |app| %>
@@ -99,11 +100,11 @@
                  <% if can? :update, model_class.model_name %>
                    <td><%= link_to user.id, user_path(user) %></td>
                    <td><%= user.email %></td>
+                   <td><%= user.country %></td>
                  <% end %>
                  <td><%= link_to image_tag(user.foto), user_path(user)%></td>
                  <td><%= user.name %></td>
                  <td><%= user.surname %></td>
-                 <td><%= user.country %></td>
                  <td>
                    <small>
                      <% user.appointments.each do |app| %>
@@ -153,10 +154,24 @@
 
                 </tbody>
               </table>
+<div class="form-actions">
 
-              <% if can? :create, model_class.model_name %>
+<div class="span6"> </div>
+<div class="span7">
+ <%= link_to t('.back', :default => t("helpers.links.back")),
+              tandem_users_path, :class => 'btn'  %>
+
+   <% if can? :create, model_class.model_name %>
                 <%= link_to t('.new', :default => t("helpers.links.new")),
                   new_user_path,
                   :class => 'btn btn-primary' %>
 
               <% end %>
+
+       </div>
+
+    </div>
+
+ </div>
+</div>
+
