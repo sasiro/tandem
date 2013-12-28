@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, languages)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
       user.surname = auth.info.last_name
       user.foto = auth.info.image
       user.country = auth.extra.raw_info.locale
+      user.language_speak_ids = languages["user"]["language_speak_ids"][1]
+      user.language_improve_ids = languages["user"]["language_improve_ids"][1]
     end
   end
 

@@ -217,10 +217,16 @@
           <div class="container">
             <div class="carousel-caption">
 
-              <h1>Learn by speaking</h1>
-              <p class="lead">Connect with native speakers and improve your oral skills speaking </p>
+              <h1>Learn by speaking. BETA</h1>
+
             <% if not user_signed_in? %>
-              <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) ,:class =>"btn btn-xlarge btn-primary"%>
+<%= simple_form_for resource, :html => { :class => 'form-horizontal' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+  <%= f.association :language_speak, collection: Language.order(:name), :label =>"I speak/ I can teach :" %>
+  <%= f.association :language_improve, collection: Language.order(:name), :label =>"I am perfectioning/ I learn :"  %>
+
+   <%= f.submit "Connect to the beta using facebook", :class => 'btn btn-primary btn-large '%>
+<% end %>
+
             <% end %>
             </div>
           </div>

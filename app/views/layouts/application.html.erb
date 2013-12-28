@@ -33,7 +33,7 @@
 
 
               <li> <%= link_to 'Home', tandem_users_path %></li>
-              <li><%= link_to "Weekly schedule", availables_path %></li>
+              <li><%= link_to "Plan your learing", availables_path %></li>
               <li><%= link_to "List of users", users_path %></li>
               <li><%= link_to "Speak Now",new_room_path %></li>
               <% pending = Appointment.pending(current_user) %>
