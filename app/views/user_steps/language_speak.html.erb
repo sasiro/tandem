@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11">
+
+      <legend>Step 2 Prove us your speak your native language / Introduce Yourself to the comunity in your native language</legend>
+      <%= simple_form_for @user,  url: wizard_path do |f| %>
+<% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <% flash[:error]= msg %>
+      <% end %>
+  <% end %>
+
+
+        <fieldset>
+          <div class="field">
+            <%= f.label :language_speak_ids, "Native language" %><br />
+            <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+          </div>
+
+
+
+
+
+<div id='container'>
+
+
+  <div class='select'>
+    <label for='audioSource'>Audio source: </label><select id='audioSource'></select>
+  </div>
+
+  <div class='select'>
+    <label for='videoSource'>Video source: </label><select id='videoSource'></select>
+  </div>
+
+
+  <video muted autoplay></video>
+</div>
+<script>
+
+
+  var videoElement = document.querySelector("video");
+  var audioSelect = document.querySelector("select#audioSource");
+  var videoSelect = document.querySelector("select#videoSource");
+  var startButton = document.querySelector("button#start");
+  var button = document.querySelector('#capture-button');
+  navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+
+
+
+
+  function gotSources(sourceInfos) {
+    for (var i = 0; i != sourceInfos.length; ++i) {
+      var sourceInfo = sourceInfos[i];
+      var option = document.createElement("option");
+      option.value = sourceInfo.id;
+      if (sourceInfo.kind === 'audio') {
+        option.text = sourceInfo.label || 'microphone ' + (audioSelect.length + 1);
+        audioSelect.appendChild(option);
+      } else if (sourceInfo.kind === 'video') {
+        option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+        videoSelect.appendChild(option);
+      } else {
+        console.log('Some other kind of source: ', sourceInfo);
+      }
+    }
+  }
+
+if (typeof MediaStreamTrack === 'undefined'){
+  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
+} else {
+  MediaStreamTrack.getSources(gotSources);
+}
+
+
+function successCallback(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.src = window.URL.createObjectURL(stream);
+  videoElement.play();
+}
+
+function errorCallback(error){
+  console.log("navigator.getUserMedia error: ", error);
+}
+
+function start(){
+  if (!!window.stream) {
+    videoElement.src = null;
+    window.stream.stop();
+  }
+  var audioSource = audioSelect.value;
+  var videoSource = videoSelect.value;
+  var constraints = {
+audio: {
+optional: [{sourceId: audioSource}]
+       },
+video: {
+optional: [{sourceId: videoSource}]
+       }
+  };
+  navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
+
+audioSelect.onchange = start;
+videoSelect.onchange = start;
+
+start();
+
+
+</script>
+<div style="text-align:center;">
+  <video id="basic-stream" class="videostream" autoplay></video>
+  <p><button id="capture-button">Capture video</button> <button id="stop-button">Stop</button></p>
+</div>
+
+<div class="form-actions">
+  <%= f.submit "Continue" , :class => 'btn btn-large btn-primary'%>
+<% end %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

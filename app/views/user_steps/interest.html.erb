@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="span1">
+    </div>
+<div class="span11">
+
+<legend>Step 4 Find a soul mate partner</legend>
+      <%= simple_form_for @user,  url: wizard_path do |f| %>
+<fieldset>
+
+        <div id="interests" class="field">
+          <%= hidden_field_tag "user[interest_ids][]", nil %>
+          <% Interest.all.each_with_index do |interest,index| %>
+            <%= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest) %>
+            <%= label_tag dom_id(interest), interest.name  %>
+
+          <% end %>
+        </div>
+        <br >
+        <br >
+<div class="form-actions">
+      <%= f.submit "Continue" , :class => 'btn btn-large btn-primary'%>
+      or <%= link_to "skip this step", next_wizard_path %>
+      <% end %>
+</div>
+</fieldset>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 Tandem::Application.routes.draw do
   resources :appointments
-
+  resources :user_steps
 
   resources :availables
 

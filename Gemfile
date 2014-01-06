@@ -58,4 +58,4 @@ gem 'rb-readline', '~> 0.4.2'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
+gem 'wicked'
