@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   validates :language_speak, :language_improve, presence:true
   ROLES = %w[admin default ambassador banned]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider, :role, :sign_in_count, :available_hour_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider, :role, :sign_in_count, :available_hour_ids, :validated
+
   # attr_accessible :title, :body
   #
 

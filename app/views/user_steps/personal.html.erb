@@ -5,7 +5,7 @@
 <div class="span11">
 
 <legend>Step 1 Personal information</legend>
-      <%= simple_form_for @user,  url: wizard_path do |f| %>
+      <%= simple_form_for @user,  url: wizard_path   do |f| %>
 <fieldset>
         <%= f.input :name %>
         <%= f.input :surname  %>
@@ -269,6 +269,10 @@
 
                 <br />
 
+            <%= f.check_box :validated %>
+<%= f.label :validated, "I have an early acces coupon" , {class: "checkbox inline"} %>
+
+          <%= f.input :email %>
                <br >
         <br >
 <div class="form-actions">

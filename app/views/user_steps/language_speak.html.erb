@@ -4,7 +4,9 @@
     </div>
     <div class="span11">
 
-      <legend>Step 2 Prove us your speak your native language / Introduce Yourself to the comunity in your native language</legend>
+      <h3>Step 2 TandemSpot is a perfection language community.</h3>
+      <h4>
+        Record yourself talking for some minutes so you prove your superlevel.</h4>
       <%= simple_form_for @user,  url: wizard_path do |f| %>
 <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |msg| %>
@@ -12,6 +14,7 @@
       <% end %>
   <% end %>
 
+          <br>
 
         <fieldset>
           <div class="field">
@@ -19,102 +22,73 @@
             <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
           </div>
 
+          <br>
 
+ <video autoplay></video>
 
+    <script language="javascript" type="text/javascript">
+    function onVideoFail(e) {
+        console.log('webcam fail!', e);
+      };
 
-
-<div id='container'>
-
-
-  <div class='select'>
-    <label for='audioSource'>Audio source: </label><select id='audioSource'></select>
-  </div>
-
-  <div class='select'>
-    <label for='videoSource'>Video source: </label><select id='videoSource'></select>
-  </div>
-
-
-  <video muted autoplay></video>
-</div>
-<script>
-
-
-  var videoElement = document.querySelector("video");
-  var audioSelect = document.querySelector("select#audioSource");
-  var videoSelect = document.querySelector("select#videoSource");
-  var startButton = document.querySelector("button#start");
-  var button = document.querySelector('#capture-button');
-  navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-
-
-
-
-  function gotSources(sourceInfos) {
-    for (var i = 0; i != sourceInfos.length; ++i) {
-      var sourceInfo = sourceInfos[i];
-      var option = document.createElement("option");
-      option.value = sourceInfo.id;
-      if (sourceInfo.kind === 'audio') {
-        option.text = sourceInfo.label || 'microphone ' + (audioSelect.length + 1);
-        audioSelect.appendChild(option);
-      } else if (sourceInfo.kind === 'video') {
-        option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
-        videoSelect.appendChild(option);
-      } else {
-        console.log('Some other kind of source: ', sourceInfo);
-      }
+    function hasGetUserMedia() {
+      // Note: Opera is unprefixed.
+      return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia || navigator.msGetUserMedia);
     }
-  }
 
-if (typeof MediaStreamTrack === 'undefined'){
-  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
-} else {
-  MediaStreamTrack.getSources(gotSources);
-}
+    if (hasGetUserMedia()) {
+      // Good to go!
+    } else {
+      alert('getUserMedia() is not supported in your browser');
+    }
+
+    window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia  = navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia ||
+                               navigator.msGetUserMedia;
+
+    var video = document.querySelector('video');
+    var streamRecorder;
+    var webcamstream;
+
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({audio: true, video: true}, function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        webcamstream = stream;
+    //  streamrecorder = webcamstream.record();
+      }, onVideoFail);
+    } else {
+        alert ('failed');
+    }
+
+    function startRecording() {
+        streamRecorder = webcamstream.record();
+        setTimeout(stopRecording, 10000);
+    }
+    function stopRecording() {
+        streamRecorder.getRecordedData(postVideoToServer);
+    }
+    function postVideoToServer(videoblob) {
+
+        var data = {};
+        data.video = videoblob;
+        data.metadata = 'test metadata';
+        data.action = "upload_video";
+        jQuery.post("http://www.kongraju.in/uploadvideo.php", data, onUploadSuccess);
+    }
+    function onUploadSuccess() {
+        alert ('video uploaded');
+    }
+
+    </script>
+
+    <div id="webcamcontrols">
+        <button class="recordbutton" onclick="startRecording();">RECORD</button>
+    </div>
 
 
-function successCallback(stream) {
-  window.stream = stream; // make stream available to console
-  videoElement.src = window.URL.createObjectURL(stream);
-  videoElement.play();
-}
-
-function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
-}
-
-function start(){
-  if (!!window.stream) {
-    videoElement.src = null;
-    window.stream.stop();
-  }
-  var audioSource = audioSelect.value;
-  var videoSource = videoSelect.value;
-  var constraints = {
-audio: {
-optional: [{sourceId: audioSource}]
-       },
-video: {
-optional: [{sourceId: videoSource}]
-       }
-  };
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
-}
-
-audioSelect.onchange = start;
-videoSelect.onchange = start;
-
-start();
-
-
-</script>
-<div style="text-align:center;">
-  <video id="basic-stream" class="videostream" autoplay></video>
-  <p><button id="capture-button">Capture video</button> <button id="stop-button">Stop</button></p>
-</div>
 
 <div class="form-actions">
   <%= f.submit "Continue" , :class => 'btn btn-large btn-primary'%>

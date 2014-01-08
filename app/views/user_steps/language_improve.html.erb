@@ -4,7 +4,12 @@
     </div>
     <div class="span11">
 
-      <legend>Step 3 Introduce Yourself to the comunity in your want to learn</legend>
+
+
+  <h3>Step 2 TandemSpot is a perfection language community.</h3>
+      <h4>
+        Record yourself talking for some minutes so you prove your superlevel.</h4>
+
       <%= simple_form_for @user,  url: wizard_path do |f| %>
         <% if @user.errors.any? %>
           <% @user.errors.full_messages.each do |msg| %>
@@ -19,6 +24,10 @@
             <%= f.collection_select :language_improve_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
         </div>
 
+
+
+
+        <br>
 <div class="form-actions">
       <%= f.submit "Continue" , :class => 'btn btn-large btn-primary'%>
       <% end %>

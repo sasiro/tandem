@@ -1,6 +1,6 @@
 class UserStepsController < ApplicationController
   include Wicked::Wizard
-  steps :personal, :language_speak, :language_improve,:interest
+  steps :personal, :congrats
 
 
   def show
