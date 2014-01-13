@@ -3,6 +3,7 @@ Tandem::Application.routes.draw do
   resources :user_steps
 
   resources :availables
+  resources :coupons
 
 
   resources :languages
