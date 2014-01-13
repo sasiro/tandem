@@ -23,6 +23,7 @@
       <% if can? :manage, model_class.model_name %>
         <th><%= model_class.human_attribute_name(:id) %></th>
         <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:validated) %></th>
         <th><%= model_class.human_attribute_name(:subscribed) %></th>
         <th><%= model_class.human_attribute_name(:country) %></th>
       <% end %>
@@ -45,8 +46,10 @@
           <% if can? :update, model_class.model_name %>
             <td><%= link_to user.id, user_path(user) %></td>
             <td><%= user.email %></td>
+      <th><%= user.validated? %></th>
             <td><%= user.subscribed %></td>
             <td><%= user.country %></td>
+
           <% end %>
           <td><%= link_to image_tag(user.foto), user_path(user)%></td>
           <td><%= user.name %></td>
@@ -129,6 +132,7 @@
                             </td>
                             <td>
                               <% if can? :update, model_class.model_name %>
+
                                 <%= link_to raw("<i class=\"icon-white icon-user\">Edit</i>"),
                                   {controller: 'users', action: 'edit', id: user.id },
                                   class: "btn btn-mini",

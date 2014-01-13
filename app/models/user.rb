@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  before_create :setup_default_role_for_new_users, :setup_default_role_for_new_users
+  before_create :setup_default_role_for_new_users, :setup_default_role_for_new_users, :setup_default_subscribed_for_new_users
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -35,6 +36,11 @@ class User < ActiveRecord::Base
       self.validated = nil
     end
   end
+def setup_default_subscribed_for_new_users
+    if self.subscribed.nil?
+      self.subscribed = nil
+    end
+end
 
   def self.from_omniauth(auth, languages)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -71,6 +77,10 @@ end
 def validated?
   return self.validated
 end
+def subscribed?
+  return self.subscribed
+end
+
 def compatible?(user)
   if not (user.language_improve & language_speak).empty? and not (user.language_speak & language_improve).empty?
     true

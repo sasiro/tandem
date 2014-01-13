@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 Interest.create(name:'Sports') unless Interest.find_by_name('Sports')
 Interest.create(name:'Techlology') unless Interest.find_by_name('Techlology')
 Interest.create(name:'Arts') unless Interest.find_by_name('Arts')
@@ -16,7 +17,9 @@ Language.create(name:'Spanish') unless Language.find_by_name('Spanish')
 Language.create(name:'English') unless Language.find_by_name('English')
 Language.create(name:'French') unless Language.find_by_name('French')
 
-3000.times do
-  res = ('a'..'z').to_a.shuffle[0,8].join
-  Coupon.find_or_create_by_code(res)
+if not Coupon.first.nil?
+  3000.times do
+    res = ('a'..'z').to_a.shuffle[0,8].join
+    Coupon.find_or_create_by_code(res)
+  end
 end
