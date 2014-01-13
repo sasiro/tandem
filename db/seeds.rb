@@ -16,4 +16,7 @@ Language.create(name:'Spanish') unless Language.find_by_name('Spanish')
 Language.create(name:'English') unless Language.find_by_name('English')
 Language.create(name:'French') unless Language.find_by_name('French')
 
-
+3000.times do
+  res = ('a'..'z').to_a.shuffle[0,8].join
+  Coupon.find_or_create_by_code(res)
+end

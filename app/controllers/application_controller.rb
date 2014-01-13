@@ -13,11 +13,21 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     user = User.find(current_user.id)
-    if user.language?
-      #tandem_users_path
+    if user.sign_in_count == 1 or  not user.valid?
       user_steps_path
     else
-      language_users_path
+      tandem_users_path
     end
   end
+
+ # def after_sign_in_path_for(resource)
+    #user = User.find(current_user.id)
+    #if user.language?
+      ##tandem_users_path
+      #user_steps_path
+    #else
+      #language_users_path
+    #end
+  #end
+
 end

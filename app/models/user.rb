@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  before_create :setup_default_role_for_new_users
+  before_create :setup_default_role_for_new_users, :setup_default_role_for_new_users
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,19 +16,23 @@ class User < ActiveRecord::Base
 
   has_many :appointments
   has_many :availables, :through => :appointments
-
   validates :name,:surname,:country,:email, presence: true
   validates :language_speak, :language_improve, presence:true
   ROLES = %w[admin default ambassador banned]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider, :role, :sign_in_count, :available_hour_ids, :validated
-
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language_speak_ids, :language_improve_ids, :country, :interest_ids, :name, :surname, :provider, :role, :sign_in_count, :available_hour_ids, :validated, :code
+  attr_accessor :code
   # attr_accessible :title, :body
   #
-
  def setup_default_role_for_new_users
     if self.role.blank?
       self.role = "default"
+    end
+  end
+
+ def setup_default_validated_for_new_users
+    if self.validated.nil?
+      self.validated = nil
     end
   end
 
@@ -39,18 +44,18 @@ class User < ActiveRecord::Base
       user.name = auth.info.first_name
       user.surname = auth.info.last_name
       user.foto = auth.info.image
-      user.country = auth.extra.raw_info.locale
+      user.country = auth.extra.raw_info.locale#Convert contrie from file GB|United Kingdom
       user.language_speak_ids = languages["user"]["language_speak_ids"][1]
       user.language_improve_ids = languages["user"]["language_improve_ids"][1]
     end
   end
 
-def self.new_with_session(params, session)
-  if session["devise.user_attributes"]
-    new(session["devise.user_attributes"], without_protection: true) do |user|
-      user.attributes = params
-      user.valid?
-    end
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
   else
     super
   end
@@ -62,7 +67,10 @@ def language?
     true
   end
 end
-
+#If the user has enough level of their languages they want to improve to be in the platform
+def validated?
+  return self.validated
+end
 def compatible?(user)
   if not (user.language_improve & language_speak).empty? and not (user.language_speak & language_improve).empty?
     true
