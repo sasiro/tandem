@@ -20,6 +20,9 @@
 
   <%= f.association :interest, collection: Interest.all, as: :check_boxes  %>
 
+  <%= f.input_field :validated, as: :boolean, inline_label: 'Validated?' %>
+
+  <%= f.input_field :subscribed, as: :boolean, inline_label: 'Subscribed?' %>
   <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 
 
