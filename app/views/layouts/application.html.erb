@@ -78,12 +78,15 @@
       </div>
 
 
-    <% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <a class="close" data-dismiss="alert">×</a>
-    <h3> <%=  msg  %> </h3>
-  </div>
-<% end %>
-  <%= yield %>
+      <% flash.each do |name, msg| %>
+        <% if name!=:just_signed_up %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <h3> <%=  msg  %> </h3>
+        </div>
+
+      <% end %>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

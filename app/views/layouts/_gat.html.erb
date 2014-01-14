@@ -8,15 +8,13 @@
 
 ga('create', '', '');
 
-<% if current_user.present?  %>
-  <% if current_user.sign_in_count == 1  %>
-
-    <% if "/" == session["previous_url"] %>
-      ga('set',{metric1:1,dimension1:'registrado'});
-    <%#metrica usuarios registrados en por facebook elsif request.fullpath == language_users_path %>
-    <% end  %>
-  <% end  %>
-<% end  %>
+<% if flash[:just_signed_up] %>
+  var metricValue = '1';
+  ga('set', 'metric1', metricValue);
+  var dimensionValue = '1';
+  ga('set', 'dimension1', dimensionValue);
+<% end %>
+<%#metrica usuarios registrados en por facebook elsif request.fullpath == language_users_path %>
 
 ga('send', 'pageview');
 

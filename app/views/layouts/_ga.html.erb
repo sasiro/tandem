@@ -16,16 +16,13 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-39679447-1', 'tandemspot.com');
-<% if current_user.present?  %>
-  <% if current_user.sign_in_count == 1  %>
-    <% if "/" == session["previous_url"] %>
+
+<% if flash[:just_signed_up] %>
       var metricValue = '1';
       ga('set', 'metric1', metricValue);
       var dimensionValue = '1';
       ga('set', 'dimension1', dimensionValue);
-    <% end  %>
 
-  <% end  %>
 <% end  %>
 
   ga('send', 'pageview');

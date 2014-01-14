@@ -7,6 +7,14 @@ class UserStepsController < ApplicationController
   def show
     @user = current_user
     case step
+    when :personal
+      debugger
+      if @user.valid?
+        flash[:just_signed_up] = true
+      end
+    end
+
+    case step
     when :congrats
       if @user.validated?#To skip one step if the user
         skip_step
