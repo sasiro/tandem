@@ -12,3 +12,16 @@
  *= require chosen
  *= require_tree .
  */
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: image-url(up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(down_arrow.gif);
+}

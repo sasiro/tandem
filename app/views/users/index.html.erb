@@ -21,15 +21,15 @@
   <thead>
     <tr>
       <% if can? :manage, model_class.model_name %>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:email) %></th>
-        <th><%= model_class.human_attribute_name(:validated) %></th>
-        <th><%= model_class.human_attribute_name(:subscribed) %></th>
-        <th><%= model_class.human_attribute_name(:country) %></th>
+        <th><%= sortable "id" %></th>
+        <th><%= sortable "email" %></th>
+        <th><%= sortable "validated" %></th>
+        <th><%= sortable "subscribed" %></th>
+        <th><%= sortable "country" %></th>
       <% end %>
-      <th><%= model_class.human_attribute_name(:photo) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:surname) %></th>
+      <th><%= sortable "foto" %></th>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "surname", "Last Name" %></th>
       <th><%= "Free time"%></th>
       <th><%= model_class.human_attribute_name(:language_speak) %></th>
       <th><%= model_class.human_attribute_name(:language_improve) %></th>

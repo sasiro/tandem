@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+  #For accessing the helper methods in the index view
+  helper_method :sort_column, :sort_direction
   # GET /users
   # GET /users.json
   def index
-    @users = User.all#current_user.compatible_users
+    @users = User.order(sort_column + " " + sort_direction)#current_user.compatible_users
    authorize! :read, @users
 
     respond_to do |format|
@@ -131,7 +133,17 @@ class UsersController < ApplicationController
   #@user = User.first
   #authorize! :find, :user
   end
+private
+#For ordering users in the view index
+def sort_column
+ User.column_names.include?(params[:sort]) ? params[:sort] : "name"
 
+end
+
+#If the params[direction] is include in [asc,desc] we pass this parameter. Else we pass "asc"
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
 
 
 end
