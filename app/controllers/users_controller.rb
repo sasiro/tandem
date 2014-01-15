@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(sort_column + " " + sort_direction)#current_user.compatible_users
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page =>15, :page => params[:page])#current_user.compatible_users
    authorize! :read, @users
 
     respond_to do |format|

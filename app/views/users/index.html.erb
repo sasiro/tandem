@@ -15,7 +15,14 @@
 
 
 </div>
-
+<div class="search">
+  <%= form_tag users_path, :method => 'get',:class => 'form-inline' do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary' %>
+<% end %>
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -158,6 +165,7 @@
 
                 </tbody>
               </table>
+              <%= will_paginate @users %>
 <div class="form-actions">
 
 <div class="span6"> </div>

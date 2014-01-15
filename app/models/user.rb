@@ -122,4 +122,12 @@ def update_with_password(params, *options)
     super
   end
 end
+
+def self.search(search)
+  if search
+    where(['name LIKE ?', "%#{search}%"])
+  else
+    scoped
+  end
+end
 end
