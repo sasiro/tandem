@@ -220,7 +220,7 @@
               <h1>Learn by speaking. BETA</h1>
       <hr class="divider">
             <% if not user_signed_in? %>
-<%= simple_form_for resource, :html => { :class => 'form-horizontal' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
   <%= f.association :language_speak, collection: Language.order(:name), :label =>"I speak/ I can teach :" %>
   <%= f.association :language_improve, collection: Language.order(:name), :label =>"I am perfectioning/ I learn :"  %>
 

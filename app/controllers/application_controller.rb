@@ -17,6 +17,9 @@ class ApplicationController < ActionController::Base
       user_steps_path
     elsif not user.validated?
       root_path
+    elsif user.appointments.empty?
+      debugger
+      availables_path
     else
       tandem_users_path
     end
