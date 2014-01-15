@@ -39,9 +39,9 @@
                 <li><%= link_to "Speak Now",new_room_path %></li>
                 <% pending = Appointment.pending(current_user) %>
                 <% if pending == 0 %>
-                  <li><span><%= link_to pending.to_s , appointments_path, class: "badge badge"%></span></li>
+                  <li><%= link_to pending.to_s ,appointments_path, class: "badge badge"%></li>
                 <% else %>
-                  <li><span><%= link_to pending.to_s , appointments_path, class: "badge badge-important"%></span></li>
+                  <li><p><%= link_to pending.to_s ,appointments_path, class: "badge badge-important text-centred"%></p></li>
                 <% end %>
               <% else#So the user can't do anything apart from go to the frontpage %>
                 <li> <%= link_to 'Home', root_path %></li>

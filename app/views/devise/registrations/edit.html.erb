@@ -10,7 +10,7 @@
 <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical', :method => :put } do |f| %>
   <%= devise_error_messages! %>
    <%= f.input :name %>
- <%= f.input :surname  %>
+ <%= f.input :surname, :label => "Last Name"   %>
  <%= f.input :email, :disabled => true %>
         <%= f.input :country, :label => "Country", :collection => [
   "Afghanistan",
