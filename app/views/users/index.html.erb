@@ -23,11 +23,11 @@
       <% if can? :manage, model_class.model_name %>
         <th><%= model_class.human_attribute_name(:id) %></th>
         <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:validated) %></th>
+        <th><%= model_class.human_attribute_name(:validated) %></th>
         <th><%= model_class.human_attribute_name(:subscribed) %></th>
         <th><%= model_class.human_attribute_name(:country) %></th>
       <% end %>
-      <th><%= model_class.human_attribute_name(:foto) %></th>
+      <th><%= model_class.human_attribute_name(:photo) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
       <th><%= "Free time"%></th>
