@@ -15,10 +15,7 @@ class ApplicationController < ActionController::Base
     user = User.find(current_user.id)
     if user.sign_in_count == 1 or  not user.valid?
       user_steps_path
-    elsif not user.validated?
-      root_path
     elsif user.appointments.empty?
-      debugger
       availables_path
     else
       tandem_users_path
