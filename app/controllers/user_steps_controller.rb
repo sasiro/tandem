@@ -1,6 +1,6 @@
 class UserStepsController < ApplicationController
   include Wicked::Wizard
-  steps :personal, :congrats, :validated
+  steps :personal, :validated
 
 
 
@@ -14,13 +14,7 @@ class UserStepsController < ApplicationController
       end
     end
 
-    case step
-    when :congrats
-      if @user.validated?#To skip one step if the user
-        skip_step
-      end
-    end
-    render_wizard
+   render_wizard
   end
 
   def update
@@ -39,7 +33,7 @@ class UserStepsController < ApplicationController
   end
   private
   def finish_wizard_path
-    tandem_users_path
+    availables_path
   end
 
 end

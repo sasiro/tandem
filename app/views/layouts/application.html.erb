@@ -36,29 +36,22 @@
           <div class="nav-collapse">
             <ul class="nav">
 
-
-              <% if current_user.validated?  %>
-                <li> <%= link_to 'Home', tandem_users_path %></li>
-                <li><%= link_to "Plan your learing", availables_path %></li>
-                <li><%= link_to "List of users", users_path %></li>
-                <li><%= link_to "Speak Now",new_room_path %></li>
-                <% pending = Appointment.pending(current_user) %>
-                <% if pending == 0 %>
-                  <li><%= link_to pending.to_s ,appointments_path, class: "badge badge"%></li>
-                <% else %>
-                  <li><p><%= link_to pending.to_s ,appointments_path, class: "badge badge-important text-centred"%></p></li>
-                <% end %>
-              <% else#So the user can't do anything apart from go to the frontpage %>
-                <li> <%= link_to 'Home', root_path %></li>
-              <% end %>
+              <li> <%= link_to raw("<i class=\"icon-home\"></i> ") + 'Home', tandem_users_path %></li>
+              <li><%= link_to raw("<i class=\"icon-chat\"></i> ") + "Plan your learing", availables_path %></li>
+              <li><%= link_to raw("<i class=\"icon-user\"></i> ") + "List of users", users_path %></li>
+              <li><%= link_to raw("<i class=\"icon-facetime-video\"></i> ") +"Speak Now",new_room_path %></li>
+              <% pending = Appointment.pending(current_user) %>
+                <li>
+                <%= link_to raw("<i class=\" icon-calendar \"></i> ") +pending.to_s ,appointments_path %>
+                </li>
               <li><%= link_to "" %></li>
               <li><%= link_to current_user.email, edit_user_registration_path %> </li>
-              <li> <%= link_to 'Edit profile', edit_user_registration_path %></li>
+              <li> <%= link_to 'Profile', edit_user_registration_path %></li>
 
               <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %></li>
 
               <% if can? :update, :user %>
-                <li> <%= link_to "Admin users", users_path, method: :get %></li>
+                <li> <%= link_to "Admin", users_path, method: :get %></li>
               <% end %>
 
             <% else %>
