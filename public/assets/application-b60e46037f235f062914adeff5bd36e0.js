@@ -14139,21 +14139,28 @@ $(TS.setup);
   jQuery(function() {
     return $('#user_language_speak_ids').chosen()({
       allow_single_deselect: true,
-      no_results_text: 'No results matched',
-      width: '200px'
+      no_results_text: 'mated',
+      width: '200px',
+      heigh: '10px'
     });
   });
 
   jQuery(function() {
     return $('#user_language_improve_ids').chosen()({
       allow_single_deselect: true,
-      no_results_text: 'No results matched',
-      width: '200px'
+      no_results_text: 'results mated',
+      width: '200px',
+      heigh: '10px'
     });
   });
 
   jQuery(function() {
-    return $('#user_country').chosen();
+    return $('#user_country').chosen()({
+      allow_single_deselect: true,
+      no_results_text: 'No results mated',
+      width: '200px',
+      heigh: '120px'
+    });
   });
 
 }).call(this);

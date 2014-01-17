@@ -13,11 +13,11 @@ Interest.create(name:'Health') unless Interest.find_by_name('Health')
 Interest.create(name:'Music') unless Interest.find_by_name('Music')
 Interest.create(name:'History') unless Interest.find_by_name('History')
 
-Language.create(name:'Spanish') unless Language.find_by_name('Spanish')
-Language.create(name:'English') unless Language.find_by_name('English')
-Language.create(name:'French') unless Language.find_by_name('French')
 
-if not Coupon.first.nil?
+common_languages = LanguageList::COMMON_LANGUAGES
+common_languages.each do |language| Language.find_or_create_by_name(language.name) end
+
+if  Coupon.first.nil?
   3000.times do
     res = ('a'..'z').to_a.shuffle[0,8].join
     Coupon.find_or_create_by_code(res)
