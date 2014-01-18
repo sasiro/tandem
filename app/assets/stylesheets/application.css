@@ -25,3 +25,8 @@
 .pretty th .desc {
   background-image: url(down_arrow.gif);
 }
+
+.chzn-results { max-height: 120px!important; }
+
+
+

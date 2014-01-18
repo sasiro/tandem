@@ -1,7 +1,8 @@
 jQuery ->
-  $('#user_language_speak_ids').attr("data-placeholder", "I speak...").chosen()
+  $('#user_language_speak_ids').chosen(placeholder_text_multiple: "My native languages are ..." )
+
 jQuery ->
-  $('#user_language_improve_ids').attr("data-placeholder", "I learn...").chosen()
+  $('#user_language_improve_ids').chosen(placeholder_text_multiple: "I am learning ...")
 jQuery ->
   $('#user_country').chosen()
 
