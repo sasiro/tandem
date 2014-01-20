@@ -58,7 +58,10 @@
             <td><%= user.country %></td>
 
           <% end %>
-          <td><%= link_to image_tag(user.foto), user_path(user)%></td>
+          <td><%= link_to user_path(user) do %>
+           <%=  image_tag(user.foto) %>
+         <% end %>
+        </td>
           <td><%= user.name %></td>
           <td><%= user.surname %></td>
           <td>

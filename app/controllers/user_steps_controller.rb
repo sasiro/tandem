@@ -8,7 +8,6 @@ class UserStepsController < ApplicationController
     @user = current_user
     case step
     when :personal
-      debugger
       if @user.valid?
         flash[:just_signed_up] = true
       end
