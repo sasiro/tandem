@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
   before_filter :config_opentok,:except => [:index]
   def index
-    @new_room = Room.new
+    authorize! :update, @room
+    @rooms = Room.page(params[:page]).per_page(15)
   end
   def new
 
@@ -11,6 +12,7 @@ class RoomsController < ApplicationController
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
+        debugger
         user = User.find(room.publisher_id)#has to be adapted to de ID
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:available => false ) #It can't be accesed again

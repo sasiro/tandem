@@ -12,9 +12,10 @@ class Ability
          can :read, :all
 
          can [:tandem, :language, :update_language, :find], :user
+         debugger
          can [:party,:new, :close ,:config_opentok], :room
 
-  #can [:new,:party], :room
+          #can [:new,:party], :room
        else
          #user can't do anything
        end
