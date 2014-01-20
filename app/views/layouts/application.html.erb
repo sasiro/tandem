@@ -37,7 +37,7 @@
             <ul class="nav">
 
               <li> <%= link_to raw("<i class=\"icon-home\"></i> ") + 'Home', tandem_users_path %></li>
-              <li><%= link_to raw("<i class=\"icon-chat\"></i> ") + "Plan your learing", availables_path %></li>
+              <li><%= link_to raw("<i class=\"icon-chat\"></i> ") + "Plan your learning", availables_path %></li>
               <li><%= link_to raw("<i class=\"icon-user\"></i> ") + "List of users", users_path %></li>
               <li><%= link_to raw("<i class=\"icon-facetime-video\"></i> ") +"Speak Now",new_room_path %></li>
               <% pending = Appointment.pending(current_user) %>
