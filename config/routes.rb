@@ -1,4 +1,7 @@
 Tandem::Application.routes.draw do
+  authenticated :user do
+    root :to => "users#tandem"
+  end
   resources :appointments
   resources :user_steps
 
