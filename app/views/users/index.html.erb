@@ -115,7 +115,7 @@
                    <td><%= user.email %></td>
                    <td><%= user.country %></td>
                  <% end %>
-                 <td><%= link_to image_tag(user.foto), user_path(user)%></td>
+                 <td><%=  user.foto.nil? ?  image_tag("icono1.png") :  image_tag(user.foto, alt: "Foto #{user.name} #{user.surname}")  %></td>
                  <td><%= user.name %></td>
                  <td><%= user.surname %></td>
                  <td>
