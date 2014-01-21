@@ -2,4 +2,9 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
 </div>
+<dl class="dl-horizontal">
+<dd> <%=  @user.foto.nil? ?  image_tag("icono1.png") :  image_tag(@user.foto, alt: "Foto #{@user.name} #{@user.surname}")  %></dd>
+<dl>
+<div class="clear">
+</div>
 <%= render :partial => 'form' %>

@@ -9,7 +9,7 @@
 
 <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical', :method => :put } do |f| %>
   <%= devise_error_messages! %>
-   <%=  @user.foto.nil? or @user.foto.blank? ?  image_tag("icono1.png") :  image_tag(@user.foto, alt: "Foto #{@user.name} #{@user.surname}")  %>
+   <%=  @user.foto.nil?  ?  image_tag("icono1.png") :  image_tag(@user.foto, alt: "Foto #{@user.name} #{@user.surname}")  %>
    <%= f.input :name %>
  <%= f.input :surname, :label => "Last Name"   %>
  <%= f.input :email, :disabled => true %>
