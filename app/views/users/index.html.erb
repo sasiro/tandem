@@ -59,7 +59,7 @@
 
           <% end %>
           <td><%= link_to user_path(user) do %>
-            <%=  image_tag user.foto, alt: "Foto #{user.name} #{user.surname}"    %>
+            <%=  user.foto.nil? or user.foto.blank? ?  image_tag("icono1.png") :  image_tag(user.foto, alt: "Foto #{user.name} #{user.surname}")  %>
          <% end %>
         </td>
           <td><%= user.name %></td>
