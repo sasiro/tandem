@@ -2,6 +2,8 @@ Tandem::Application.routes.draw do
   authenticated :user do
     root :to => "users#tandem"
   end
+  root :to => 'home#index'
+
   resources :appointments
   resources :user_steps
 
@@ -31,7 +33,6 @@ Tandem::Application.routes.draw do
 
   resources :users
 
-  root :to => 'home#index'
 
    resources :rooms
    match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
