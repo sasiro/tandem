@@ -362,7 +362,7 @@
         <h4 class="modal-title" id="myModalLabel">Need to practice a language on-line?</h4>
       </div>
       <div class="modal-footer">
-        <iframe  width="540" height="310" src="http://www.wideo.co/embed/644741390212749568?height=282&width=500&autoplay=1" frameborder="0" allowfullscreen  ></iframe>
+        <iframe  width="540" height="310" src="http://www.wideo.co/embed/644741390212749568?height=282&width=500" frameborder="0" allowfullscreen  ></iframe>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -377,10 +377,33 @@
       !function ($) {
         $(function(){
           // carousel demo
-          $('#myCarousel').carousel()
-        })
+            $('#myCarousel').carousel()
+            })
       }(window.jQuery)
- $(window).load(function(){
-        $('#myModal').modal('show');
-    });
-    </script>
+
+$(window).load(function(){
+    var isMobile = {
+Android: function() {
+return navigator.userAgent.match(/Android/i) ? true : false;
+},
+BlackBerry: function() {
+return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+},
+iOS: function() {
+return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+},
+Windows: function() {
+return navigator.userAgent.match(/IEMobile/i) ? true : false;
+},
+any: function() {
+return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+}
+};
+
+$(function(){
+  if(! isMobile.any()){
+$('#myModal').modal('show');
+  }
+  });
+});
+</script>
