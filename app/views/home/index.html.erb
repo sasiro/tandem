@@ -217,6 +217,7 @@
           <div class="container">
             <div class="carousel-caption">
 
+
               <h1>Learn by speaking. BETA</h1>
       <hr class="divider">
             <% if not user_signed_in? %>
@@ -278,6 +279,10 @@
       <!-- /END THE FEATURETTES -->
 
       <hr class="featurette-divider">
+   <!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
 
  <!-- Three columns of Users -->
  <div class="row">
@@ -348,6 +353,21 @@
 
     </div><!-- /.container -->
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Need to practice a language on-line?</h4>
+      </div>
+      <div class="modal-footer">
+        <iframe  width="540" height="310" src="http://www.wideo.co/embed/644741390212749568?height=282&width=500&autoplay=1" frameborder="0" allowfullscreen  ></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 
     <!-- Le javascript
@@ -360,4 +380,7 @@
           $('#myCarousel').carousel()
         })
       }(window.jQuery)
+ $(window).load(function(){
+        $('#myModal').modal('show');
+    });
     </script>
