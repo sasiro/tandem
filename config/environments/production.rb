@@ -70,14 +70,6 @@ Tandem::Application.configure do
 
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  address: "smtp.1and1.es",
-  port: 587,
-  domain: "tandemspot.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: "info@tandemspot.com",
-  password: "12tandem98"
-  }
+
 
 end
