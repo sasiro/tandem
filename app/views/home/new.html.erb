@@ -1,0 +1,687 @@
+	<body data-spy="scroll" data-offset='90'>
+			<div id="preload">
+				<div class="preload"></div>
+			</div>
+			<div id="page_top">
+				<div id="carousel-example-generic" class="carousel slide hidden-xs" data-interval="false">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<!-- Slider image 1 -->
+							<div class="slider_circle_image_1"></div>
+							<!-- Text on slider 1 -->
+							<div class="text_slider">
+
+
+								<p class="text_background">Learn by Speaking</p>
+								<div class="slider_line"></div>
+								<p class="smaller_font">Connect with native speakers  with video chat to learn languages</p>
+                <div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="facebook-button">
+                  <% if not user_signed_in? %>
+                    <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+
+                      <%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
+                    <% end %>
+
+                  <% end %>
+
+                </div>
+                </div>
+                <div class="col-lg-4 col-md-4"></div>
+              </div>
+
+						</div>
+
+						<div class="item">
+							<!-- Slider image 2 -->
+							<div class="slider_circle_image_2"></div>
+							<!-- Text on slider 2 -->
+							<div class="text_slider">
+								<p class="text_background">Enjoy discovering other cultures</p>
+								<div class="slider_line"></div>
+								<p class="smaller_font">Broaden your horizons</p>
+<div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="facebook-button">
+                  <% if not user_signed_in? %>
+                    <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+
+                      <%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
+                    <% end %>
+
+                  <% end %>
+
+                </div>
+                </div>
+                <div class="col-lg-4 col-md-4"></div>
+
+
+							</div>
+						</div>
+
+						<div class="item">
+							<!-- Slider image 3 -->
+							<div class="slider_circle_image_3"></div>
+							<!-- Text on slider 3 -->
+							<div class="text_slider">
+								<p class="text_background">Join the community</p>
+								<div class="slider_line"></div>
+								<p class="smaller_font">Your speaking adventure starts here</p>
+                <div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="facebook-button">
+                  <% if not user_signed_in? %>
+                    <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+
+                      <%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
+                    <% end %>
+
+                  <% end %>
+
+                </div>
+                </div>
+                <div class="col-lg-4 col-md-4"></div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+						<span class="icon-prev"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+						<span class="icon-next"></span>
+					</a>
+				</div>
+			</div>
+			<!-- Slider END -->
+
+			<!-- navigacija -->
+			<div class="navigacija">
+				<div class="nav-outer">
+					<div class="container">
+						<nav class="navbar navbar-default" role="navigation">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="logo" href="#page_top"><img src="../assets/tandem.blanco.png" alt=""></a>
+							</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse navbar-ex1-collapse">
+								<ul class="nav navbar-nav pull-right">
+									<li class=""><a href="#services">Services</a></li>
+									<li class=""><a href="#about">How Does it Work</a></li>
+									<li class=""><a href="#testimonials">Testimonials</a></li>
+									<li class=""><a href="#team">Our Team</a></li>
+									<li class=""><a href="#contact">Contact</a></li>
+								</ul>
+							</div><!-- /.navbar-collapse -->
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- navigacija END-->
+
+			<!--Services-->
+			<section id="services">
+				<div class="services_outer">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<h1>Learn with native speakers</h1>
+								<div class="about_line"></div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-4 col-md-4">
+								<div class="bubble_outer_one">
+									<div class="bubble_container">
+										<div class="bubble"></div>
+										<i class="icon-comment icon-light"></i>
+									</div>
+								</div>
+								<div class="about_line"></div>
+								<article>
+									<h2>Language Tandem</h2>
+									<p>To learn how to speak, you need to speak! Without teachers, like in real conversations. Both learn and both teach. Sharing is caring!</p>
+								</article>
+							</div>
+							<div class="col-lg-4 col-md-4">
+								<div class="bubble_outer_two">
+									<div class="bubble_container">
+										<div class="bubble"></div>
+										<i class="icon-star-empty icon-light"></i>
+									</div>
+								</div>
+								<div class="about_line"></div>
+								<article>
+									<h2>Langeek community</h2>
+									<p>A langeek is a curious, open-minded language lover. Not afraid of learning by speaking. Join the community and meet interesting people.</p>
+								</article>
+							</div>
+							<div class="col-lg-4 col-md-4">
+								<div class="bubble_outer_three">
+									<div class="bubble_container">
+										<div class="bubble"></div>
+										<i class="icon-globe icon-light"></i>
+									</div>
+								</div>
+								<div class="about_line"></div>
+								<article>
+									<h2>Broaden your horizons</h2>
+									<p>Meet other cultures and open your mind. Learn and have fun! Connect with real native spakers around the world without leaving home.</p>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--About Us-->
+			<section id="about" class="about_outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1>How does it work?</h1>
+							<div class="about_line"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-lg-12">
+						<div>
+							<p>Login and video chat instantly or schedule your calendar. </p>
+						</div>
+						<div class="about_us_image"><img class="img-responsive" src="../assets/notebook1.png" alt=""></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="about_us">
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<article class="about_us_article">
+									<div class="about_us_icon">
+										<span class="icon-stack">
+											<i class="icon-circle icon-stack-base"></i>
+											<i class="icon-rocket icon-light"></i>
+										</span>
+										<div class="about_arrow"></div>
+									</div>
+									<div Class="article_text">
+										<h3>Connect</h3>
+										<p>Just speak! Improve you oral skills with native speakers matching your languages and your schedule. </p>
+									</div>
+								</article>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<article class="about_us_article">
+									<div class="about_us_icon">
+										<span class="icon-stack">
+											<i class="icon-circle icon-stack-base"></i>
+											<i class="icon-folder-close icon-light"></i>
+										</span>
+										<div class="about_arrow"></div>
+									</div>
+									<div Class="article_text">
+										<h3>Share</h3>
+										<p>It's not a lesson, it's an exchange. Practice your target language with a native speaker and give yours in exchange.</p>
+									</div>
+								</article>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<article class="about_us_article">
+									<div class="about_us_icon">
+										<span class="icon-stack">
+											<i class="icon-circle icon-stack-base"></i>
+											<i class="icon-refresh icon-light"></i>
+										</span>
+										<div class="about_arrow"></div>
+									</div>
+									<div Class="article_text">
+										<h3>Your adventure</h3>
+										<p>Reaching fluency can be hard, we'll help you along the way. Are you ready to start to speak? Dare to level up!</p>
+									</div>
+								</article>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="about_line"></div>
+				</div>
+			</section>
+			<!--About Us END-->
+
+
+
+
+			<!--Testimonials-->
+			<!-- DESIBLE PARALLAX ON SMALLER DEVICES -->
+			<section class="paralax">
+				<div class="testimonials_image_mob visible-sm visible-xs">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="paraword">
+									<h4>"To have another language is to possess a second soul."</h4>
+									<p>Charlemagne</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- DESIBLE PARALLAX ON SMALLER DEVICES -->
+				<div class="testimonials_image hidden-sm hidden-xs" data-speed="10">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="paraword">
+									<h4>"To have another language is to possess a second soul."</h4>
+									<p>Charlemagne</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="testimonials">
+				<div class="testimonials_outer">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<h1>Meet our outstanding members</h1>
+								<div class="testimonial_animate"><i class="icon-quote-right"></i></div>
+								<div class="about_line_2"></div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="holder_slider">
+									<div class="slider">
+										<section>
+                      <ul>
+                        <li>
+                          <article>
+                            <figure>
+															<div class="client_image">
+																<img class="img-circle" src="../assets/stephenh.png">
+															</div>
+															<figcaption>
+                                <cite>Stephen Hearty, Ireland</cite>
+																<p>Native:<strong> English</strong> Learns:<strong> Spanish, Italian, French</strong></p>
+															</figcaption>
+                            </figure>
+                          </article>
+                        </li>
+                        <li>
+                          <article>
+                            <figure>
+															<div class="client_image">
+																<img class="img-circle"  src="../assets/sandra.png">
+															</div>
+															<figcaption>
+                                <cite>Sandra Aznar, Spain</cite>
+																<p>Native:<strong> Spanish, Catalan</strong> Learns:<strong> English, German</strong></p>
+															</figcaption>
+														</figure>
+													</article>
+												</li>
+												<li>
+													<article>
+														<figure>
+															<div class="client_image">
+																<img class="img-circle" height="120px" width="120px" src="../assets/james.png">
+															</div>
+															<figcaption>
+                                <cite>James Sheldon, United Kindgom</cite>
+																<p>Native:<strong> English</strong> Learns:<strong> Spanish, French, Portuguese</strong></p>
+															</figcaption>
+														</figure>
+													</article>
+												</li>
+
+											                      </ul>
+                    </section>
+                  </div>
+                </div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="see_more">
+									<p class="see_more_button">See more testimonials</p>
+								</div>
+								<div class="about_line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Testimonials END-->
+
+			<!--Our Clients-->
+			<section id="client_logo">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1>Media and awards</h1>
+							<div class="about_line"></div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12">
+							<div class="logo_prev slider_partners_arrow" data-direction="prev">
+								<i class="icon-chevron-sign-left"></i></div>
+								<div class="logo_next slider_partners_arrow" data-direction="next">
+									<i class="icon-chevron-sign-right"></i></div>
+									<div class="holder_slider_partners">
+										<div class="slider_partners">
+											<ul>
+												<li class="client_logo_partners">
+
+													 <a href="http://blog.tandemspot.com/cambio-espanol-nativo-por-ingles-o-chino/" target="_blank" ><img src="../assets/elmundo.png" alt="logo el mundo"></a>
+
+												</li>
+
+												<li class="client_logo_partners">
+                          <a href="http://www.youtube.com/watch?v=joUSAsvTK1c" target="_blank"><img src="../assets/ser.png" alt="logo ser"></a>
+												</li>
+
+												<li class="client_logo_partners">
+                          <a href="http://www.lasprovincias.es/20140112/comunitatvalenciana/valencia/intercambio-linguistico-curso-valencia-201401121641.html" target="_blank"><img src="../assets/lasprovincias.png" alt="logo las provincias"></a>
+												</li>
+
+                        <li class="client_logo_partners">
+                          <a href="http://www.uji.es/ES/noticies/detall&id_a=32448707" target="_blank">	<img src="../assets/uji.png" alt="uji"></a>
+                        </li>
+
+												</li>
+
+												<li class="client_logo_partners">
+												  <a href="http://www.oxfordbigproject.com/en/project-nominee/hablale-al-mundo" target="_blank">	<img src="../assets/oxford.bp.png" alt="oxford big project"></a>
+												</li>
+
+												<li class="client_logo_partners">
+													  <a href="http://www.blogyuzz.org/2013/07/%C2%A1conoce-los-33-seleccionados-que-viajaran-a-silicon-valley/" target="_blank"><img src="../assets/YUZZ.png" alt="yuzz"></a>
+
+												</li>
+                       												<li class="client_logo_partners">
+													  <a href="http://www.youtube.com/watch?v=joUSAsvTK1c" target="_blank"><img src="../assets/lingua.png" alt="lingua"></a>
+
+                          </li>
+                          <li class="client_logo_partners">
+                            <a href="http://ceeicastellon.emprenemjunts.es/index.php?op=8&n=7326" target="_blank"><img src="../assets/ceei.png" alt="ceei"></a>
+
+                          </li>
+
+                        </ul>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="col-lg-12">
+									<div class="about_line"></div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Our Clients END-->
+
+					<!--Our Team-->
+					<section class="parallax">
+						<div class="our_team_image_mob visible-sm visible-xs">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="paraword">
+											<h4>"I hear and I forget. I see and I remember. I do and I understand"</h4>
+											<p>Confucius</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="our_team_image hidden-sm hidden-xs" data-speed="10">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="paraword">
+											<h4>"I hear and I forget. I see and I remember. I do and I understand."</h4>
+											<p>Confucius</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section id="team">
+						<div class="our_team_outer">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="col-lg-12">
+											<h1>Our Team</h1>
+										</div>
+										<div class="team_animate"><i class="icon-user"></i><i class="icon-user"></i><i class="icon-user"></i></div>
+										<div class="about_line_2"></div>
+									</div>
+								</div>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6 col-md-6">
+										<figure>
+											<div class="team_img">
+												<div class="team_border">
+												</div>
+												<img src="../assets/founder victor.jpg" alt="">
+											</div>
+											<figcaption>
+												<div class="team_name">
+													<h4>Victor Donet</h4>
+													<p>Web developer and Growth hacker</p>
+												</div>
+												<p>"The best way to learn a foreign language is to speak it."</p>
+                        <div class="team_icons">
+                          <span class="icon-stack">
+                            <i class="icon-circle icon-stack-base"></i>
+														<a href="https://twitter.com/vectordonet" target="_blank"><i class="icon-twitter icon-light"></i></a>
+													</span>
+													<span class="icon-stack">
+														<i class="icon-circle icon-stack-base"></i>
+														<a href="http://www.linkedin.com/pub/victor-donet-peris/38/293/16" target="_blank" ><i class="icon-linkedin icon-light"></i></a>
+													</span>
+													<span class="icon-stack">
+														<i class="icon-circle icon-stack-base"></i>
+														<a href="https://plus.google.com/u/0/108669096683875873992/about"  target="_blank"><i class="icon-google-plus icon-light"></i></a>
+													</span>
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<figure>
+											<div class="team_img">
+												<div class="team_border"></div>
+												<img src="../assets/founder marina.jpg" alt="">
+											</div>
+											<figcaption>
+												<div class="team_name">
+													<h4>Marina Soriano</h4>
+													<p>Business and Marketing</p>
+												</div>
+												<p>"Don't be afraid to fail. Be afraid not to try." </p>
+                        <div class="team_icons">
+                          <span class="icon-stack">
+                            <i class="icon-circle icon-stack-base"></i>
+                            <a href="https://twitter.com/sorianomarina"><i class="icon-twitter icon-light"></i></a>
+													</span>
+													<span class="icon-stack">
+														<i class="icon-circle icon-stack-base"></i>
+														<a href="http://www.linkedin.com/profile/view?id=93105983&locale=es_ES&trk=tyah&trkInfo=tas%3Amarina%20soriano%2Cidx%3A1-1-1"><i class="icon-linkedin icon-light"></i></a>
+													</span>
+													<span class="icon-stack">
+														<i class="icon-circle icon-stack-base"></i>
+														<a href="https://plus.google.com/+MarinaSoriano/"><i class="icon-google-plus icon-light"></i></a>
+													</span>
+
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="about_line"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Our Team END-->
+
+
+<div class="our_work_image_mob visible-sm visible-xs">
+					<div class="overlay_none"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="paraword">
+									<h4>"There are seven days in a week and someday is not one of them."</h4>
+									<p>Benny Lewis, Irish Polyglot</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- DESIBLE PARALAX ON SMALLER DEVICES END -->
+				<div class="our_work_image hidden-sm hidden-xs" data-speed="10">
+					<div class="overlay_none"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="paraword">
+									<h4>"There are seven days in a week and someday is not one of them."</h4>
+									<p>Benny Lewis, Irish Polyglot</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<!--Gmap-->
+					<section class="gmap_outer">
+						<div id="map-canvas"></div>
+					</section>
+					<!--Gmap END-->
+
+
+					<!--Contact-->
+					<section id="contact">
+						<div class="contact_outer">
+							<div class="contact">
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-12">
+											<h1>Contact</h1>
+											<div class="about_line_2"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form action="http://divuscode.com/demo/phobos/contact.php" method="post">
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-6">
+											<input id="name" name="name" type="text" placeholder="Your Name">
+										</div>
+										<div class="col-lg-6">
+											<input id="email" name="email" type="text" placeholder="Your Email">
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-12">
+											<textarea id="message" name="message" rows="10" placeholder="Your Message"></textarea>
+											<button type="submit" value="submit">Send</button>
+											<p class="feedback">All fields are required.</p>
+										</div>
+									</div>
+								</div>
+							</form>
+
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<!-- <div class="about_line"></div> -->
+										<div class="up_arrow">
+											<a href="#page_top"><i class="icon-caret-up icon-light"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Contact END-->
+
+					<!--Footer-->
+					<footer class="footer_outer">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+									<div id="logo_foot">
+										<a href="#page_top"><img src="../assets/tandem.sobregris.png" alt=""></a>
+									</div>
+								</div>
+								<div id="social" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="social">
+										<p>You can find us here</p>
+										<ul>
+											<li><a href="https://plus.google.com/+Tandemspot" id="gogp"></a></li>
+											<li><a href="https://www.facebook.com/tandemspot" id="face"></a></li>
+											<li><a href="https://twitter.com/TandemSpot" id="twit"></a></li>
+											<li><a href="http://www.linkedin.com/company/tandem-spot" id="link"></a></li>
+											<li><a href="http://www.pinterest.com/tandemspot/" id="pint"></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="company col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<p>Tandem Spot, Year 2014.<br>Learn Languages Speaking</p>
+									<p>info@tandemspot.com</p>
+								</div>
+							</div>
+						</div>
+					</footer>
+					<!--Footer END-->
+
+					<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+					<script type="text/javascript" src="js/bootstrap.min.js"></script>
+					<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+	<!--[if lte IE 8]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="js/gmap.js"></script>
+		<script type="text/javascript" src="js/contact.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		</html>

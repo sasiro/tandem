@@ -2,7 +2,7 @@ Tandem::Application.routes.draw do
   authenticated :user do
     root :to => "users#tandem"
   end
-  root :to => 'home#index'
+  root :to => 'home#new'
 
   resources :appointments
   resources :user_steps

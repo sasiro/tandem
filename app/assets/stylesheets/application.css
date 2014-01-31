@@ -10,7 +10,14 @@
  *
  *= require_self
  *= require chosen
- *= require_tree .
+ *= require appointments
+ *= require bootstrap_and_overrides
+ *= require availables
+ *= require home
+ *= require rooms
+ *= require social-buttonts
+ *= require users
+ *= require user_steps
  */
 .pretty th .current {
   padding-right: 12px;

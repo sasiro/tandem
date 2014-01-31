@@ -15,5 +15,4 @@
 //= require chosen-jquery
 //= require twitter/bootstrap
 //= require holder
-//= require_tree .
 //
