@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11">
+
+
+
+  <h3>Step 2 TandemSpot is a perfection language community.</h3>
+     
+
+      <%= simple_form_for @user,  url: wizard_path do |f| %>
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <% flash[:error]= msg %>
+          <% end %>
+        <% end %>
+
+
+        <fieldset>
+          <div class="field">
+            <%= f.label :language_improve_ids, "Languages you want to improve" %><br />
+            <%= f.collection_select :language_improve_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+        </div>
+
+
+          <div class="field">
+            <%= f.label :language_speak_ids, "Native language" %><br />
+            <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
+          </div>
+
+
+        <br>
+<div class="form-actions">
+      <%= f.submit "Continue" , :class => 'btn btn-large btn-primary'%>
+      <% end %>
+</div>
+</fieldset>
+    </div>
+  </div>
+</div>

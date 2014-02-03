@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   has_many :appointments
   has_many :availables, :through => :appointments
-  validates :name,:surname,:country,:email, presence: true
+  validates :country, :email, presence: true
   validates :language_speak, :language_improve, presence:true
   ROLES = %w[admin default ambassador banned]
   # Setup accessible (or protected) attributes for your model
@@ -50,11 +50,12 @@ end
       user.name = auth.info.first_name
       user.surname = auth.info.last_name
       user.foto = auth.info.image
-      debugger
       user.country = auth.extra.raw_info.locale#Convert contrie from file GB|United Kingdom
-      user.language_speak_ids = languages["user"]["language_speak_ids"][1]
-      user.language_improve_ids = languages["user"]["language_improve_ids"][1]
+      #user.language_speak_ids = languages["user"]["language_speak_ids"][1]
+      #user.language_improve_ids = languages["user"]["language_improve_ids"][1]
     end
+   
+
   end
 
   def self.new_with_session(params, session)
