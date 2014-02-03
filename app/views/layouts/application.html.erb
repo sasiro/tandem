@@ -12,7 +12,7 @@
     <%= javascript_include_tag "phobos/contact" %>
     <%= javascript_include_tag "phobos/gmap" %>
     <%= javascript_include_tag "phobos/main" %>
-    <%= stylesheet_link_tag    "phobos/bootstrap.min", :media => "all" %>
+    <%= stylesheet_link_tag "phobos/bootstrap.min", :media => "all" %>
     <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all"%>
     <%= stylesheet_link_tag "phobos/style", :media => "all" %>
   <% else %>
@@ -65,27 +65,11 @@
                 <li> <%= link_to "Admin", users_path, method: :get %></li>
               <% end %>
 
-              <%= link_to 'Tandem Spot BETA', root_path, class: "brand" %>
-              <div class="nav-collapse">
-                <ul class="nav">
 
-
-                  <li> <%= link_to 'Home', root_path %></li>
-                  <li> <%= link_to "Sign up", new_user_registration_path %></li>
-
-                  <li>  <%= link_to "Login", new_user_session_path %></li>
-
-                  <li>  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
-
-                  <li> <%= link_to 'Blog', "http://blog.tandemspot.com" %></li>
-
-    </ul>
-            </div>
           </div>
         </div>
       </div>
-            <% else %>
-                <% end %>
+     <% end %>
 
 
 
