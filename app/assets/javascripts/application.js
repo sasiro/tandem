@@ -15,4 +15,10 @@
 //= require chosen-jquery
 //= require twitter/bootstrap
 //= require holder
+//= require availables
+//= require home
+//= require languages
+//= require rooms
+//= require users
+//= require user_steps
 //
