@@ -12,12 +12,15 @@
       <%= javascript_include_tag "phobos/contact" %>
       <%= javascript_include_tag "phobos/gmap" %>
       <%= javascript_include_tag "phobos/main" %>
+      <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
       <%= stylesheet_link_tag "phobos/bootstrap.min", :media => "all" %>
       <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all"%>
       <%= stylesheet_link_tag "phobos/style", :media => "all" %>
-      <% else %>
+          <% else %>
       <%= javascript_include_tag "application" %>
-      <%= stylesheet_link_tag    "application", :media => "all" %>
+      <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
+      <%= stylesheet_link_tag "application", :media => "all" %>
+
       <% end %>
       <%= csrf_meta_tags %>
       <%= favicon_link_tag 'favicon.ico' %>
