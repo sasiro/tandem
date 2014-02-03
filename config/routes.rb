@@ -1,6 +1,6 @@
 Tandem::Application.routes.draw do
   authenticated :user do
-    root :to => "users#tandem"
+    root :to => redirect("/users/tandem")
   end
   root :to => 'home#new'
 
