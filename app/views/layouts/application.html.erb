@@ -34,8 +34,7 @@
       <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
       <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
     </head>
-    <body>
-
+	<body data-spy="scroll" data-offset='90'>
 
       <% if user_signed_in?  %>
       <div class="navbar navbar-fixed-top">
