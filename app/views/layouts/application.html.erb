@@ -12,10 +12,16 @@
       <%= javascript_include_tag "phobos/contact" %>
       <%= javascript_include_tag "phobos/gmap" %>
       <%= javascript_include_tag "phobos/main" %>
+      <%= javascript_include_tag "phobos/respond.min" %>
       <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
       <%= stylesheet_link_tag "phobos/bootstrap.min", :media => "all" %>
       <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all"%>
       <%= stylesheet_link_tag "phobos/style", :media => "all" %>
+      	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+	<!--[if lte IE 8]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
           <% else %>
       <%= javascript_include_tag "application" %>
       <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
@@ -34,6 +40,7 @@
       <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
       <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
     </head>
+
 	<body data-spy="scroll" data-offset='90'>
 
       <% if user_signed_in?  %>
