@@ -1669,7 +1669,8 @@ h1 {
 	height: auto!important;
     font-size: 35px;
     white-space: normal;
-    z-index 1;
+    z-index 222;
+    overflow: hidden;
 }
 
 a:hover, a:visited, a:link, a:active
@@ -1677,6 +1678,4 @@ a:hover, a:visited, a:link, a:active
     text-decoration: none;
 }
 
-.carousel-indicators {
-  z-index: inherit
-}
+
