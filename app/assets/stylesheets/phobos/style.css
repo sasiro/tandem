@@ -1683,3 +1683,6 @@ a:hover, a:visited, a:link, a:active
 }
 
 
+.carousel-indicators {
+	z-index: 0;
+}
