@@ -1667,11 +1667,14 @@ h1 {
  /* Custom */
 .facebook-button{
 	height: auto!important;
-	width: auto!important;
+	
     font-size: 30px;
-    white-space: normal;
-    display:inline-block;
+    
     white-space: nowrap;
+   
+
+   
+ 
 }
 
 a:hover, a:visited, a:link, a:active
