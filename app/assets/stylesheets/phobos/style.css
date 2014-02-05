@@ -1651,7 +1651,7 @@ h1 {
 
 .slider_circle_image_1 {
 	background-image: url(../../assets/slider1.jpg);
-}
+}/
 
 .slider_circle_image_2 {
 	background-image: url(../../assets/slider2.jpg);
@@ -1667,10 +1667,10 @@ h1 {
  /* Custom */
 .facebook-button{
 	height: auto!important;
-    font-size: 35px;
+    font-size: 30px;
     white-space: normal;
-    z-index 222;
-    overflow: hidden;
+    display:inline-block;
+    white-space: nowrap;
 }
 
 a:hover, a:visited, a:link, a:active
