@@ -71,7 +71,7 @@
 							</div>
 							<div class="col-lg-4 col-md-4">
 								<div class="register-button">
-									<div class="facebook-button">
+									<div class="button">
 <% if not user_signed_in? %>
 									<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
 
@@ -107,7 +107,7 @@
 							<p class="smaller_font">Your speaking adventure starts here</p>
 							<div class="col-lg-4 col-md-4"></div>
 							<div class="col-lg-4 col-md-4">
-								<div class="-button">
+								<div class="button">
 									<% if not user_signed_in? %>
 									<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
 

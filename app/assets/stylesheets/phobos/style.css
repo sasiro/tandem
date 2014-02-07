@@ -1669,13 +1669,14 @@ h1 {
 	height: auto!important;
 	
     font-size: 30px;
-    
+   
     white-space: nowrap;
-   z-index: 200000000000;
-
+  
+min-width:400px;
    
  
 }
+
 
 a:hover, a:visited, a:link, a:active
 {
@@ -1684,7 +1685,7 @@ a:hover, a:visited, a:link, a:active
 
 
 .carousel-indicators {
-	z-index: 0;
+	
 }
 
 .goog-logo-link{
