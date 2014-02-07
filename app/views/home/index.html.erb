@@ -208,11 +208,40 @@
 }
 
     </style>
+
+
+<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+           <div class="container">
+           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"/>
+           <%= link_to 'Tandem Spot BETA', tandem_users_path, class: "brand black" %>
+           <div class="nav-collapse">
+            <ul class="nav">
+
+                  <li> <%= link_to 'Home', root_path %></li>
+                  <li> <%= link_to "Sign up", new_user_registration_path %></li>
+
+                  <li>  <%= link_to "Login", new_user_session_path %></li>
+
+                  <li>  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+
+                  <li> <%= link_to 'Blog', "http://blog.tandemspot.com" %></li>
+             
+              
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Carousel
     ================================================== -->
+
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
          <div class="item active">
+
           <img src="../assets/arasi.png" alt="">
           <div class="container">
             <div class="carousel-caption">
@@ -221,20 +250,20 @@
               <h1>Learn by speaking. BETA</h1>
       <hr class="divider">
                        </div>
-
-
-          </div>
-
-        </div>
-  <% if not user_signed_in? %>
+ <% if not user_signed_in? %>
 <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
   <%= f.association :language_speak, collection: Language.order(:name), :label =>"I can teach :" %>
   <%= f.association :language_improve, collection: Language.order(:name), :label =>"I am improving :"  %>
 
-   <%= f.submit "Connect to the beta using facebook", :class => 'btn btn-primary btn-large '%>
+   <%= f.submit "Connect to the beta using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
 <% end %>
 
             <% end %>
+
+          </div>
+
+        </div>
+ 
       </div>
     </div><!-- /.carousel -->
 
@@ -281,10 +310,8 @@
       <!-- /END THE FEATURETTES -->
 
       <hr class="featurette-divider">
-   <!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+   
+
 
  <!-- Three columns of Users -->
  <div class="row">
@@ -371,7 +398,11 @@
 </div><!-- /.modal -->
 
 
-
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -385,3 +416,7 @@
 
 
 </script>
+ 
+ <%= javascript_include_tag "phobos/experiment" %>
+ <%= javascript_include_tag "home" %>
+

@@ -1688,16 +1688,7 @@ a:hover, a:visited, a:link, a:active
 	
 }
 
-.goog-logo-link{
-	display:none !important; 
-	
-}
-.goog-te-gadget{
-	height:28px !important;
-	overflow: hidden; 
 
-  
-}
-.goog-te-combo{
-	
+.modal-footer{
+	border-top: 0;
 }

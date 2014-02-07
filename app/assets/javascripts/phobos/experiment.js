@@ -1,10 +1,8 @@
 
-
-
 $( document ).ready(function() {
 
-$( "p" ).click(function() {
-  $( this ).slideUp();
+$( ".facebook-button" ).click(function() {
+  
    ga("send","event","registro-facebook","click");
 });
 });
