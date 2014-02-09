@@ -21,4 +21,5 @@
 //= require rooms
 //= require users
 //= require user_steps
+//= require bootstrap
 //

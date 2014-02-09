@@ -97,10 +97,27 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
               <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %></li>
 
+
+
+
+
+
               <% if can? :update, :user %>
-              <li> <%= link_to "Admin", users_path, method: :get %></li>
+              <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  Admin
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- dropdown menu links -->
+                  <li> <%= link_to "Rooms", rooms_path, method: :get %></li>
+                  <li> <%= link_to "Users", users_path, method: :get %></li>
+                </ul>
+              </div>
+
               <% end %>
             </ul>
+
 
           </div>
         </div>
