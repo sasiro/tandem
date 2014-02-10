@@ -7,6 +7,10 @@ class UserStepsController < ApplicationController
   def show
     @user = current_user
     case step
+      when :personal
+        flash[:just_signed_up] = true
+      end
+    case step
       when :validated
         @url_shared="http://tandemspot.com/?utm_medium=Social Media&utm_source=Facebook&utm_campaign=#{current_user.uid}"
       end

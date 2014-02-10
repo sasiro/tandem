@@ -307,7 +307,16 @@
        </ul>
        <h4>Already got an account?</h4>
        <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
-     <%= f.submit "Connect with facebook", :class => 'btn btn-primary  facebook-button'%> or
+     <%= f.submit "Connect with facebook", :class => 'btn btn-primary  facebook-button'%> or 
+          <%= link_to raw("Login"),
+        new_user_session_path,
+        class: "btn",
+        method: :get,
+        rel:'popover',
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Send some of our native speakers a request to speak' }
+
+      %>
+     
 <% end %>
        
         <h4>Forgotten your password?</h4>

@@ -7,9 +7,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect user
     else
       session["devise.user_attributes"] = user.attributes
-       if user.valid?
-        flash[:just_signed_up] = true
-       end
       redirect_to new_user_registration_url
     end
   end
