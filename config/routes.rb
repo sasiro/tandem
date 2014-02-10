@@ -2,9 +2,9 @@ Tandem::Application.routes.draw do
   authenticated :user do
     root :to => redirect("/users/tandem")
   end
-  root :to => 'home#new'
-  get "index" => "home#index"
 
+ 
+  get "/" => redirect("/home/index")
   resources :appointments
   resources :user_steps
 
