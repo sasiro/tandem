@@ -1,19 +1,7 @@
   <!DOCTYPE html>
   <html>
   <head>
-     <script>function utmx_section(){}function utmx(){}(function(){var
-k='79931803-3',d=document,l=d.location,c=d.cookie;
-if(l.search.indexOf('utm_expid='+k)>0)return;
-function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-</script><script>utmx('url','A/B');</script>
-<!-- End of Google Analytics Content Experiment code -->
+     
 
 <script type="text/javascript">
   var trak=trak||[];trak.io=trak.io||{};trak.io.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d29p64779x43zo.cloudfront.net/v1/trak.io.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){trak.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["initialize","identify","track","alias","channel","source","host","protocol","page_view"];for(var s=0;s<i.length;s++) trak.io[i[s]]=r(i[s]);trak.io.initialize.apply(trak.io,arguments)};
@@ -67,8 +55,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       <meta property="og:url" content="http://tandemspot.com" />
       <meta property="og:image" content="https://pbs.twimg.com/profile_images/3637645598/2824b40672271e9ff9bc9ba1f68ad135.png" />
 
-      <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
-      <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
+     
     </head>
 
    
@@ -137,5 +124,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         <% end %>
         <% end %>
         <%= yield %>
+       <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
+       <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
       </body>
+
       </html>
