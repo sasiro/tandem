@@ -37,3 +37,17 @@
 
 
 
+
+
+.description ul li{
+	list-style:none;
+	padding-left: 10px;
+
+}
+.description ul {
+margin: 0;
+}
+
+
+
+

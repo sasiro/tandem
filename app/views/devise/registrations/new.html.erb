@@ -3,9 +3,9 @@
   <div class="row">
     <div class="span1">
     </div>
-<div class="span11">
+<div class="span6">
+<h1>Sign up <span class="label label-default">beta</span></h1>
 
-<legend>Sign up</legend>
       <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-vertical'} do |f| %>
 
 <fieldset>
@@ -286,11 +286,41 @@
         
         <br >
         
-<div class="form-actions">
-      <%= f.submit "Sign up" , :class => 'btn btn-large btn-primary'%>
-      <% end %>
-</div>
-</fieldset>
+
+        <%= f.submit "Sign up" , :class => 'btn btn-large btn-danger'%>
+        <% end %>
+
+      </fieldset>
+    </div>
+    <div  class="span4">
+      <div class="description">
+      <h4>Start using Tandem Spot today</h4>
+      <ul>
+        <li><p><span class="icon-ok"></span>Practice your target language with a native speaker and give yours in exchange</p></li>
+        <li><p><span class="icon-ok"></span>Improve you oral skills with native speakers matching your languages and your schedule</p></li>
+        <li><p><span class="icon-ok"></span>Practice your target language with a native speaker and give yours in exchange.</p></li>
+        <li><p><span class="icon-ok"></span>Practice your oral skills.</p></li>
+      </ul>
+      <h4>Pricing</h4>
+      <ul>
+        <li><p><span class="icon-ok"></span>100% free for the beta period</p></li>
+       </ul>
+       <h4>Already got an account?</h4>
+       <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+     <%= f.submit "Connect with facebook", :class => 'btn btn-primary  facebook-button'%>
+<% end %>
+       
+        <h4>Forgotten your password?</h4>
+      
+          <%= link_to raw("Reset password"),
+        new_user_password_path,
+        class: "btn",
+        method: :get,
+        rel:'popover',
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Send some of our native speakers a request to speak' }
+
+      %>
+    </div>
     </div>
   </div>
 </div>
