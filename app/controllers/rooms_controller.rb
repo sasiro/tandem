@@ -3,6 +3,9 @@ class RoomsController < ApplicationController
   def index
     authorize! :update, @room
     @rooms = Room.page(params[:page]).per_page(15)
+    @all_rooms = Room.all
+    @iniciated_rooms = 0
+    @all_rooms.map{|room| @iniciated_rooms+=1 if  room.available}
   end
   def new
 
