@@ -51,8 +51,13 @@ end
       user.surname = auth.info.last_name
       user.foto = auth.info.image
       user.country = auth.extra.raw_info.locale#Convert contrie from file GB|United Kingdom
-      user.language_speak_ids = languages["user"]["language_speak_ids"][1]
-      user.language_improve_ids = languages["user"]["language_improve_ids"][1]
+      debugger
+      if not languages["user"].nil?
+        debugger
+        user.language_speak_ids = languages["user"]["language_speak_ids"] 
+        user.language_improve_ids = languages["user"]["language_improve_ids"]
+      end
+
     end
    
 
