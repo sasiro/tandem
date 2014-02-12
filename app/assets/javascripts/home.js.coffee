@@ -19,8 +19,9 @@ $(window).load ->
     any: ->
       isMobile.Android() or isMobile.BlackBerry() or isMobile.iOS() or isMobile.Windows()
 
+
   $ ->
-    $("#myModal").modal "show"  unless isMobile.any()
+    $("#myModal").modal "show"  
     $('#user_language_speak_ids').chosen(placeholder_text_multiple: "My native languages are ..." ) unless isMobile.any()
     $('#user_language_improve_ids').chosen(placeholder_text_multiple: "I am learning ...") unless isMobile.any()
 
