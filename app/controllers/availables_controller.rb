@@ -42,9 +42,10 @@ class AvailablesController < ApplicationController
   # POST /availables.json
   def create
       @available = Available.new(params[:available])
-
+      debugger
     respond_to do |format|
       if @available.save
+         debugger
         current_user.availables << @available
         format.html { redirect_to availables_path, notice: 'Good. So you can speak languages on '+ @available.day.capitalize + "." }
         format.json { render json: @available, status: :created, location: @available }

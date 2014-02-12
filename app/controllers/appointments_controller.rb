@@ -41,9 +41,10 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(params[:appointment])
-
+    debugger
     respond_to do |format|
       if @appointment.save
+        debugger
         format.html { redirect_to @appointment, notice: 'Good. So you can speak languages on'}
         format.json { render json: @appointment, status: :created, location: @appointment }
       else

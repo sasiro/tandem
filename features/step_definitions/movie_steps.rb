@@ -83,6 +83,18 @@ Given /^a logged in user$/ do
   click_link "Login"
 end
 
+
+Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
+  unless email.blank?
+    visit new_user_session_path
+    fill_in "Email", :with => email
+    fill_in "Password", :with => password
+    click_button "Login"
+  end
+end
+
+
+
 Given /^I wait for (\d+) seconds?$/ do |n|
   sleep(n.to_i)
 end

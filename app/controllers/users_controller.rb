@@ -5,7 +5,29 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page =>15, :page => params[:page])#current_user.compatible_users
-   authorize! :read, @users
+    authorize! :read, @users
+
+    respond_to do |format|
+      #flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
+
+  def metric
+    
+    @users = User.all
+
+    @availables = Available.all
+    @availables_total = @availables.size
+
+    @appointments = Appointment.all
+    @appointments_total = @appointments.size
+    @appointments_pending = @appointments.count(:conditions => "status = 'pending'").size
+    @appointments_sent = @appointments.count(:conditions => "status = 'sent'").size
+    @appointments_acepted = @appointments.count(:conditions => "status = 'acepted'").size
+    @appointments_canceled = @appointments.count(:conditions => "status = 'canceled'").size
+    
 
     respond_to do |format|
       #flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "

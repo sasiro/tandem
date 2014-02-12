@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h1>Metrics <small>and other important information</small></h1>
+</div>
+
+<div class="well well-lg">
+	<ul class="unstyled inline">
+		<li>
+			<span class="icon-user"></span>Total users:<%= @users.size %>
+		</li>
+		<li>
+			Total slots in the schedule <%= @availables_total %>
+		</li>
+		
+	</ul>
+	<ul class="unstyled inline">
+		<li>
+			<span class="icon-calendar"></span>Total petitions of tandem  <%= @appointments_total %>
+		</li>
+		<li>
+			Pending: <%= @appointments_pending %>
+		</li>
+		<li>
+			Sent: <%= @appointments_sent %>
+		</li>
+		<li>
+			Acepted: <%= @appointments_acepted %>
+		</li>
+		<li>
+			Canceled: <%= @appointments_canceled %>
+		</li>
+		
+	</ul>
+	<ul class="unstyled inline">
+		<li>
+			Total Availables <%= @availables.size %>
+		</li>
+		% language speak
+		% language improve
+		languages Speak
+		language Improve
+	</ul>
+</div>

@@ -20,8 +20,9 @@ Tandem::Application.routes.draw do
 
   put "users/update_language" => "users#update_language", :as => :update_language
   match "users/language" => "users#language", :as => :language_users
-   match 'users/tandem' => 'users#tandem', :as => :tandem_users
-   match 'users/find' => 'users#find', :as => :find_users
+  match 'users/tandem' => 'users#tandem', :as => :tandem_users
+  match 'users/find' => 'users#find', :as => :find_users
+  match 'users/metric' => 'users#metric', :as => :metric_users
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   get "home/index"
