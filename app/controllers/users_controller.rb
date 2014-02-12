@@ -18,15 +18,17 @@ class UsersController < ApplicationController
     
     @users = User.all
 
-    @availables = Available.all
+    @availables = Available.all.size
     @availables_total = @availables.size
 
-    @appointments = Appointment.all
-    @appointments_total = @appointments.size
-    @appointments_pending = @appointments.count(:conditions => "status = 'pending'").size
-    @appointments_sent = @appointments.count(:conditions => "status = 'sent'").size
-    @appointments_acepted = @appointments.count(:conditions => "status = 'acepted'").size
-    @appointments_canceled = @appointments.count(:conditions => "status = 'canceled'").size
+    @appointments = Appointment.all.size
+    
+    
+    @appointments_sent = Appointment.where("status == ?","sent").size
+    @appointments_accepted = Appointment.where("status == ?","accepted").size
+    @appointments_canceled = Appointment.where("status == ?","canceled").size
+    @tandem_petitions =  @appointments - @appointments_sent - @appointments_accepted - @appointments_canceled 
+   
     
 
     respond_to do |format|

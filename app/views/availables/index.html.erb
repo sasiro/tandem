@@ -18,7 +18,7 @@
       <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,:label => "Day of week"  %>
 
 
-      <%= f.label :starts," At what hour(GMT+1) are you avaiable?" %>
+      <%= f.label :starts," At what hour(GMT+1) are you available?" %>
 
       <%= f.time_select :starts, :default =>Time.now.beginning_of_hour,:minute_step => 15 %>
 
