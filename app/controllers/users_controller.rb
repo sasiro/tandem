@@ -24,9 +24,9 @@ class UsersController < ApplicationController
     @appointments = Appointment.all.size
     
     
-    @appointments_sent = Appointment.where("status == ?","sent").size
-    @appointments_accepted = Appointment.where("status == ?","accepted").size
-    @appointments_canceled = Appointment.where("status == ?","canceled").size
+    @appointments_sent = Appointment.where("status = ?","sent").size
+    @appointments_accepted = Appointment.where("status = ?","accepted").size
+    @appointments_canceled = Appointment.where("status = ?","canceled").size
     @tandem_petitions =  @appointments - @appointments_sent - @appointments_accepted - @appointments_canceled 
    
     
