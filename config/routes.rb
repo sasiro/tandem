@@ -4,7 +4,7 @@ Tandem::Application.routes.draw do
   end
   
   root :to => "home#index"
- 
+  
   #get "/" => redirect("/home/index", status: 302)
   resources :appointments
   resources :user_steps
@@ -26,7 +26,7 @@ Tandem::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   get "home/index"
-
+  get "home/new"
   #resource :users do
     ## Route GET /user/tandem
     #get 'tandem', :on => :collection
