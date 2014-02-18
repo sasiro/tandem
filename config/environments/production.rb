@@ -66,7 +66,7 @@ Tandem::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   #devise config
-  config.action_mailer.default_url_options = { :host => 'tandemspot.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'tandemspot.com' }
 
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp

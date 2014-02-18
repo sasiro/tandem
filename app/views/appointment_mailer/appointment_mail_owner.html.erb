@@ -1,0 +1,24 @@
+ <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="https://googledrive.com/host/0Bxbtq0hah_exbElvQTA4VDlzLVU">
+         <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
+        <%= stylesheet_link_tag "mail", :media => "all" %>
+</head>
+    <body>
+    	<%= if @appointment.status == "sent"
+    		@text = "test1"
+    		else
+    		@text = "test2"
+    		end %>.
+    	<div> "test <%= @text %>."</div>
+
+
+
+
+
+    </body>
+</html>
