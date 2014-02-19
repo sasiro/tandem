@@ -1,8 +1,7 @@
 class RemoveUserStarterFromUsers < ActiveRecord::Migration
-  def up
+  def change
  	remove_column :users, :user_starter, :integer
   end
-  def down
-  end
+
 
 end
