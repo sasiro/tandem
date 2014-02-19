@@ -50,20 +50,5 @@
 </table>
 
 
-
-        
-
     </body>
-    <% if @appointment.status == "sent"%>
-    
-    <% @text1 = "Hello #{@owner.name}, <br> Congratulation you have a tandem request! :)<br> #{@user.name} wants to speak with you." %>
-    <%%>
-    "%>
-    <% elsif @appointment.status == "accepted" %>
-    <% @text = "test2" %>
-    <% else%>
-    <% @text = "test3"%>
-    <% end %>.
-    <div> "test <%= @text %>."</div>
-
 </html>
