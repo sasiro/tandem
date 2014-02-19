@@ -18,12 +18,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 		<div id="page_top">
 
 			<div id="carousel-example-generic" class="carousel slide hidden-xs" data-interval="false">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				</ol>
+				
 
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
@@ -44,27 +39,37 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 							<p class="text_background">Learn by Speaking</p>
 							<div class="slider_line"></div>
-							<p class="smaller_font">Connect with native speakers  with video chat to learn languages</p>
-							<div class="col-lg-4 col-md-4">
+							<p class="smaller_font" id="value-propositon">Connect with native speakers  with video chat to learn languages</p>
+							<div class="col-lg-3 col-md-2">
 
 
 
 							</div>
-							<div class="col-lg-4 col-md-4">
+							<div class="col-lg-2 col-md-2">
 								<div class="button">
-									<% if not user_signed_in? %>
-									<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+<% if not user_signed_in? %>
+<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+  <%= f.association :language_speak, collection: Language.order(:name), :label =>"I can teach :" %>
+  
 
-									<%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
-									<% end %>
-
-									<% end %>
+									
 
 								</div>
 
 							</div>
-							<div class="col-lg-4 col-md-4">
+							<div class="col-lg-2 col-md-2">
+								<%= f.association :language_improve, collection: Language.order(:name), :label =>"I am improving :"  %>
 							</div>
+							<div class="col-lg-3 col-md-3">
+								  <%= f.submit "Connect to the beta using facebook", :class => 'btn btn-primary '%>
+<% end %>
+
+            <% end %>
+							</div>
+							
+							<div class="col-lg-2 col-md-2">
+							</div>
+							
 							
 
 							
@@ -89,7 +94,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 <% if not user_signed_in? %>
 									<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
 
-									<%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
+									<%= f.submit "Continue", :class => 'btn btn-primary btn-large facebook-button'%>
 									<% end %>
 
 									<% end %>

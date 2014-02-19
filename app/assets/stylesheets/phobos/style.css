@@ -1651,21 +1651,24 @@ h1 {
 
 .slider_circle_image_1 {
 	background-image: url(../../assets/slider1.jpg);
-}/
+	top: 10%;
+}
 
 .slider_circle_image_2 {
 	background-image: url(../../assets/slider2.jpg);
+	top: 10%;
 }
 
 .slider_circle_image_3 {
 	background-image: url(../../assets/slider3.jpg);
+	top: 10%;
 }
 
  }
 
 /* Media Queries End ============================================================*/
  /* Custom */
-.facebook-button{
+/*.facebook-button{
 	height: auto!important;
 	
     font-size: 30px;
@@ -1675,7 +1678,7 @@ h1 {
 min-width:400px;
    
  
-}
+}*/
 
 
 a:hover, a:visited, a:link, a:active
@@ -1691,4 +1694,43 @@ a:hover, a:visited, a:link, a:active
 
 .modal-footer{
 	border-top: 0;
+}
+
+label{
+	color: white!important;
+	font-size: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+#user_language_speak_ids {
+  width: 200px;
+
+}
+#user_language_improve_ids {
+  width: 200px;
+}
+
+
+.slider_circle_image_1 {
+
+	top: 10%;
+	padding-bottom: 3%;
+}
+
+.slider_circle_image_2 {
+
+	top: 10%;
+}
+
+.slider_circle_image_3 {
+
+	top: 10%;
+}
+.text_slider{
+	top: 55%;
+
+}
+.chzn-results { max-height: 70px!important; }
+
+#value-propositon{
+	padding-bottom: 2%;
 }

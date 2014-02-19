@@ -4,22 +4,66 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
-        <%= stylesheet_link_tag "mail", :media => "all" %>
+        <style>
+        body{
+            font-size:16px;
+            font-family:Caviar Dreams,Myriad Pro, Calibri,Verdana;
+            color:#494f5d;
+        }
+        </style>
 </head>
     <body>
-    	<% if @appointment.status == "sent"%>
-    		<% @text = "test1"%>
-            <% elsif @appointment.status == "accepted" %>
-            <% @text = "test2" %>
-       		<% else%>
-    		<% @text = "test3"%>
-    		<% end %>.
-    	<div> "test <%= @text %>."</div>
+        <table align="center" cellspacing="0" style="background-color: #eeebea; width:600px;padding:0;margin:0;border:0;border-spacing: 0;">
+            <tr align="center"  cellspacing="0" style="width:500px;padding:0;margin:0;border:0;border-spacing: 0;">
+                <td colspan="3"cellspacing="0" style="width:600px;padding:0;margin:0;border:0;border-spacing: 0;"><img src="http://tandemspot.es/images/header.jpg"/></td>
+            </tr>
+
+            <tr align="center" style="background-color: #494f5c;width:600px;padding:0;margin:0;border:4;border-spacing: 0;"><td align="center" colspan="3"cellspacing="0" style="width:600px;padding:0;margin:0;border:0;border-spacing: 0;" ><div style="height:3px;"></div></td></tr>
+             
+            <tr>
+                <td rowspan="3" style="width:100px;"></td>
+                <td>
+                    <table  cellspacing="0" style="width:100%;background-color: #eeebea;padding:0;margin:0;border:0;border-spacing: 0;" >
+                         <tr  cellspacing="0" style="width:500px;padding:0;margin:0;border:0;border-spacing: 0;">
+                <td colspan="2"cellspacing="0" style="padding: 15px;margin:0;border:0;border-spacing: 0; color:#494f5d;font-size:16px;font-family:Caviar Dreams,Myriad Pro,Verdana,"> <%=raw "#{@text1}"%> </td>
+            </tr>
+                <tr align="center"  cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
+                <td cellspacing="0" style="padding:15px;margin:0;border:0;border-spacing: 0;"><img src="http://tandemspot.es/images/calendario.png"/></td>
+                  <td cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;font-size:30px;"><%=raw "#{@text2}"%> </td>
+            </tr>
+                <tr   cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
+                <td colspan="2"cellspacing="0" style="padding:15px;margin:0;border:0;border-spacing: 0;"><%=raw "#{@text3}"%></td>
+            </tr>
+                <tr align="center"  cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
+                <td colspan="2"cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
+<a href="http://tandemspot.com"><img src="http://tandemspot.es/images/bt.png"/></a>
+                    </td>
+            </tr>
+                <tr  cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
+                <td colspan="2"cellspacing="0" style="  padding:15px;margin:0;border:0;border-spacing: 0;">Happy speaking,</br> Tandem Spot Team</td>
+            </tr>
+                    </table>
+
+                </td>
+                <td rowspan="3" style="width:100px;"> </td>
+             </tr>    
+</table>
 
 
 
-
+        
 
     </body>
+    <% if @appointment.status == "sent"%>
+    
+    <% @text1 = "Hello #{@owner.name}, <br> Congratulation you have a tandem request! :)<br> #{@user.name} wants to speak with you." %>
+    <%%>
+    "%>
+    <% elsif @appointment.status == "accepted" %>
+    <% @text = "test2" %>
+    <% else%>
+    <% @text = "test3"%>
+    <% end %>.
+    <div> "test <%= @text %>."</div>
+
 </html>

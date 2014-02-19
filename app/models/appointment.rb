@@ -11,4 +11,13 @@ class Appointment < ActiveRecord::Base
   def owned(report)
     current_user.id == appointment.user_id
   end
+
+  def time
+    ava= Available.find(available_id)
+    ava.starts.strftime("%H:%M %p")
+  end
+   def day
+    ava= Available.find(available_id)
+    ava.day 
+   end
  end
