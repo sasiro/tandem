@@ -56,7 +56,10 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id]) 
     @owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
-    @user_starter = User.find(@appointment.user_starter) unless @appointment.user_starter.nil?
+    
+    if not @appointment.user_starter.nil?
+      @user_starter = User.find(@appointment.user_starter)
+    end 
     if params[:appointment][:status] == "sent"
       @appointment.user_starter = current_user.id
       @user_starter = current_user
