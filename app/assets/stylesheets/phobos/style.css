@@ -1729,8 +1729,19 @@ label{
 	top: 55%;
 
 }
-.chzn-results { max-height: 70px!important; }
+.chzn-results { max-height: 70px!important; 
+}
 
 #value-propositon{
 	padding-bottom: 2%;
 }
+#facebook-button{
+	position: relative;
+	top: 25px;
+	width: 80%;
+}
+.default{
+	padding: 0!important;
+	margin-left: 10px!important;
+}
+
