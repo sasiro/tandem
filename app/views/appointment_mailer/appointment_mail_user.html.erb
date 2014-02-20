@@ -27,7 +27,17 @@
                          <tr  cellspacing="0" style="width:500px;padding:0;margin:0;border:0;border-spacing: 0;">
                 <td colspan="2"cellspacing="0" style="padding: 15px;margin:0;border:0;border-spacing: 0; color:#494f5d;font-size:16px;font-family:Caviar Dreams,Myriad Pro,Verdana,"> <%=raw "#{@text1}"%> </td>
             </tr>
-             
+              <% if @appointment.status == "sent" %>
+             <tr>
+                <td align="center">
+                    <% if @owner.foto? %>
+                    <%= image_tag @owner.foto %>
+                    <% else %>
+                    <%= image_tag "icono1.png" %>
+                    <% end %></td> 
+                <td style="padding-left:25px;"> Fluent in : <%=  @language_speak %>  <br /> <br /> Learning :   <%=  @language_improve %>  </td> 
+            </tr>
+             <% end %> 
             <tr align="center"  cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">
                 <td cellspacing="0" style="padding:15px;margin:0;border:0;border-spacing: 0;"><%= image_tag "calendario.png" %></td>
                   <td cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;font-size:30px;"><%=raw "#{@text2}"%> </td>

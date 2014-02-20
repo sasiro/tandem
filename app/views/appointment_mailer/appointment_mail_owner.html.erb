@@ -29,13 +29,13 @@
             </tr>
             <% if @appointment.status == "sent" %>
              <tr>
-                <td style="max-width: 100px; max-heigth: 100px;"align="center">
+                <td align="center">
                     <% if @user.foto? %>
                     <%= image_tag @user.foto %>
                     <% else %>
                     <%= image_tag "icono1.png" %>
                     <% end %></td> 
-                <td> Fluent in : English  <br /> Learning : English, Spanish  </td> 
+                <td style="padding-left:25px;"> Fluent in : <%=  @language_speak %>  <br /> <br /> Learning :   <%=  @language_improve %>  </td> 
             </tr>
              <% end %>  
                 <tr align="center"  cellspacing="0" style="padding:0;margin:0;border:0;border-spacing: 0;">

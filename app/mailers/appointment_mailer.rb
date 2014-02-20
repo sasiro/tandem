@@ -13,15 +13,18 @@ class AppointmentMailer < ActionMailer::Base
     @time = appointment.time
     @day = appointment.day
     if @appointment.status == "sent"
-      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem request have been sent to #{@owner.name} :)"  
+      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem request have been sent to <b>#{@owner.name}</b> :)"  
       @text2 = "#{@day} <br />#{@time}"
       @text3 = "While you wait for #{@owner.name}'s confirmation you can meet some other interesting people"
       @img1 = "bt.png"
-     
+     @language_improve = ""
+      @owner.language_improve.each  { |lang| @language_improve += lang.name + " "}
+      @language_speak = ""
+      @owner.language_speak.each  { |lang| @language_speak += lang.name + " "}
       msj = "requested"  
       mail to: "#{user.name} <#{user.email}>", subject:"You have #{msj} a tandem with #{owner.name}" 
     elsif @appointment.status == "accepted"
-      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem with #{@user.name} have been accepted! :) "  
+      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem with #{@user.name} has been accepted! :) "  
       @text2 = "#{@day} <br />#{@time}"
       @text3 = "Remember to login to Tandem Spot 10 minutes before your appointment and go to Speak Now"
       @img1 = "bt.png"
@@ -33,7 +36,7 @@ class AppointmentMailer < ActionMailer::Base
       @text2 = "Canceled"
       @text3 = "No worries there are a looot of users looking for more language exchanges in Tandem Spot"
       @img1 = "bt3.png"
-
+      
       msj = @appointment.status 
       mail to: "#{user.name} <#{user.email}>", subject:"#{owner.name} has #{msj} a tandem with you"
     end
@@ -46,12 +49,18 @@ class AppointmentMailer < ActionMailer::Base
     @time = appointment.time
     @day = appointment.day
     if @appointment.status == "sent" 
-      @text1 = "Hello #{@owner.name},<br /> <br /> Congratulations you have a tandem request! :) \n #{@user.name} wants to speak with you."  
+      @text1 = "Hello #{@owner.name},<br /> <br /> Congratulations you have a tandem request! :) \n <b>#{@user.name}</b> wants to speak with you."  
       @text2 = "#{@day} <br />#{@time}"
-      @text3 = "Remember to login to Tandem Spot 10 minutes before your appointment and go to Speak Now"
+      @text3 = "Remember to log in Tandem Spot 10 minutes before your appointment and go to Speak Now"
       @img1 = "bt2.png"
-      msj = "requested"  
+      msj = "requested" 
+      @language_improve = ""
+      @user.language_improve.each  { |lang| @language_improve += lang.name + " "}
+      @language_speak = ""
+      @user.language_speak.each  { |lang| @language_speak += lang.name + " "}
+       
       mail to: "#{owner.name} <#{owner.email}>", subject:"#{user.name} has #{msj} a tandem with you"
+     
     elsif @appointment.status =="accepted"
       @text1 = "Hello #{@owner.name},<br /> <br /> You have accepted a tandem with #{@user.name}! :) "  
       @text2 = "#{@day} <br />#{@time}"
