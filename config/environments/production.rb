@@ -71,5 +71,5 @@ Tandem::Application.configure do
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp
 
-
+   config.action_mailer.asset_host = 'http://tandemspot.com'
 end
