@@ -16,7 +16,7 @@ gem 'newrelic_rpm'
 gem "letter_opener", :group => :development
 gem 'will_paginate', '~> 3.0'
 gem 'language_list'
-
+gem 'customerio'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
