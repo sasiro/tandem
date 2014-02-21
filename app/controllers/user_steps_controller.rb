@@ -12,7 +12,7 @@ class UserStepsController < ApplicationController
         $customerio.identify(
           id: current_user.id,
           email: current_user.email,
-          created_at: current_user.to_time.to_i,
+          created_at: current_user.created_at.to_time.to_i,
           first_name: "Bob",
           plan: "basic"
         )
