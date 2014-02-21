@@ -23,7 +23,24 @@
 <% end %>
 
   </fieldset>
-<%= render "devise/shared/links" %>
+
+    <%= link_to raw("Forgot your password?"),
+        new_user_password_path,
+        method: :get
+      %>
 </div>
+
 <div class="span4">
+ <h4>Did you sign in with facebook?</h4>
+       <%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
+     <%= f.submit "Connect with facebook", :class => 'btn btn-primary  facebook-button'%> or 
+          <%= link_to raw("Register"),
+        new_user_registration_path,
+        class: "btn",
+        method: :get,
+        rel:'popover',
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Send some of our native speakers a request to speak' }
+
+      %>
+      <% end %>
 </div>
