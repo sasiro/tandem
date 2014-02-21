@@ -13,8 +13,8 @@ class UserStepsController < ApplicationController
         $customerio.identify(
           id: current_user.id,
           email: current_user.email,
-          language_speak: current_user.language_speak,
-          language_improve: current_user.language_improve,
+          language_speak: current_user.language_speak.to_s,
+          language_improve: current_user.language_improve.to_s,
           created_at: current_user.created_at.to_time.to_i,
           plan: "free"
         )
