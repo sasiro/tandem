@@ -9,9 +9,21 @@ class UserStepsController < ApplicationController
     case step
       when :personal
         flash[:just_signed_up] = true
+        $customerio.identify(
+          id: current_user.id,
+          email: current_user.email,
+          created_at: current_user.to_time.to_i,
+          first_name: "Bob",
+          plan: "basic"
+        )
       end
     case step
       when :validated
+         $customerio.identify(
+          id: current_user.id,
+          first_name: current_user.first_name,
+          surname: current_user.surname
+        )
         @url_shared="http://tandemspot.com/?utm_medium=Social Media&utm_source=Facebook&utm_campaign=#{current_user.uid}"
       end
     render_wizard
