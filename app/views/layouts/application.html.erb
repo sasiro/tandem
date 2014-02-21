@@ -71,6 +71,7 @@
    
 
 	<body data-spy="scroll" data-offset='90'>
+   
 
       <% if user_signed_in?  %>
       <div class="navbar navbar-fixed-top">
@@ -86,7 +87,8 @@
               <li><%= link_to raw("<i class=\"icon-user\"></i> ") + "List of users", users_path %></li>
               <li><%= link_to raw("<i class=\"icon-facetime-video\"></i> ") +"Speak Now",new_room_path %></li>
               <% pending = Appointment.pending(current_user) %>
-              <li > 
+              <li >
+              
                 <%  pending == 0 ? id = "" : id = "badge badge-important calendar-notification" %>
                 <%= link_to raw("<i class=\" icon-calendar \"></i> ") +pending.to_s ,appointments_path, class: id %>
               </li>
@@ -136,6 +138,9 @@
         <% end %>
         <% end %>
         <%= yield %>
+
+
+
        <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
        <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
       </body>
