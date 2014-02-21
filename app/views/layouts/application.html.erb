@@ -86,8 +86,9 @@
               <li><%= link_to raw("<i class=\"icon-user\"></i> ") + "List of users", users_path %></li>
               <li><%= link_to raw("<i class=\"icon-facetime-video\"></i> ") +"Speak Now",new_room_path %></li>
               <% pending = Appointment.pending(current_user) %>
-              <li>
-                <%= link_to raw("<i class=\" icon-calendar \"></i> ") +pending.to_s ,appointments_path %>
+              <li > 
+                <%  pending == 0 ? id = "" : id = "badge badge-important calendar-notification" %>
+                <%= link_to raw("<i class=\" icon-calendar \"></i> ") +pending.to_s ,appointments_path, class: id %>
               </li>
               <li><%= link_to current_user.email, edit_user_registration_path %> </li>
               <li> <%= link_to 'Profile', edit_user_registration_path %></li>
