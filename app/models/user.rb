@@ -136,4 +136,16 @@ def self.search(search)
     scoped
   end
 end
+def language_speak
+  @language_speak = ""
+  @owner.language_speak.each  { |lang| @language_speak += lang.name + " "}
+  @language_speak
+end
+def language_improve
+  @language_improve = ""
+  @owner.language_improve.each  { |lang| @language_improve += lang.name + " "}
+  @language_improve
+end
+
+
 end
