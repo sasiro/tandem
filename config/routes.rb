@@ -25,6 +25,9 @@ Tandem::Application.routes.draw do
   match 'users/metric' => 'users#metric', :as => :metric_users
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+
+ 
   get "home/index"
   get "home/new"
   #resource :users do

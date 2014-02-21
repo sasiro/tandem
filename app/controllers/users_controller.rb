@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-   authorize! :edit, @user
+    authorize! :edit, @user
   end
 
   # POST /users

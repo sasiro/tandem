@@ -286,23 +286,24 @@
           <% end %>
         </div>
 
-        <% if f.object.password_required? %>
+        
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-        <br />
-        <br />
-        <br />
-  <%= f.input :password,  :autocomplete => "off"%> <i>(leave blank if you don't want to change it)</i>
-
-  <%= f.input :password_confirmation, :autocomplete => "off"%> <i>(leave blank if you don't want to change it)</i>
   <% if f.object.encrypted_password.present? %>
-    <div><%= f.input :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <div><%= f.input :current_password, :label => "Password" %> <i>(we need your current password to confirm your changes)</i><br />
 </div>
   <% end %>
-   <% end %>
+        <br />
+        <br />
+        <br />
+  <%= f.input :password,  :autocomplete => "off", :label => "New password" %> <i>(leave blank if you don't want to change it)<br/></i>
+ <br />
+  <%= f.input :password_confirmation, :autocomplete => "off"%> <i>(leave blank if you don't want to change it)</i>
+
+  
 
   <div class="form-actions">
     <%= f.submit "Update" , :class => 'btn btn-large btn-primary'%>

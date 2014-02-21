@@ -7,11 +7,11 @@
 <h1>Sign up <span class="label label-default">beta</span></h1>
 
       <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-vertical'} do |f| %>
-
+<%= devise_error_messages! %>
 <fieldset>
 
 
-       <div class="field">
+       <div class="field controls">
           <%= f.label :language_speak_ids, "* Languages you speak" %><br />
           <%= f.collection_select :language_speak_ids, Language.order(:name), :id, :name, {}, {multiple: true} %>
         </div>
