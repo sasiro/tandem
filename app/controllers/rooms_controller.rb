@@ -9,8 +9,8 @@ class RoomsController < ApplicationController
   end
   def new
     #Customer information
-   $customerio.track(current_user.id, "Created a room")
-          
+   $customerio.track(current_user.id, "created_room")
+   debugger      
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
 
