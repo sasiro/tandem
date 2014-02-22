@@ -8,10 +8,11 @@ class RoomsController < ApplicationController
     @all_rooms.map{|room| @iniciated_rooms+=1 if  room.available}
   end
   def new
-
+    #Customer information
+   $customerio.track(current_user.id, "Created a room")
+          
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-
 
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
@@ -20,6 +21,7 @@ class RoomsController < ApplicationController
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:available => false ) #It can't be accesed again
           room.save!
+          
           redirect_to("/party/"+room.id.to_s)
 
           room_found = true

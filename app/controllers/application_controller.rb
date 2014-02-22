@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     user = User.find(current_user.id)
+    $customerio.identify( id: user.id)
     if user.sign_in_count == 1 or  not user.valid?
       user_steps_path
     elsif user.appointments.empty?
