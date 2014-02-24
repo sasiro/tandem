@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
   end
   def new
     #Customer information
-   $customerio.track(current_user.id, "created_room")
+   
    debugger      
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:available => false ) #It can't be accesed again
           room.save!
-          
+          $customerio.track(current_user.id, "party_view",:type => "joined", :number => room.id.to_s)
           redirect_to("/party/"+room.id.to_s)
 
           room_found = true
@@ -38,6 +38,7 @@ class RoomsController < ApplicationController
 
       respond_to do |format|
         if @new_room.save
+          $customerio.track(current_user.id, "party_view",:type => "created")
           format.html { redirect_to("/party/"+@new_room.id.to_s) }
         else
           format.html { render :controller => 'user',

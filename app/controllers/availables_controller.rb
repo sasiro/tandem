@@ -41,8 +41,9 @@ class AvailablesController < ApplicationController
   # POST /availables
   # POST /availables.json
   def create
+     $customerio.track(current_user.id, "availables",:type => "created")
       @available = Available.new(params[:available])
-      debugger
+      
     respond_to do |format|
       if @available.save
          debugger
@@ -59,6 +60,8 @@ class AvailablesController < ApplicationController
   # PUT /availables/1
   # PUT /availables/1.json
   def update
+    $customerio.track(current_user.id, "availables",:type => "updated")
+     
     @available = Available.find(params[:id])
 
     respond_to do |format|

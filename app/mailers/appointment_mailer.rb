@@ -24,7 +24,7 @@ class AppointmentMailer < ActionMailer::Base
       msj = "requested"  
       mail to: "#{user.name} <#{user.email}>", subject:"You have #{msj} a tandem with #{owner.name}" 
     elsif @appointment.status == "accepted"
-      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem with #{@user.name} has been accepted! :) "  
+      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem with #{@owner.name} has been accepted! :) "  
       @text2 = "#{@day} <br />#{@time}"
       @text3 = "Remember to login to Tandem Spot 10 minutes before your appointment and go to Speak Now"
       @img1 = "bt.png"

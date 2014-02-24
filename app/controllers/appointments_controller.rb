@@ -40,8 +40,8 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
+
     @appointment = Appointment.new(params[:appointment])
-    debugger
     respond_to do |format|
       if @appointment.save
         debugger
@@ -56,16 +56,18 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id]) 
     @owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
-    
     if not @appointment.user_starter.nil?
       @user_starter = User.find(@appointment.user_starter)
     end 
     if params[:appointment][:status] == "sent"
+
       @appointment.user_starter = current_user.id
       @user_starter = current_user
     end
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
+        $customerio.track(current_user.id, "appointment",:type => "updated",:status => @appointment.status)
+  
         AppointmentMailer.appointment_mail_owner(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
         AppointmentMailer.appointment_mail_user(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
         redirect_page = users_path
