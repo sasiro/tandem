@@ -136,16 +136,28 @@ def self.search(search)
     scoped
   end
 end
-def self.language_speak_string#TODO
-  language_speak = ""
-  self.language_speak.each  { |lang| language_speak += lang.name + " "}
-  language_speak
-end
-def self.language_improve_string#todo
-  language_improve = ""
-  self.language_improve.each  { |lang| language_improve += lang.name + " "}
-  language_improve
+def speak_string#TODO
+  speak_string = ""
+  self.language_speak.each  do |lang|
+    if lang != self.language_speak.last 
+      speak_string += lang.name + ", "
+    else 
+      speak_string += lang.name
+    end
+  end
+  speak_string
 end
 
+def improve_string#TODO
+  improve_string = ""
+  self.language_speak.each  do |lang|
+    if lang != self.language_improve.last 
+      improve_string += lang.name + ", "
+    else 
+      improve_string += lang.name
+    end
+  end
+  improve_string
+end
 
 end

@@ -12,7 +12,16 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     user = User.find(current_user.id)
-    $customerio.identify( id: user.id)
+    $customerio.identify(
+          id: user.id,
+          email: user.email,
+          language_speak: user.speak_string,
+          language_improve: user.improve_string,
+          created_at: user.created_at.to_time.to_i,
+          plan: "free",
+          first_name: user.name,
+          surname: user.surname
+        )
     if user.sign_in_count == 1 or  not user.valid?
       user_steps_path
     elsif user.appointments.empty?
@@ -23,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
  # def after_sign_in_path_for(resource)
-    #user = User.find(current_user.id)
+    #user = User.find(user.id)
     #if user.language?
       ##tandem_users_path
       #user_steps_path
