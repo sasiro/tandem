@@ -13,7 +13,7 @@ class AppointmentMailer < ActionMailer::Base
     @time = appointment.time
     @day = appointment.day
     if @appointment.status == "sent"
-      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem request have been sent to <b>#{@owner.name}</b> :)"  
+      @text1 = "Hello #{@user.name},<br /> <br /> Your tandem request has been sent to <b>#{@owner.name}</b> :)"  
       @text2 = "#{@day} <br />#{@time}"
       @text3 = "While you wait for #{@owner.name}'s confirmation you can meet some other interesting people"
       @img1 = "bt.png"
