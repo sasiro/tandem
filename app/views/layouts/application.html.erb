@@ -30,7 +30,7 @@
       <%= javascript_include_tag "phobos/respond.min" %>
       <%= javascript_include_tag "phobos/googletranslate" %>
       <%= javascript_include_tag "phobos/experiment" %>
-      
+      <%= javascript_include_tag "chosen-jquery" %>
       <%= javascript_include_tag "home" %>
       <%= javascript_include_tag "users" %>
      
@@ -40,15 +40,13 @@
       <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all"%>
      <%= stylesheet_link_tag "phobos/style", :media => "all" %> 
       <%= stylesheet_link_tag "phobos/translate", :media => "all" %>
-
+ <%= stylesheet_link_tag "chosen", :media => "all" %>
       
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
   <!--[if lte IE 8]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <%= javascript_include_tag "chosen-jquery" %>
-     <%= stylesheet_link_tag "chosen", :media => "all" %>
     <meta name="google-translate-customization" content="7377276bb2c27717-b8f205510aa94232-g9e59485595d4b6b5-e"></meta>
       <% else %>
       <%= javascript_include_tag "application" %>
