@@ -150,7 +150,7 @@ end
 
 def improve_string#TODO
   improve_string = ""
-  self.language_speak.each  do |lang|
+  self.language_improve.each  do |lang|
     if lang != self.language_improve.last 
       improve_string += lang.name + ", "
     else 
