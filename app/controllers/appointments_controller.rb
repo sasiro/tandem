@@ -47,6 +47,9 @@ class AppointmentsController < ApplicationController
         debugger
         format.html { redirect_to @appointment, notice: 'Good. So you can speak languages on'}
         format.json { render json: @appointment, status: :created, location: @appointment }
+        
+        $customerio.track(current_user.id, "appointment",:type => "created",:status => @appointment.status)
+      
       else
         format.html { render action: "new" }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
@@ -66,8 +69,11 @@ class AppointmentsController < ApplicationController
     end
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        $customerio.track(current_user.id, "appointment",:type => "updated",:status => @appointment.status)
-  
+
+       
+        $customerio.track(current_user.id, "appointment",:type => "updated", :day =>next_tandem. ,:status => @appointment.status)
+        $customerio.track(@owner.id , "appointment",:type => "updated",:status => @appointment.status)
+        #24 h before the appointment send a mail.
         AppointmentMailer.appointment_mail_owner(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
         AppointmentMailer.appointment_mail_user(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
         redirect_page = users_path
