@@ -61,7 +61,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 								<%= f.association :language_improve, collection: Language.order(:name), :label =>"I am improving :" ,:class =>"language-selector" %>
 							</div>
 							<div class="col-lg-3 col-md-3">
-								  <%= f.submit "Connect to the beta using facebook", :class => 'btn btn-primary ', :id => "facebook-button"%>
+								  <%= f.submit "Connect", :class => 'btn btn-primary ', :id => "facebook-button"%>
 <% end %>
 
             <% end %>
@@ -130,7 +130,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 									<% if not user_signed_in? %>
 									<%= simple_form_for resource, :html => { :class => 'form-horizontal form-inline' }, :url => user_omniauth_authorize_path(:facebook)  do |f| %>
 
-									<%= f.submit "Connect using facebook", :class => 'btn btn-primary btn-large facebook-button'%>
+									<%= f.submit "Connect", :class => 'btn btn-primary btn-large facebook-button'%>
 									<% end %>
 
 									<% end %>
