@@ -19,7 +19,9 @@
          
         
               <%  if current_page? home_new_path %>
-
+ <%= javascript_include_tag "chosen-jquery" %>
+       <%= stylesheet_link_tag "chosen", :media => "all" %>
+     
 
        <%= javascript_include_tag "phobos/jquery-1.10.2.min" %>
       <%= javascript_include_tag "phobos/jquery.easing.1.3" %>
@@ -49,9 +51,7 @@
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <meta name="google-translate-customization" content="7377276bb2c27717-b8f205510aa94232-g9e59485595d4b6b5-e"></meta>
     
-  <%= javascript_include_tag "chosen-jquery" %>
-       <%= stylesheet_link_tag "chosen", :media => "all" %>
-      <% else %>
+  <% else %>
       <%= javascript_include_tag "application" %>
       <%= javascript_include_tag "phobos/experiment" %>
       <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
