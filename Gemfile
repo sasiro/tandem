@@ -10,7 +10,6 @@ gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'holder_rails'
 gem 'opentok'
-gem 'debugger'
 gem "cancan"
 gem 'newrelic_rpm'
 gem "letter_opener", :group => :development

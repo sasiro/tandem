@@ -49,7 +49,6 @@ class AppointmentMailer < ActionMailer::Base
     @time = appointment.time
     @day = appointment.day
 
-    debugger
     if @appointment.status == "sent"
       @text1 = "Hello #{@owner.name},<br /> <br /> Congratulations you have a tandem request! :) \n <b>#{@user.name}</b> wants to speak with you."
       @text2 = "#{@day} <br />#{@time}"
