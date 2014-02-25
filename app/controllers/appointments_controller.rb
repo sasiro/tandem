@@ -40,16 +40,23 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-
     @appointment = Appointment.new(params[:appointment])
+    @appointment.status = "sent"
+    @appointment.user_id = Available.find(@appointment.available_id).user_id
+    @appointment.user_starter = current_user.id
+    @owner = User.find(@appointment.user_id)
+    @user = User.find(@appointment.user_starter)
     respond_to do |format|
       if @appointment.save
-        debugger
-        format.html { redirect_to @appointment, notice: 'Good. So you can speak languages on'}
-        format.json { render json: @appointment, status: :created, location: @appointment }
-        
+
+        AppointmentMailer.appointment_mail_owner( @user,@owner, @appointment).deliver unless Rails.env.test?
+        AppointmentMailer.appointment_mail_user( @user, @owner, @appointment).deliver unless Rails.env.test?
+
+        format.html { redirect_to users_path, notice: 'Good. You have sent an appointment, check your email!!'}
+        format.json { render json: users_path, status: :created, location: @appointment }
+
         $customerio.track(current_user.id, "appointment",:type => "created",:status => @appointment.status)
-      
+
       else
         format.html { render action: "new" }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
@@ -57,16 +64,22 @@ class AppointmentsController < ApplicationController
     end
   end
   def update
-    @appointment = Appointment.find(params[:id]) 
+    debugger
+    @appointment = Appointment.find(params[:id])
     @owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
+    @user = User.find(@appointment.user_starter)
+
+=begin
     if not @appointment.user_starter.nil?
       @user_starter = User.find(@appointment.user_starter)
-    end 
+    end
+
     if params[:appointment][:status] == "sent"
 
       @appointment.user_starter = current_user.id
       @user_starter = current_user
     end
+=end
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
 
@@ -74,8 +87,8 @@ class AppointmentsController < ApplicationController
         $customerio.track(current_user.id, "appointment",:type => "updated",:status => @appointment.status)
         $customerio.track(@owner.id , "appointment",:type => "updated",:status => @appointment.status)
         #24 h before the appointment
-        AppointmentMailer.appointment_mail_owner(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
-        AppointmentMailer.appointment_mail_user(@user_starter, @owner, @appointment).deliver unless Rails.env.test?
+        AppointmentMailer.appointment_mail_owner(@user, @owner, @appointment).deliver unless Rails.env.test?
+        AppointmentMailer.appointment_mail_user(@user, @owner, @appointment).deliver unless Rails.env.test?
         redirect_page = users_path
         msj = "Ok, you have #{@appointment.status} an appointment"
         format.html { redirect_to redirect_page, notice: msj }
@@ -98,14 +111,14 @@ class AppointmentsController < ApplicationController
   end
 end
 
-   
+
 
 
   # PUT /appointments/1
   # PUT /appointments/1.json
 =begin
   def update
-    @appointment = Appointment.find(params[:id]) 
+    @appointment = Appointment.find(params[:id])
     @owner = User.find(@appointment.user_id)#to get the email of the owner of the appointment
     @user_starter = User.find(@appointment.user_starter) unless @appointment.user_starter.nil?
     if params[:appointment][:status] == "sent"
@@ -142,7 +155,7 @@ end
       end
     end
   end
-=end  
+=end
   # DELETE /appointments/1
   # DELETE /appointments/1.json
 

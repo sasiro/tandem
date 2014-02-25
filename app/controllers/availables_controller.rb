@@ -42,12 +42,14 @@ class AvailablesController < ApplicationController
   # POST /availables.json
   def create
      $customerio.track(current_user.id, "availables",:type => "created")
-      @available = Available.new(params[:available])
-      
+     
+    @available = Available.new(params[:available])
+    @available.user_id = current_user.id
     respond_to do |format|
       if @available.save
-         debugger
+        debugger
         current_user.availables << @available
+        debugger
         format.html { redirect_to availables_path, notice: 'Good. So you can speak languages on '+ @available.day.capitalize + "." }
         format.json { render json: @available, status: :created, location: @available }
       else

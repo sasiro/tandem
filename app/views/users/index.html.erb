@@ -67,16 +67,17 @@
           <td><%= user.surname %></td>
           <td>
             <small>
-              <% user.appointments.each do |app| %>
-                <% ava = app.available %>
-                <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%H:%M")} </i>"),
-                  appointment_path(app,
-                                   :appointment =>{:status => "sent"}),
-                                   class: "btn btn-mini",
-                                   :method => :put,
-                                   :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%H:%M")}?"
-                                 %>
-                             <% end %>
+                <% user.availables.each do |ava| %>
+
+                       <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%H:%M %p")} </i>"),
+                         appointments_path(
+                                          :appointment =>{:available_id => ava.id}),
+                                          class: "btn btn-mini",
+                                          :method => :post,
+                                          :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%H:%M %p")}?"
+                                        %>
+                                    <% end %>
+
                            </small>
                          </td>
                          <td><% user.language_speak.each do |language|  %>
@@ -121,13 +122,13 @@
                  <td><%= user.surname %></td>
                  <td>
                    <small>
-                     <% user.appointments.each do |app| %>
-                       <% ava = app.available %>
+                     <% user.availables.each do |ava| %>
+
                        <%= link_to raw("<i class=\"\"> #{ava.day} #{ava.starts.strftime("%H:%M %p")} </i>"),
-                         appointment_path(app,
-                                          :appointment =>{:status => "sent"}),
+                         appointments_path(
+                                          :appointment =>{:available_id => ava.id}),
                                           class: "btn btn-mini",
-                                          :method => :put,
+                                          :method => :post,
                                           :confirm => "Do you want to send him an email to speak on #{ava.day} at #{ava.starts.strftime("%H:%M %p")}?"
                                         %>
                                     <% end %>

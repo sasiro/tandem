@@ -18,6 +18,6 @@ class Appointment < ActiveRecord::Base
   end
    def day
     ava= Available.find(available_id)
-    ava.day 
+    ava.day
    end
  end

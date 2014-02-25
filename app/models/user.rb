@@ -15,8 +15,14 @@ class User < ActiveRecord::Base
   has_many :hobby
   has_many :interest, :through => :hobby, :class_name => "Interest"
 
-  has_many :appointments
-  has_many :availables, :through => :appointments
+
+
+
+  has_many :appointments 
+  has_many :availables
+
+
+
   validates :country, :email, presence: true
   validates :language_speak, :language_improve, presence:true
   ROLES = %w[admin default ambassador banned]
