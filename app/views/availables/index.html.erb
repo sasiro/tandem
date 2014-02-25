@@ -46,15 +46,14 @@
           <tr>
             <th>Day</th>
             <th>Hour (GMT+1)</th>
-            <th>Duration</th>
           </tr>
         </thead>
         <% @availables.each do |ava| %>
 
+        <% if not ava.nil? %>
             <tr>
               <td><%= ava.day %></td>
               <td><%= ava.starts.strftime("%H:%M") %></td>
-              <td><%= ava.duration.strftime("%H:%M")  %></td>
               <td>
                 <%= link_to raw("<i class=\"icon-white icon-calendar\">Edit</i>"),
                   {controller: 'availables', action: 'edit' , id: ava.id},
@@ -71,6 +70,7 @@
           </td>
 
         </tr>
+      <% end %>
       <% end %>
   </table>
        </div>
