@@ -50,7 +50,6 @@
         </thead>
         <% @availables.each do |ava| %>
 
-        <% if not ava.nil? %>
             <tr>
               <td><%= ava.day %></td>
               <td><%= ava.starts.strftime("%H:%M") %></td>
@@ -71,7 +70,7 @@
 
         </tr>
       <% end %>
-      <% end %>
+  
   </table>
        </div>
 

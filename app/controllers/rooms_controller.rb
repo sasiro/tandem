@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
    debugger      
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-
+   debugger
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
         debugger

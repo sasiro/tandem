@@ -38,14 +38,14 @@
                                    :appointment =>{:status => "accepted"}),
                                    class: "btn btn-success",
                                    :method => :put,
-                                   :confirm => "Are you sure that you to speak next  appointment.available.day at appointment.available.starts.strftime('%H:%M')?"
+                                   :confirm => "Are you sure that you want to speak next  #{appointment.available.day} at #{appointment.available.starts.strftime('%H:%M')}?"
                                  %>
                                <%= link_to raw("<i class=\"icon-white\">Cancel </i>"),
                                  appointment_path(appointment,
                                                   :appointment =>{:status => "canceled"}),
                                                   class: "btn btn-danger",
                                                   :method => :put,
-                                                  :confirm => "Are you sure that you to cancel the appointment?"
+                                                  :confirm => "Are you sure that you want to cancel the appointment?"
                                                 %>
  <% elsif appointment.status == "accepted" %>
    <p class="text-success bold"> <strong>Accepted </strong></p>
