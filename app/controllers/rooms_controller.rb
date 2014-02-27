@@ -9,14 +9,14 @@ class RoomsController < ApplicationController
   end
   def new
     #Customer information
-   
-   debugger      
+
+       
     room_found = false
     @rooms = Room.where(:available =>true).order('created_at ASC')
-   debugger
+
     if not @rooms.empty?#to find if there is rooms waiting for a user to join
       @rooms.each do |room|
-        debugger
+        
         user = User.find(room.publisher_id)#has to be adapted to de ID
         if not (user.language_improve & current_user.language_speak).empty? and not (user.language_speak & current_user.language_improve).empty? #To make the user with same demanding languages and ofering languages go to the same room
           room.update_attributes(:available => false ) #It can't be accesed again
@@ -42,11 +42,12 @@ class RoomsController < ApplicationController
           format.html { redirect_to("/party/"+@new_room.id.to_s) }
         else
           format.html { render :controller => 'user',
-                        :action => "tandem" }
+            :action => "tandem" }
+          end
         end
       end
+
     end
-  end
   def party
     @room = Room.find(params[:id])
     @tok_token = @opentok.generate_token :session_id =>@room.session_id, :expire_time => Time.now.to_i + 60*60

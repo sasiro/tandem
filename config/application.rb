@@ -63,7 +63,7 @@ module Tandem
     #or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
     #Add assets/fonts dictory to the asset pipeline
-    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.assets.paths << "#{Rails.root}/app/assets"
 
   end
 end
