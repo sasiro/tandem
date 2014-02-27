@@ -22,28 +22,28 @@
 
 
 
-       <%= javascript_include_tag "phobos/jquery-1.10.2.min" %>
-      <%= javascript_include_tag "phobos/jquery.easing.1.3" %>
-      <%= javascript_include_tag "phobos/bootstrap.min" %>
-      <%= javascript_include_tag "phobos/contact" %>
-      <%= javascript_include_tag "phobos/gmap" %>
-      <%= javascript_include_tag "phobos/main" %>
-      <%= javascript_include_tag "phobos/respond.min" %>
-      <%= javascript_include_tag "phobos/googletranslate" %>
+       <%= javascript_include_tag "phobos/jquery-1.10.2.min", :async => true  %>
+      <%= javascript_include_tag "phobos/jquery.easing.1.3", :async => true  %>
+      <%= javascript_include_tag "phobos/bootstrap.min", :async => true  %>
+      <%= javascript_include_tag "phobos/contact", :async => true  %>
+      <%= javascript_include_tag "phobos/gmap", :async => true  %>
+      <%= javascript_include_tag "phobos/main", :async => true  %>
+      <%= javascript_include_tag "phobos/respond.min", :async => true  %>
+      <%= javascript_include_tag "phobos/googletranslate", :async => true  %>
       <%= javascript_include_tag "phobos/experiment", :async => true %>
 
-      <%= javascript_include_tag "home" %>
-      <%= javascript_include_tag "users" %>
-      <%= javascript_include_tag "chosen-jquery" %>
+      <%= javascript_include_tag "home", :async => true  %>
+      <%= javascript_include_tag "users", :async => true  %>
+      <%= javascript_include_tag "chosen-jquery"  %>
 
- <%= stylesheet_link_tag "phobos/bootstrap.min", :media => "all" %>
+ <%= stylesheet_link_tag "phobos/bootstrap.min", :media => "all", :async => true  %>
 
 
-      <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all"%>
-      <%= stylesheet_link_tag "chosen", :media => "all" %>
+      <%= stylesheet_link_tag "phobos/font-awesome.min" , :media => "all" , :async => true %>
+      <%= stylesheet_link_tag "chosen", :media => "all", :async => true  %>
 
-     <%= stylesheet_link_tag "phobos/style", :media => "all" %>
-      <%= stylesheet_link_tag "phobos/translate", :media => "all" %>
+     <%= stylesheet_link_tag "phobos/style", :media => "all", :async => true  %>
+      <%= stylesheet_link_tag "phobos/translate", :media => "all", :async => true  %>
 
 
   <!--[if lte IE 8]>

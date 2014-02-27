@@ -12,8 +12,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
 </script><script>utmx('url','A/B');</script>
 <!-- End of Google Analytics Content Experiment code -->
- <%= javascript_include_tag "phobos/experiment" %>
- <%= javascript_include_tag "home" %>
+ <%= javascript_include_tag "phobos/experiment", :async => true  %>
+ <%= javascript_include_tag "home", :async => true  %>
 <style>
  /* GLOBAL STYLES
     -------------------------------------------------- */
@@ -290,10 +290,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         display:inline-block;
         font-size: 20px!important;
          color: #white!important;
-        
-         
+
+
       }
-     
+
       .chzn-choices {
         width: 70%!important;
       }
@@ -347,8 +347,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
                   <li>  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id => "facebook-button-navbar" ,:class =>"facebook-button" %></li>
 
                   <li> <%= link_to 'Blog', "http://blog.tandemspot.com" %></li>
-             
-              
+
+
             </ul>
 
           </div>
@@ -384,7 +384,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
           </div>
 
         </div>
- 
+
       </div>
     </div><!-- /.carousel -->
 
@@ -431,7 +431,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       <!-- /END THE FEATURETTES -->
 
       <hr class="featurette-divider">
-   
+
 
 
  <!-- Three columns of Users -->
