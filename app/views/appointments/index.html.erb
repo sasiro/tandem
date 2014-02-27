@@ -59,9 +59,9 @@
                                             <% else %>
                                               <p> <%= appointment.status %> </p>
                                             <% end %>
- 
+  
         <% @starter = User.find appointment.user_starter %>
-        <td>  <%=  @starter.nil? ?  image_tag("icono1.png") :  image_tag(@starter.foto, alt: "Foto #{@starter.name} #{@starter.surname}")  %></td>
+        <td>  <%= (@starter.foto.nil? ||  @starter.foto.empty?) ?  image_tag("icono1.png") :  image_tag(@starter.foto, alt: "Foto #{@starter.name} #{@starter.surname}")  %></td>
 
 
 

@@ -165,5 +165,9 @@ def improve_string#TODO
   end
   improve_string
 end
+ 
+def get_foto
+  (self.foto.nil? ||  self.foto.empty?) ? ActionController::Base.helpers.asset_path("icono1.png") :  self.foto
+end 
 
 end
