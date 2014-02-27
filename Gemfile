@@ -47,6 +47,7 @@ end
 group :production do
   gem 'pg'
   gem 'thin'
+  gem 'heroku-deflater'
 end
 # For heroku version 0.4.2 for rails console command
 gem 'rb-readline', '~> 0.4.2'
