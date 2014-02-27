@@ -59,25 +59,25 @@
                                             <% else %>
                                               <p> <%= appointment.status %> </p>
                                             <% end %>
- <% if not appointment.user_starter.nil? %>
+ 
         <% @starter = User.find appointment.user_starter %>
         <td>  <%=  @starter.nil? ?  image_tag("icono1.png") :  image_tag(@starter.foto, alt: "Foto #{@starter.name} #{@starter.surname}")  %></td>
 
 
 
                                           <td><%= @starter.name %></td>
-      <% end %>
+    
 
 
 
 
-                                          <% if not appointment.available.nil? %>
+                                         
 
 
                                           <td><%= appointment.day %></td>
                                           <td><%= appointment.time %></td>
 
-                                        <% end %>
+                                        
 
                                           <td>
 
