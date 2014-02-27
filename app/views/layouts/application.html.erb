@@ -30,7 +30,7 @@
       <%= javascript_include_tag "phobos/main" %>
       <%= javascript_include_tag "phobos/respond.min" %>
       <%= javascript_include_tag "phobos/googletranslate" %>
-      <%= javascript_include_tag "phobos/experiment" %>
+      <%= javascript_include_tag "phobos/experiment", :async => true %>
 
       <%= javascript_include_tag "home" %>
       <%= javascript_include_tag "users" %>
@@ -53,10 +53,10 @@
     <meta name="google-translate-customization" content="7377276bb2c27717-b8f205510aa94232-g9e59485595d4b6b5-e"></meta>
 
   <% else %>
-      <%= javascript_include_tag "application" %>
-      <%= javascript_include_tag "phobos/experiment" %>
-      <%= stylesheet_link_tag "phobos/normalize", :media => "all" %>
-      <%= stylesheet_link_tag "application", :media => "all" %>
+      <%= javascript_include_tag "application", :async => true %>
+      <%= javascript_include_tag "phobos/experiment", :async => true %>
+      <%= stylesheet_link_tag "phobos/normalize", :media => "all", :async => true %>
+      <%= stylesheet_link_tag "application", :media => "all", :async => true %>
       <% end %>
 
 
