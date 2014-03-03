@@ -19,18 +19,44 @@ class UsersController < ApplicationController
     @users = User.all
 
     @availables = Available.all.size
-    @availables_total = @availables.size
+    @availables_total = @availables 
 
     @appointments = Appointment.all.size
     
     
-    @appointments_sent = Appointment.where("status = ?","sent").size
+    @appointments_sent = Appointment.where("status = ?","sent").size    
     @appointments_accepted = Appointment.where("status = ?","accepted").size
     @appointments_canceled = Appointment.where("status = ?","canceled").size
     @tandem_petitions =  @appointments - @appointments_sent - @appointments_accepted - @appointments_canceled 
-   
-    
 
+    lang_of = Speak.pluck(:language_speak_id)
+    @languages_ofered = lang_of.uniq.size
+    lang_dem =  Improve.pluck(:language_improve_id)
+    @languages_demanded = lang_dem.uniq.size
+
+
+    b = Hash.new(0)
+    lang_of.each do |v|
+      lang = Language.find v
+      lang = lang.name
+     b[lang] += 1
+    end
+    @languages_ofered_list = b.to_s
+
+    c = Hash.new(0)
+    lang_dem.each do |l|
+      lang = Language.find l
+      lang = lang.name
+     c[lang] += 1
+    end
+    @languages_demanded_list = c
+
+
+=begin
+b.each do |k, v|
+  puts "#{k} appears #{v} times"
+end
+=end
     respond_to do |format|
       #flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
       format.html # index.html.erb
