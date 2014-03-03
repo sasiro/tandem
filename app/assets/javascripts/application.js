@@ -10,16 +10,4 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require chosen-jquery
-//= require twitter/bootstrap
-//= require holder
-//= require availables
-//= require home
-//= require languages
-//= require rooms
-//= require users
-//= require user_steps
-//= require bootstrap
 //

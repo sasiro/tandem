@@ -1,5 +1,11 @@
   <!DOCTYPE html>
   <html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie footer-sticky navbar-sticky"> <![endif]-->
+<!--[if !IE]><!--><html class="footer-sticky navbar-sticky"><!-- <![endif]-->
+
   <head>
 
 
@@ -22,7 +28,7 @@
 
 
 
-       <%= javascript_include_tag "phobos/jquery-1.10.2.min", :async => true  %>
+       <%= ript_include_tag "phobos/jquery-1.10.2.min", :async => true  %>
       <%= javascript_include_tag "phobos/jquery.easing.1.3", :async => true  %>
       <%= javascript_include_tag "phobos/bootstrap.min", :async => true  %>
       <%= javascript_include_tag "phobos/contact", :async => true  %>
@@ -53,15 +59,56 @@
     <meta name="google-translate-customization" content="7377276bb2c27717-b8f205510aa94232-g9e59485595d4b6b5-e"></meta>
 
   <% else %>
-      <%= javascript_include_tag "application", :async => true %>
-      <%= javascript_include_tag "phobos/experiment", :async => true %>
-      <%= stylesheet_link_tag "phobos/normalize", :media => "all", :async => true %>
-      <%= stylesheet_link_tag "application", :media => "all", :async => true %>
+
+
+<!--
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	-->
+
+ <%= stylesheet_link_tag "module.admin.stylesheet-complete.layout_fixed.true.less", :media => "all" %>
+
+<!--[if lt IE 9]><link rel="stylesheet" href="../assets/bootstrap.min.css" /><![endif]-->
+ <!--     <%= stylesheet_link_tag "module.admin.stylesheet-complete.layout_fixed.true.min.css", :media => "all" %>-->
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+
+       <%= javascript_include_tag "jquery.min.js?v=v1.9.6&sv=v0.0.1
+" %>
+       <%= javascript_include_tag "jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1
+"  %>
+       <%= javascript_include_tag "modernizr.js?v=v1.9.6&sv=v0.0.1
+"  %>
+       <%= javascript_include_tag "less.min.js?v=v1.9.6&sv=v0.0.1
+"  %>
+       <%= javascript_include_tag "excanvas.js?v=v1.9.6&sv=v0.0.1
+" %>
+       <%= javascript_include_tag "ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1
+"  %>
+
+      <%= stylesheet_link_tag "application", :media => "all" %>
       <% end %>
 
 
       <%= csrf_meta_tags %>
       <%= favicon_link_tag 'favicon.ico' %>
+
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+
+
       <meta http-equiv="X-UA-Compatible" content="chrome=1">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta property="og:title" content="Tandem Spot: Learn languages by speaking" />
@@ -74,73 +121,8 @@
 
 
 
-	<body data-spy="scroll" data-offset='90'>
 
 
-      <% if user_signed_in?  %>
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-           <div class="container">
-           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"/>
-           <%= link_to 'Tandem Spot BETA', tandem_users_path, class: "brand black" %>
-           <div class="nav-collapse">
-            <ul class="nav">
-
-              <li> <%= link_to raw("<i class=\"icon-home\"></i> ") + 'Home', tandem_users_path %></li>
-              <li><%= link_to raw("<i class=\"icon-chat\"></i> ") + "Plan your learning", availables_path %></li>
-              <li><%= link_to raw("<i class=\"icon-user\"></i> ") + "List of users", users_path %></li>
-              <li><%= link_to raw("<i class=\"icon-facetime-video\"></i> ") +"Speak Now",new_room_path %></li>
-              <% pending = Appointment.pending(current_user) %>
-              <li >
-
-                <%  pending == 0 ? id = "" : id = "badge badge-important calendar-notification" %>
-                <%= link_to raw("<i class=\" icon-calendar \"></i> ") +pending.to_s ,appointments_path, class: id %>
-              </li>
-              <li><%= link_to current_user.email, edit_user_registration_path %> </li>
-              <li> <%= link_to 'Profile', edit_user_registration_path %></li>
-
-              <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "sign_out" %></li>
-
-
-
-
-
-
-              <% if can? :update, :user %>
-              <div class="btn-group">
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                  Admin
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- dropdown menu links -->
-                  <li> <%= link_to "Rooms", rooms_path, method: :get %></li>
-                  <li> <%= link_to "Users", users_path, method: :get %></li>
-                  <li> <%= link_to "Metric", metric_users_path, method: :get %></li>
-                </ul>
-              </div>
-
-              <% end %>
-            </ul>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-
-
-        <% flash.each do |name, msg| %>
-        <% if name!=:just_signed_up %>
-        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-          <a class="close" data-dismiss="alert">×</a>
-          <h3> <%=  msg  %> </h3>
-        </div>
-
-        <% end %>
-        <% end %>
         <%= yield %>
 
 
@@ -149,4 +131,6 @@
        <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
       </body>
 
+       <%= javascript_include_tag "bootstrap.min.js?v=v1.9.6&sv=v0.0.1", :async => true  %>
+       <%= javascript_include_tag "core.init.js?v=v1.9.6", :async => true  %>
       </html>

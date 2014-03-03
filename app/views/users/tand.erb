@@ -1,0 +1,67 @@
+<% @title="Choose an option" %>
+
+
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="span1"></div>
+        <div class="span4">
+        <h2>Available hours to speak each week</h2>
+      </br>
+      </br>
+      <%= link_to raw("<i class=\"icon-white icon-calendar\"> Weekly schedule </i>"),
+          availables_path,
+          class: "btn btn-info btn-xlarge",
+          method: :get,
+          rel:'popover',
+         data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Set your schedule and program a regular tandem with an awesome partner' }
+        %>
+      </br>
+      </br>
+      </div>
+<div class="span3">
+
+     <h2> Find a partner to speak</h2>
+      </br>
+      </br>
+      <%= link_to raw("<i class=\"icon-white icon-user\"> List of users</i>"),
+        users_path,
+        class: "btn btn-xlarge",
+        method: :get,
+        rel:'popover',
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Send some of our native speakers a request to speak' }
+
+      %>
+      </br>
+      </br>
+      </div>
+
+  <div class="span4">
+
+     <h2> Connect with someone </h2>
+      </br>
+      </br>
+
+      </br>
+      </br>
+      <%= link_to raw("<i class=\"icon-white icon-comment\"> Start to speak</i>"),
+        new_room_path,
+        class: "btn btn-success btn-xlarge",
+        method: :get,
+        rel:'popover',
+        data: {placement: 'bottom',  toggle: 'popover', trigger: 'hover', content: 'Instantly connect with someone to practice with' }
+
+      %>
+      </br>
+      </br>
+      </div>
+
+    <div class="span2"></div>
+
+    </div>
+  </div>
