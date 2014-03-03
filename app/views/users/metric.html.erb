@@ -14,10 +14,10 @@
 	</ul>
 	<ul class="unstyled inline">
 		<li>
-			<span class="icon-calendar"></span>Total petitions of tandem  <%= @tandem_petitions %>
+			<span class="icon-calendar"></span>Total petitions of tandem  <%= @appointments %>
 		</li>
 	<li>
-			<span class="icon-calendar"></span>Total petitions sent <%= @appointments_sent %>
+			<span class="icon-calendar"></span>Total petitions sent <%= @appointments_sent	 %>
 		</li>
 		<li>
 			<span class="icon-calendar"></span>Total petitions of accepted  <%= @appointments_accepted %>
@@ -34,17 +34,18 @@
 		
 		<li>
 
-		% languages ofered
+		 
+		Languages ofered = <%= @languages_ofered_list  %>
 		</li>
 		<li>
 
-		% language demanded
+	    Languages demanded = <%= @languages_demanded_list %>
 		</li>
 
-		Total number of languages ofered
+		Total number of languages ofered = <%= @languages_ofered %>
 		<li>
 
-		Total number of language demanded
+		Total number of language demanded =	 <%= @languages_demanded %>
 		</li>
 
 	</ul>

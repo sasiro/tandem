@@ -4,6 +4,7 @@ Feature: Admin wants to know important metrics
   I want a panel to see all the relevants metrics
 
   Background: Some languages, users, etc have been added to the database
+      
     Given the following languages exist:
       | name     |
       | French   |
@@ -11,14 +12,7 @@ Feature: Admin wants to know important metrics
       | English  |
       | Portuguese  |
 
-    And the following user exist:
-      | email | country | password | name | role |
-      | victordp86@gmail.com | Spain | 12345678 | Victor | admin |
-      | jamon@hotmail.com | Spain| 12345678 | Jamon | default |
-      | carlos@gmail.com | Spain | 12345678 | Carlos | default |
-      | jake@gmail.com | EEUU | 12345678 | Jake | default |
-
-    And the following speaks exist:
+          And the following speaks exist:
       | language_speak_id  | user_id |
       | 1  | 2 |
       | 2  | 1 |
@@ -29,10 +23,19 @@ Feature: Admin wants to know important metrics
     And the following improve exist:
       | language_improve_id     | user_id |
       | 1  | 1 |
-      | 2  | 2 |
+      | 2  | 2 |  
       | 3  | 2 |
       | 4  | 2 |
-      | 1  | 3 |
+      | 1  | 3 | 
+
+    And the following user exist:
+      | email | country | password | name | role | language_improve_ids | language_speak_ids | 
+      | victordp86@gmail.com | Spain | 12345678 | Victor | admin | 1 | 1 |
+      | jamon@hotmail.com | Spain| 12345678 | Jamon | default | 2|  3|
+      | carlos@gmail.com | Spain | 12345678 | Carlos | default | 3 | 4|
+      | jake@gmail.com | EEUU | 12345678 | Jake | default | 4 | 2 | 
+
+
 
        And the following available exist:
       | day     | starts | duration |
@@ -50,7 +53,7 @@ Feature: Admin wants to know important metrics
       | 1  | 3 |
       | 2  | 3 |
       | 3  | 3 |
-      | 4  | 3 |
+      | 4  | 3 |  
 
     And I am on the tandem page
 

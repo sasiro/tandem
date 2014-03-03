@@ -1,4 +1,5 @@
 # config/initializers/customerio.rb
+
 if Rails.env.development?
   Rails.configuration.customerio = {
     :site_id      =>'f77a207194bb09719221' ,
