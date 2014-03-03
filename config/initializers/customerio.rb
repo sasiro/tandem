@@ -1,4 +1,5 @@
 # config/initializers/customerio.rb
+=begin
 if Rails.env.development?
   Rails.configuration.customerio = {
     :site_id      =>'f77a207194bb09719221' ,
@@ -12,3 +13,4 @@ Rails.configuration.customerio = {
 end
   
 $customerio = Customerio::Client.new(Rails.configuration.customerio[:site_id], Rails.configuration.customerio[:api_key])
+=end

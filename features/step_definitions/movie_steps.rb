@@ -9,7 +9,7 @@ Given /the following interests exist/ do |interests_table|
     # you should arrange to add that movie to the database here.
     Interest.create(interest)
   end
-end
+end 
 
 Given /the following languages exist/ do |languages_table|
   languages_table.hashes.each do |language|
@@ -23,7 +23,7 @@ Given /the following user exist/ do |user_table|
   user_table.hashes.each do |user|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
-    User.create(user)
+    User.create!(user)
   end
 end
 
