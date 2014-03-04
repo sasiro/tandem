@@ -8,6 +8,10 @@
 
   <head>
 
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
 
 <script type="text/javascript" async >
   var trak=trak||[];trak.io=trak.io||{};trak.io.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d29p64779x43zo.cloudfront.net/v1/trak.io.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){trak.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["initialize","identify","track","alias","channel","source","host","protocol","page_view"];for(var s=0;s<i.length;s++) trak.io[i[s]]=r(i[s]);trak.io.initialize.apply(trak.io,arguments)};
@@ -71,7 +75,7 @@
  <%= stylesheet_link_tag "module.admin.stylesheet-complete.layout_fixed.true.less", :media => "all" %>
 
 <!--[if lt IE 9]><link rel="stylesheet" href="../assets/bootstrap.min.css" /><![endif]-->
- <!--     <%= stylesheet_link_tag "module.admin.stylesheet-complete.layout_fixed.true.min.css", :media => "all" %>-->
+  <!-- <%= stylesheet_link_tag "module.admin.stylesheet-complete.layout_fixed.true.min.css", :media => "all" %>-->
 
 
 
@@ -83,29 +87,23 @@
 
 
 
-       <%= javascript_include_tag "jquery.min.js?v=v1.9.6&sv=v0.0.1
-" %>
-       <%= javascript_include_tag "jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1
-"  %>
-       <%= javascript_include_tag "modernizr.js?v=v1.9.6&sv=v0.0.1
-"  %>
-       <%= javascript_include_tag "less.min.js?v=v1.9.6&sv=v0.0.1
-"  %>
-       <%= javascript_include_tag "excanvas.js?v=v1.9.6&sv=v0.0.1
-" %>
-       <%= javascript_include_tag "ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1
-"  %>
+       <%= javascript_include_tag "jquery.min.js?v=v1.9.6&sv=v0.0.1" %>
+       <%= javascript_include_tag "jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1"  %>
+       <%= javascript_include_tag "modernizr.js?v=v1.9.6&sv=v0.0.1"  %>
+       <%= javascript_include_tag "less.min.js?v=v1.9.6&sv=v0.0.1"  %>
+       <%= javascript_include_tag "excanvas.js?v=v1.9.6&sv=v0.0.1" %>
+       <%= javascript_include_tag "ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1" %>
 
-      <%= stylesheet_link_tag "application", :media => "all" %>
+<script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+
+
       <% end %>
+
+     <link type="stylesheet/less" href="/assets/styles.less" />
 
 
       <%= csrf_meta_tags %>
       <%= favicon_link_tag 'favicon.ico' %>
-
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
 
 
@@ -129,8 +127,30 @@
 
        <%= render :partial => 'layouts/ga' if Rails.env.production?  %>
        <%= render :partial => 'layouts/gat' if Rails.env.development?  %>
+
+       <%= javascript_include_tag "bootstrap.min.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "jquery.nicescroll.min.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "breakpoints.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "pace.min.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "preload.pace.init.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "blueimp-gallery.min.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "jquery.blueimp-gallery.min.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "image-preview.js?v=v1.9.6&sv=v0.0.1"  %>
+
+       <%= javascript_include_tag "core.init.js?v=v1.9.6"  %>
+
+       <%= javascript_include_tag "animations.init.js?v=v1.9.6"  %>
+
+
+
+
       </body>
 
-       <%= javascript_include_tag "bootstrap.min.js?v=v1.9.6&sv=v0.0.1", :async => true  %>
-       <%= javascript_include_tag "core.init.js?v=v1.9.6", :async => true  %>
       </html>
