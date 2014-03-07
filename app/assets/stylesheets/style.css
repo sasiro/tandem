@@ -19,3 +19,8 @@
 @import "accordions.less";
 @import "gallery.less";
 @import "customize.css";
+@import "customize.css";
+@import "boostrap-timepicker.css";
+@import "boostrap-timepicker.less";
+@import "boostrap-select.css";
+@import "boostrap-select.less";
