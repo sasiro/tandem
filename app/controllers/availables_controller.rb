@@ -41,29 +41,32 @@ class AvailablesController < ApplicationController
   # POST /availables
   # POST /availables.json
   def create
-     $customerio.track(current_user.id, "availables",:type => "created")
-     
-    @available = Available.new(params[:available])
-    @available.user_id = current_user.id
-    respond_to do |format|
-      if @available.save
-        debugger
-        current_user.availables << @available
-        debugger
-        format.html { redirect_to availables_path, notice: 'Good. So you can speak languages on '+ @available.day.capitalize + "." }
-        format.json { render json: @available, status: :created, location: @available }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @available.errors, status: :unprocessable_entity }
-      end
+   $customerio.track(current_user.id, "availables",:type => "created")
+   days = params[:available][:day].reject! { |c| c.empty? }
+   days.empty? ? all_record_saved = false : all_record_saved = true
+   days.each do |day|
+     available = Available.new("day"=>day, "starts"=>params[:available][:starts])
+     if available.save!
+      current_user.availables << available
+     else
+      all_record_saved = false
+     end
+  end
+  respond_to do |format|
+    if all_record_saved
+      format.html { redirect_to :back }
+    else
+      format.html { redirect_to :back, alert: 'Maybe some hours have not been added, check them out' }
     end
   end
+
+end
 
   # PUT /availables/1
   # PUT /availables/1.json
   def update
     $customerio.track(current_user.id, "availables",:type => "updated")
-     
+
     @available = Available.find(params[:id])
 
     respond_to do |format|

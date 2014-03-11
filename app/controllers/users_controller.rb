@@ -15,21 +15,21 @@ class UsersController < ApplicationController
   end
 
   def metric
-    
+
     @users = User.all
 
     @availables = Available.all.size
     @availables_total = @availables.size
 
     @appointments = Appointment.all.size
-    
-    
+
+
     @appointments_sent = Appointment.where("status = ?","sent").size
     @appointments_accepted = Appointment.where("status = ?","accepted").size
     @appointments_canceled = Appointment.where("status = ?","canceled").size
-    @tandem_petitions =  @appointments - @appointments_sent - @appointments_accepted - @appointments_canceled 
-   
-    
+    @tandem_petitions =  @appointments - @appointments_sent - @appointments_accepted - @appointments_canceled
+
+
 
     respond_to do |format|
       #flash[:alert] = "We are under construction. At the moment you can place the time that you are available to speak. The other people will see it and will practice with you :) "
@@ -137,8 +137,11 @@ class UsersController < ApplicationController
 
   def tandem
 
+    @available = Available.new
     @user = User.find(current_user.id)
+    @appointments = @user.get_appointments
     authorize! :tandem, :user
+    @availables = current_user.availables
    # authorize! :tandem, @user
 
   end

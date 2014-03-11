@@ -170,4 +170,8 @@ def get_foto
   (self.foto.nil? ||  self.foto.empty?) ? ActionController::Base.helpers.asset_path("icono1.png") :  self.foto
 end 
 
+def get_appointments
+  Appointment.where("user_id = ? or user_starter = ?", self.id, self.id) 
+end
+
 end

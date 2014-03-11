@@ -21,7 +21,7 @@
                 <%  pending == 0 ? id = "" : id = "gritter-add-primary btn btn-primary btn-block " %>
                   <%= link_to raw("<i class=\" fa fa-fw fa-calendar-o \"></i> ") +pending.to_s ,appointments_path, class: id %>
               </li>
-              <li>
+              </li>
                 <%= link_to raw("<i class=\"fa fa-fw fa-group\"></i> ") + "List of users", users_path %>
               </li>
               <li >
@@ -37,6 +37,15 @@
               </li>
             </ul>
         </div></div>
+
+<% flash.each do |name, msg| %>
+        <% if name!=:just_signed_up %>
+        <div  class="hidden alert alert-<%= name == :notice ? "success" : "error" %>">
+          <%=  msg  %>
+        </div>
+
+        <% end %>
+        <% end %>
 
         <!-- // END navbar -->
 
@@ -140,8 +149,10 @@
                   </div>
 
                   <div class="innerAll">
-                    <h4><i class="fa fa-circle text-success pull-right"></i> Maria Antonieta</h4>
-                    <p class="margin-none text-muted">Learns: Spanish, French</p>
+                    <h4><i class="fa fa-circle text-success pull-right"></i> <%= @user.name + " " + @user.surname %></h4>
+                    <p class="margin-none text-muted">Native Languages: </p><p class="margin-none" ><%= @user.improve_string %></p>
+                    <p class="margin-none text-muted">Needs to improve: <p class="margin-none"><%= @user.speak_string %></p>
+
                     <div class="text-center">
                     <h2> <i class="fa fa-star-half-empty"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> </h2>
                   </div>
@@ -228,15 +239,6 @@
                           <div class="col-separator col-unscrollable box col-separator-last reset-components">
 
                             <!-- col-table -->
-                            <div class="col-table">
-
-                              <div class="input-group friends-search">
-                                <input class="form-control col-md-6 innerAll" id="appendedInputButtons" type="text" placeholder="Search tandems">
-                                <div class="input-group-btn">
-                                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                </div>
-                                <div class="clearfix"></div>
-                              </div>
 
                               <!-- col-table-row -->
                               <div class="col-table-row">
@@ -246,13 +248,22 @@
                                   <!-- col-app -->
                                   <div class="col-app">
 
-                                    <ul class="list-unstyled friends-list">
+                                    <ul class="list-unstyled friends-list"  >
+ <% @appointments.each do |appointment| %>
 
-                                      <li><a data-toggle="image-preview" data-title="Perpetua Inger" data-content="<small>Last Activity: 1h ago</small>" data-image-preview="../assets/1.jpg" href="" class="glyphicons girl"><i></i> Perpetua  Monday 10:00 AM </a>  </li>
-                                      <li><a data-toggle="image-preview" data-title="Zoticus Axel" data-content="<small>Last Activity: 1h ago</small>" data-image-preview="../assets/2.jpg" href="" class="glyphicons girl"><i></i>Zoticus Monday 11:00 AM</a></li>
-                                      <li><a data-toggle="image-preview" data-title="Yun Ragna" data-content="<small>Last Activity: 1h ago</small>" data-image-preview="../assets/3.jpg" href="" class="glyphicons girl"><i></i>Yun  Monday 12:00 AM </a></li>
-                                      <li><a data-toggle="image-preview" data-title="Victor Tacitus" data-content="<small>Last Activity: 1h ago</small>" data-image-preview="../assets/4.jpg" href="" class="glyphicons girl"><i></i>Victor Monday 12:00 PM</a></li>
-                                      <li><a data-toggle="image-preview" data-title="Victor Tacitus" data-content="<small>Last Activity: 1h ago</small>" data-image-preview="../assets/4.jpg" href="" class="glyphicons girl"><i></i>Victor Monday 12:00 AM</a></li>
+<% if appointment.status != "canceled" %>
+        <% if current_user == appointment.user_starter %>
+         <% user = User.find appointment.user_id %>
+        <% else %>
+        <% user = User.find appointment.user_starter %>
+        <% end %>
+        <% (user.foto.nil? || user.foto.empty? ) ? foto = "../assets/icono1.png" : foto = user.foto %>
+        <li><a data-toggle="image-preview" data-title=" <%= user.name %>" data-content="<small><%= user.speak_string %></small>" data-image-preview="<%= foto %>" href="<%= appointments_path %>" class="<%=  'btn-success ' if appointment.status == 'accepted' %>glyphicons user"><i></i>  <%= user.name + " "+ appointment.day + " " + appointment.time %> </a>  </li>
+      <% end %>
+      <% end %>
+
+
+
 
 
                                      </ul>
@@ -267,29 +278,45 @@
                               <!-- // END col-table-row -->
 
                               <div class="col-separator-h box"></div>
- <div class="input-group bootstrap-timepicker">
-	<input id="timepicker1" type="text" class="form-control">
-	<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
 
-</div>
+
+
+        <%= simple_form_for(@available) do |f| %>
+
+      <h4 class = "text-center">Schedule your free time</h4>
+      <%= f.collection_select :day, Available::DAYS, :to_s, :humanize,{}, :multiple=> true, :class => "btn btn-block" %>
+
+                <div class="input-group bootstrap-timepicker">
+       <%= f.input :starts, as: :string, label: false,  input_html: { class: 'form-control', id: 'timepicker1' } %>
+       <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+
+
+     </div>
+
+
+
+             <%= button_tag raw( "<i class='fa fa-plus'> Add free time</i>") ,:class =>"btn btn-primary btn-block" %>
+
+  <% end %>
+
+
+
 
 
                               </div>
 
                               <div class="innerAll">
 
-                                <a href="#" class="btn btn-block btn-primary"><i class="fa fa-plus"></i> Add hour</a>
+
+
                               </div>
+
       <ul class="list-unstyled friends-list">
 
-                                      <li><a  href="" class="glyphicons clock"><i></i>Monday 10:00 AM </a>  </li>
-                                      <li><a  href="" class="glyphicons clock"><i></i>Monday 11:00 AM</a></li>
-                                      <li><a  href="" class="glyphicons clock"><i></i>Monday 12:00 AM </a></li>
-                                      <li><a  href="" class="glyphicons clock"><i></i>Monday 12:00 PM</a></li>
-                                      <li><a  href="" class="glyphicons clock"><i></i>Monday 12:00 AM</a></li>
+         <% @availables.each do |ava| %>
+           <li><%= link_to raw("<i class=\" \"></i> " + ava.day + " " + ava.starts.strftime("%H:%M")) ,{controller: 'availables', action: 'edit' , id: ava.id},  class: 'glyphicons clock', :method => :get %></li>
 
-                                     </ul>
-
+      <% end %>
 
 
                               <div class="col-separator-h box"></div>
