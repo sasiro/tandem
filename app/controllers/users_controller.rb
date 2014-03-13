@@ -137,11 +137,31 @@ class UsersController < ApplicationController
 
   def tandem
 
+ 
     @available = Available.new
     @user = User.find(current_user.id)
     @appointments = @user.get_appointments
     authorize! :tandem, :user
     @availables = current_user.availables
+    
+    nuevo = false
+    @appointments.each do |appointment|
+      
+      if ( appointment.status == "sent" && appointment.user_id == current_user.id)
+        
+        nuevo = true
+      end
+       
+
+
+
+    end
+    if nuevo
+        
+      flash[:alert] = "You have a new tandem request" 
+    #       flash[:alert] = render_to_string(:partial => "You have a new tandem request, click  #{link_to('here', appointments_path)}") 
+
+      end
    # authorize! :tandem, @user
 
   end

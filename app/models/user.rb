@@ -171,7 +171,7 @@ def get_foto
 end 
 
 def get_appointments
-  Appointment.where("user_id = ? or user_starter = ?", self.id, self.id) 
+  Appointment.where("(user_id = ? or user_starter = ?) and (status = ? or status = ?) ", self.id, self.id, 'accepted', 'sent') 
 end
 
 end

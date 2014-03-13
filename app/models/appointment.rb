@@ -2,6 +2,7 @@ class Appointment < ActiveRecord::Base
   attr_accessible :available_id, :status, :user_id
   belongs_to :user
   belongs_to :available
+
   def self.pending(current_user) #Counts all sent appointments and shows it on navbar
     @appointments = Appointment.find_all_by_user_id(current_user.id)
     counter = 0

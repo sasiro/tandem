@@ -62,6 +62,8 @@ class AvailablesController < ApplicationController
 
 end
 
+
+
   # PUT /availables/1
   # PUT /availables/1.json
   def update

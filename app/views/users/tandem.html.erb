@@ -21,7 +21,7 @@
                 <%  pending == 0 ? id = "" : id = "gritter-add-primary btn btn-primary btn-block " %>
                   <%= link_to raw("<i class=\" fa fa-fw fa-calendar-o \"></i> ") +pending.to_s ,appointments_path, class: id %>
               </li>
-              </li>
+              <li>
                 <%= link_to raw("<i class=\"fa fa-fw fa-group\"></i> ") + "List of users", users_path %>
               </li>
               <li >
@@ -199,8 +199,46 @@
                               <div class="row row-merge box margin-none">
 
                                 <!-- col -->
+
+<div class="col-lg-6 reset-components">
+												
+												<div class="widget widget-tabs widget-tabs-icons-only-2 widget-activity margin-none widget-activity-social">
+
+	<!-- Tabs Heading -->
+	<div class="widget-head">
+		<ul>
+			<li class="active"><a data-toggle="tab" href="#webcamTab" class="glyphicons webcam"><i></i></a></li>
+			<li><a data-toggle="tab" href="#shareTab" class="glyphicons user"><i></i></a></li>
+		</ul>
+	</div>
+	<!-- // Tabs Heading END -->
+
+	<div class="widget-body padding-none">
+		<div class="tab-content">
+
+			<div class="tab-pane " id="shareTab">
+				<div class="share">
+					<textarea class="form-control" rows="2" placeholder="This form is NOT working yet..."></textarea>
+
+					<a class="btn btn-primary btn-sm">Submit <i class="fa fa-arrow-circle-o-right"></i></a>
+				</div>
+			</div>
+			<div class="tab-pane active innerAll text-center" id="webcamTab">
+				<h4>Start to speak</h4>
+				<p>Tandem Spot would like to start your webcam.</p>
+				<button class="btn btn-primary"><i class="fa fa-video-camera"></i> Speak Now</button>
+				<button class="btn btn-danger"><i class="fa fa-ban"></i></button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
                                                                </div>
                                 <!-- // END col -->
+
 
                                 <!-- col -->
                                                                <!-- // END col -->
@@ -214,6 +252,208 @@
 
                                 <!-- box -->
                                 <div class="col-app box col-unscrollable overflow-hidden">
+
+                                 	<div class="col-table">
+
+													<div class="innerLR heading-buttons border-bottom">
+														<h4 class="innerTB margin-none pull-left">Recent Activity</h4>
+														<div class="btn-group btn-group-xs pull-right">
+															<button class="btn btn-default filled"><i class="fa fa-refresh "></i></button>
+															<button class="btn btn-default "><i class="fa fa-cog "></i></button>
+														</div>
+														<div class="clearfix"></div>
+													</div>
+
+													<!-- col-table-row -->
+													<div class="col-table-row">
+
+														<!-- col-app -->
+														<div class="col-app col-unscrollable">
+
+															<!-- col-app -->
+															<div class="col-app">
+																<ul class="timeline-activity list-unstyled">
+	<li class="active">
+		<i class="list-icon fa fa-share"></i>
+		<div class="block block-inline">
+			<div class="caret"></div>
+			<div class="box-generic">
+				<div class="timeline-top-info bg-gray border-bottom">
+					<i class="fa fa-user"></i> <a href="">Victor</a> has had a <a href="" class="text-primary">Speak Now</a> <a href="#"><img src="../assets/images/people/80/4.jpg" alt="photo" width="20"></a> <a href="">Marina</a>
+					<div class="timeline-bottom">
+						<i class="fa fa-clock-o"></i> 2 days ago
+
+					</div>
+				</div>
+				<div class="media innerAll margin-none">
+          <a class="pull-left" href="#"><img src="../assets/1.jpg" alt="photo" class="media-object" width="35"></a>
+			        <div class="media-body">
+			          	<a href="" class="strong">Marina</a> Great tandem partner. I rate you five starts! Very nice to meet you! Congrats and hope to see more admin templates like this in the future.
+		     			<div class="timeline-bottom">
+							<i class="fa fa-clock-o"></i> 2 day ago
+						</div>
+			        </div>
+			    </div>
+		     	<div class="media innerAll margin-none bg-gray border-top border-bottom">
+			       	<a class="pull-left" href="#"><img src="<%= User.find_by_email("victordp86@gmail.com").foto %>" alt="photo" width="35" class="media-object"></a>
+			        <div class="media-body">
+			        	<a href="" class="strong">Victor</a> Thanks, I  apreciate it!
+			     		<div class="timeline-bottom">
+							<i class="fa fa-clock-o"></i> 1 days ago
+						</div>
+			        </div>
+		      	</div>
+
+			</div>
+
+		</div>
+	</li>
+	<li>
+		<i class="list-icon fa fa-map-marker"></i>
+		<div class="block block-inline">
+			<div class="caret"></div>
+			<div class="box-generic">
+				<div class="timeline-top-info">
+					<i class="fa fa-user"></i>
+					<a href="">Pablo</a> has been rated
+					<a href="" class="text-primary"><i class="text-primary fa fa-location-arrow"></i> English level</a>
+				</div>
+				<div class="media margin-none">
+					<div class="row innerLR innerB">
+						<div class="col-sm-4 col-lg-3">
+							<div class="innerT">
+								<div class="icon-block text-center ">
+									<span class="glyphicons cup"><i></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-8 col-lg-9">
+							<div class="innerT">
+								<h5 class="strong">Bran Castle</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, aspernatur ut fuga eum cumque delectus voluptate impedit quaerat sapiente officiis fugit voluptates sit neque quibusdam beatae est modi repudiandae unde.</p>
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> 3.5
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="timeline-bottom innerT half">
+				<i class="fa fa-clock-o"></i> 2 days ago  <span class="innerL"><i class="fa fa-calendar fa-fw"></i> 25 Oct 2013</span>
+			</div>
+		</div>
+	</li>
+	<li>
+		<i class="list-icon fa fa-comments"></i>
+		<div class="block block-inline">
+			<div class="caret"></div>
+			<div class="box-generic">
+				<div class="timeline-top-info">
+					<i class="fa fa-user"></i> <a href="">mosaicpro</a> wrote a <a href="" class="text-primary">comment</a> to <a href="#"><img src="../assets/images/people/80/2.jpg" width="20" /></a> <a href="">Jane S.</a>
+					<div class="timeline-bottom">
+						<i class="fa fa-clock-o"></i> 6 days ago
+					</div>
+				</div>
+				<div class="bg-gray innerAll border-top">Good Job. Congrats and hope to see you soon.</div>
+			</div>
+
+		</div>
+	</li>
+	<li>
+		<i class="list-icon fa fa-user"></i>
+		<div class="block">
+			<div class="caret"></div>
+				<div class="inline-block box-generic">
+					<div class="timeline-top-info bg-gray border-bottom">
+						<i class="fa fa-user"></i> <a href="">mosaicpro</a> is following <a href="#"><img  src="../assets/images/people/80/1.jpg" width="20"/></a> <a href="">Jane S.</a>
+					</div>
+					<div class="media innerAll margin-none">
+				        <a class="pull-left" href="#">
+				          <img src="../assets/images/people/80/1.jpg" alt="photo" class="media-object" width="35">
+				        </a>
+				        <div class="media-body">
+				          <a href="" class="strong">Jane Smith</a>
+				          <a href="" class="clearfix text-primary strong">www.domain.com</a>
+				     	<div class="media-icons">
+								<a href=""><i class="fa fa-clock-o"></i></a>
+								<a href=""><i class="fa fa-calendar"></i></a>
+								<a href=""><i class="fa fa-user"></i></a>
+								<a href=""><i class="fa fa-star"></i></a>
+							</div>
+				        </div>
+			      </div>
+				</div>
+
+				<div class="inline-block box-generic">
+					<div class="timeline-top-info bg-gray border-bottom">
+						<i class="fa fa-user"></i> <a href="">mosaicpro</a> is following <a href="#"><img  src="../assets/images/people/80/1.jpg" width="20"/></a> <a href="">Jane S.</a>
+					</div>
+
+					<div class="media innerAll margin-none ">
+				        <a class="pull-left" href="#">
+				          <img src="../assets/images/people/80/1.jpg" alt="photo" class="media-object" width="35">
+				        </a>
+				        <div class="media-body">
+				          <a href="" class="strong">Jane Smith</a>
+				          <a href="" class="clearfix text-primary strong">www.domain.com</a>
+				     	<div class="media-icons">
+								<a href=""><i class="fa fa-clock-o"></i></a>
+								<a href=""><i class="fa fa-calendar"></i></a>
+								<a href=""><i class="fa fa-user"></i></a>
+								<a href=""><i class="fa fa-star"></i></a>
+							</div>
+				        </div>
+			      </div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<i class="list-icon fa fa-camera"></i>
+		<div class="block block-inline">
+			<div class="caret"></div>
+			<div class="box-generic">
+				<div class="timeline-top-info">
+					<i class="fa fa-user"></i> <a href="">mosaicpro</a> has uploaded 10 photos in <a href="" class="text-primary"><i class="text-primary fa fa-location-arrow"></i> Album Name #2</a>
+				</div>
+				<div class="innerLR innerB">
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/1.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/2.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/3.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/4.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/5.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/6.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/7.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/8.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/9.jpg" alt="photo" width="35"/></a>
+
+					<a href="#" class="thumbnail pull-left border-none"><img src="../assets/images/people/80/10.jpg" alt="photo" width="35"/></a>
+										<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="separator bottom"></div>
+		</div>
+	</li>
+</ul>
+
+
+															</div>
+															<!-- // END col-app -->
+
+														</div>
+														<!-- // END col-app -->
+
+													</div>
+													<!-- // END col-table-row -->
+
+												</div>
 
                                    <!-- // END col-table -->
 
@@ -251,7 +491,7 @@
                                     <ul class="list-unstyled friends-list"  >
  <% @appointments.each do |appointment| %>
 
-<% if appointment.status != "canceled" %>
+
         <% if current_user == appointment.user_starter %>
          <% user = User.find appointment.user_id %>
         <% else %>
@@ -260,7 +500,7 @@
         <% (user.foto.nil? || user.foto.empty? ) ? foto = "../assets/icono1.png" : foto = user.foto %>
         <li><a data-toggle="image-preview" data-title=" <%= user.name %>" data-content="<small><%= user.speak_string %></small>" data-image-preview="<%= foto %>" href="<%= appointments_path %>" class="<%=  'btn-success ' if appointment.status == 'accepted' %>glyphicons user"><i></i>  <%= user.name + " "+ appointment.day + " " + appointment.time %> </a>  </li>
       <% end %>
-      <% end %>
+      
 
 
 
